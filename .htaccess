@@ -1,0 +1,18 @@
+
+RewriteEngine On
+RewriteBase /
+
+
+RewriteRule ^([_0-9a-zA-Z-]+)?/?wp-content/cache/minify-(.+)-(.*).(css|js)$ /wp-content/plugins/minify/make.php?hash=$2&type=$4&incr=$3&site=$1 [L]
+
+# Need to add a trailing slash to wp-admin requests
+RewriteRule ^wp-admin$ /wp-admin/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule . - [L]
+RewriteRule  ^([_0-9a-zA-Z-]+/)?(wp-.*) /wordpress/$2 [L]
+RewriteRule  ^([_0-9a-zA-Z-]+/)?(.*\.php)$ /wordpress/$2 [L]
+RewriteRule . index.php [L]
+
+# END WordPress

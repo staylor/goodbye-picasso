@@ -1,0 +1,16 @@
+@font-face {
+	font-family: 'UnderwoodChampionRegular';
+	src: url('../fonts/underwood_champion-webfont.eot');
+	src: local('☺'), url('../fonts/underwood_champion-webfont.woff') format('woff'), 
+		url('../fonts/underwood_champion-webfont.ttf') format('truetype'), 
+		url('../fonts/underwood_champion-webfont.svg#webfontO3nBC0WO') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+@font-face { 
+  font-family: 'typey'; font-style: normal; font-weight: normal;
+  src: url('../fonts/Trixie-Plain.ttf') format('truetype'),
+  	   url('../fonts/Trixie-Plain.otf') format('opentype');
+}

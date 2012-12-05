@@ -1,0 +1,6 @@
+body, .email_form .submit, .wrapper h1 , .wrapper .wp-caption-text, .main_nav li,
+.tape, .medium_tape, .navigation, .single-post .entry-meta,
+#content .post_wide .entry-title, #content .post_wide .entry-title a,
+.wp-caption .wp-caption-text p, .commentlist cite a, #reply-title a,
+#content .band_galleries .entry-title, #content .band_galleries .entry-title a {
+	font-family: 'UnderwoodChampionRegular' !important;}

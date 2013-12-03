@@ -1,4 +1,4 @@
-<?php	 		 		 	
+<?php
 /**
  * The base configurations of the WordPress.
  *
@@ -83,6 +83,7 @@ define('WPLANG', '');
  * in their development environments.
  */
 define( 'WP_CACHE', true );
+define( 'WP_DEBUG_DISPLAY', false );
 define( 'WP_DEBUG', true );
 
 /* That's all, stop editing! Happy blogging. */

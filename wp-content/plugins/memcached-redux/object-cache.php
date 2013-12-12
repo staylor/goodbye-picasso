@@ -2,12 +2,14 @@
 /*
 Plugin Name: Memcached Redux
 Description: The real Memcached (not Memcache) backend for the WP Object Cache.
-Version: 0.1.1
+Version: 0.1.2
 Plugin URI: http://wordpress.org/extend/plugins/memcached/
-Author: Scott Taylor - uses code from Ryan Boren, Denis de Bernardy, Matt Martz
+Author: Scott Taylor - uses code from Ryan Boren, Denis de Bernardy, Matt Martz, Mike Schroder
 
 Install this file to wp-content/object-cache.php
 */
+
+if ( class_exists( 'Memcached' ) ):
 
 function wp_cache_add( $key, $data, $group = '', $expire = 0 ) {
 	global $wp_object_cache;
@@ -58,7 +60,7 @@ function wp_cache_get( $key, $group = '' ) {
  *      array( 'key', 'group' ),
  *      array( 'key' )
  * );
- * 
+ *
  */
 function wp_cache_get_multi( $key_and_groups, $bucket = 'default' ) {
 	global $wp_object_cache;
@@ -71,7 +73,7 @@ function wp_cache_get_multi( $key_and_groups, $bucket = 'default' ) {
  *      array( 'key', 'data', 'group' ),
  *      array( 'key', 'data' )
  * );
- * 
+ *
  */
 function wp_cache_set_multi( $items, $expire = 0, $group = 'default' ) {
 	global $wp_object_cache;
@@ -170,7 +172,7 @@ class WP_Object_Cache {
 	function incr( $id, $n = 1, $group = 'default' ) {
 		$key = $this->key( $id, $group );
 		$mc =& $this->get_mc( $group );
-		$this->cache[ $key ] = $mc->increment( $key, $n );	
+		$this->cache[ $key ] = $mc->increment( $key, $n );
 		return $this->cache[ $key ];
 	}
 
@@ -182,7 +184,7 @@ class WP_Object_Cache {
 	}
 
 	function close() {
-        // Silence is Golden.
+		// Silence is Golden.
 	}
 
 	function delete( $id, $group = 'default' ) {
@@ -203,7 +205,7 @@ class WP_Object_Cache {
 		if ( false !== $result )
 			unset( $this->cache[$key] );
 
-		return $result; 
+		return $result;
 	}
 
 	function flush() {
@@ -223,15 +225,15 @@ class WP_Object_Cache {
 
 		if ( isset( $this->cache[$key] ) ) {
 			if ( is_object( $this->cache[$key] ) )
- 				$value = clone $this->cache[$key];
+				$value = clone $this->cache[$key];
 			else
 				$value = $this->cache[$key];
 		} else if ( in_array( $group, $this->no_mc_groups ) ) {
 			$this->cache[$key] = $value = false;
 		} else {
 			$value = $mc->get( $key );
-            if ( empty( $value ) || ( is_integer( $value ) && -1 == $value ) )
-                $value = false;
+			if ( empty( $value ) || ( is_integer( $value ) && -1 == $value ) )
+				$value = false;
 			$this->cache[$key] = $value;
 		}
 
@@ -285,7 +287,7 @@ class WP_Object_Cache {
 		return array_values( $return );
 	}
 
-	function key( $key, $group ) {	
+	function key( $key, $group ) {
 		if ( empty( $group ) )
 			$group = 'default';
 
@@ -305,7 +307,7 @@ class WP_Object_Cache {
 		if ( is_object( $data ) )
 			$data = clone $data;
 
-		$result = $mc->replace( $key, $data, false, $expire );
+		$result = $mc->replace( $key, $data, $expire );
 		if ( false !== $result )
 			$this->cache[$key] = $data;
 		return $result;
@@ -360,14 +362,14 @@ class WP_Object_Cache {
 		if ( !empty( $sets ) )
 			$mc->setMulti( $sets, $expire );
 	}
-    
+
 	function colorize_debug_line( $line ) {
 		$colors = array(
 			'get'   => 'green',
 			'set'   => 'purple',
 			'add'   => 'blue',
-			'delete'=> 'red' 
-        );
+			'delete'=> 'red'
+		);
 
 		$cmd = substr( $line, 0, strpos( $line, ' ' ) );
 
@@ -385,15 +387,15 @@ class WP_Object_Cache {
 		echo "</p>\n";
 		echo "<h3>Memcached:</h3>";
 		foreach ( $this->group_ops as $group => $ops ) {
-			if ( !isset( $_GET['debug_queries'] ) && 500 < count( $ops ) ) { 
-				$ops = array_slice( $ops, 0, 500 ); 
+			if ( !isset( $_GET['debug_queries'] ) && 500 < count( $ops ) ) {
+				$ops = array_slice( $ops, 0, 500 );
 				echo "<big>Too many to show! <a href='" . add_query_arg( 'debug_queries', 'true' ) . "'>Show them anyway</a>.</big>\n";
-			} 
+			}
 			echo "<h4>$group commands</h4>";
 			echo "<pre>\n";
 			$lines = array();
 			foreach ( $ops as $op ) {
-				$lines[] = $this->colorize_debug_line( $op ); 
+				$lines[] = $this->colorize_debug_line( $op );
 			}
 			print_r( $lines );
 			echo "</pre>\n";
@@ -423,19 +425,19 @@ class WP_Object_Cache {
 
 		foreach ( $buckets as $bucket => $servers ) {
 			$this->mc[$bucket] = new Memcached();
-            
-            $instances = array();
-			foreach ( $servers as $server  ) {
+
+			$instances = array();
+			foreach ( $servers as $server ) {
 				@list( $node, $port ) = explode( ':', $server );
 				if ( empty( $port ) )
 					$port = ini_get( 'memcache.default_port' );
 				$port = intval( $port );
 				if ( !$port )
 					$port = 11211;
-                
-                $instances[] = array( $node, $port, 1 );
+
+				$instances[] = array( $node, $port, 1 );
 			}
-            $this->mc[$bucket]->addServers( $instances );
+			$this->mc[$bucket]->addServers( $instances );
 		}
 
 		global $blog_id, $table_prefix;
@@ -450,3 +452,15 @@ class WP_Object_Cache {
 		$this->cache_misses =& $this->stats['add'];
 	}
 }
+else: // No Memcached
+
+	// In 3.7+, we can handle this smoothly
+	if ( function_exists( 'wp_using_ext_object_cache' ) ) {
+		wp_using_ext_object_cache( false );
+
+	// In earlier versions, there isn't a clean bail-out method.
+	} else {
+		wp_die( 'Memcached class not available.' );
+	}
+
+endif;

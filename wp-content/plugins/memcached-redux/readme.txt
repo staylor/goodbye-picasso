@@ -2,8 +2,8 @@
 Contributors: wonderboymusic, ryan, sivel, DH-Shredder
 Tags: cache, Memcached, admin, manage cache, object cache, WP Object Cache
 Requires at least: 3.0
-Tested up to: 3.4
-Stable Tag: 0.1.1
+Tested up to: 3.7.1
+Stable Tag: 0.1.2
 
 Uses the Memcached class (not the Memcache class) to implement WP Object Cache
 
@@ -35,6 +35,10 @@ Blog Post: [http://scotty-t.com/2012/06/05/memcached-redux/](http://scotty-t.com
 1. Copy object-cache.php to wp-content
 
 == Changelog ==
+
+= 0.1.2 =
+* Allows graceful fallback to database object cache in WordPress 3.7+ for users without PECL Memcached available.
+* Fixes warning due to replace() call, as it does not take a compression argument in Memcached.
 
 = 0.1.1 = 
 * Fixes a problem with the get_option() function and the return value of wp_cache_get() on Linux

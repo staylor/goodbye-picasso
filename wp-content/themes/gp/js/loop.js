@@ -3,37 +3,22 @@
 /*globals window, document, $, jQuery, XHR */
 
 (function ($) {
-	var wrapper, strips;
+	var wrapper;
 
 	function goToGallery() {
 		window.location.href = $(this).closest('.entry-content').prev('h2').find('a').attr('href');
 		return false;
 	}
 
-	function doNav() {
-		// add click events to page nav, will request loop pieces via AJAX
-		var nav = $('#nav-above a, #nav-below a');
-	
-		// add click to entire photo strip, goes to Gallery page
-		strips = $('.band_gallery_strip_wrapper');
-		strips.click(goToGallery);
-		
-		// dynamically render Tweet button
-		$.getScript('http://platform.twitter.com/widgets.js');
-		
-		nav.each(function () {
-			var elem = $(this);
-		
-			XHR.ajaxify(elem, function () {
-				XHR.doRequest(elem.attr('href'), wrapper, doNav);
-				return false;				
-			});
-		});
-	}	
-	
 	$(document).ready(function () {
 		wrapper = $('#loop-content');
-		
-		doNav();
+
+		$('body')
+			.on('click', '.band_gallery_strip_wrapper', goToGallery)
+			.on('click', '#nav-above a, #nav-below a', function () {
+				var href = elem.attr('href') + (elem.attr('href').indexOf('?') > -1 ? '&ajax=1' : '?ajax=1');
+				XHR.doRequest(href, wrapper);
+				return false;
+			} );
 	});
 }(jQuery));

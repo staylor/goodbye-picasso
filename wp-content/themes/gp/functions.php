@@ -1,4 +1,4 @@
-<?php	 		 		 	
+<?php
 /**
  * GoodbyePicasso functions and definitions
  *
@@ -6,48 +6,44 @@
  * @subpackage Goodbye Picasso
  * @since 3.0.0
  */
- 
+
 /**
  *
  * $root and $theme can be inherited throughout
  * $theme references the child theme, this one
  *
  */
-
 define('IS_AJAX', isset($_GET['ajax']) && $_GET['ajax']);
 define('FACEBOOK_APP_ID', '142875799055891');
 define('FACEBOOK_SECRET', 'd313c2950363ec70949d14cbdf55c8f5');
 
 $root = get_bloginfo('url');
-$theme = get_bloginfo('stylesheet_directory');  
- 
- 
+$theme = get_bloginfo('stylesheet_directory');
+
 add_action( 'wp_print_scripts', 'disableAutoSave' );
 add_action( 'init', 'gp_setup' );
-
 
 function disableAutoSave() {
 	wp_deregister_script('autosave');
 }
 
 function gp_setup() {
-	global $theme, $root;
+	global $theme;
 
 	add_theme_support('post-thumbnails');
 	add_theme_support('automatic-feed-links');
-	
+
 	if (!is_admin()) {
 		wp_enqueue_style('gp-main', $theme . '/style.css');
 		wp_enqueue_style('gp-global', $theme . '/css/global.css');
-		
-		
+
 		wp_enqueue_script('gp-font', $theme . '/js/font.js', array('jquery'));
 		wp_enqueue_script('1', 'http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', array('jquery', 'gp-font'));
 		wp_enqueue_script('2', $theme . '/js/XHR.js', array('jquery'));
 		wp_enqueue_script('3', $theme . '/js/loop.js', array('jquery'));
 		wp_enqueue_script('4', $theme . '/js/banner.js', array('jquery'));
 		wp_enqueue_script('5', $theme . '/js/facebook.js', array('jquery'));
-		wp_enqueue_script('6', $theme . '/js/lyrics.js', array('jquery'));		
+		wp_enqueue_script('6', $theme . '/js/lyrics.js', array('jquery'));
 	}
 }
 
@@ -57,11 +53,11 @@ function myfeed_request($qv) {
 	  		'public'   => true,
 	  		'_builtin' => false
 		));
-		
+
 		$qv['post_type'][] = 'post';
-	}	
-	
-	return $qv;	
+	}
+
+	return $qv;
 }
 //add_filter('request', 'myfeed_request');
 
@@ -90,16 +86,16 @@ function gp_lyrics($lyrics, $attrs = '') {
 		}
 		$attrs = ' ' . implode(' ', $a);
 	}
-	
+
 	echo '<span class="lyrics"', $attrs, '>', $lyrics, '</span>';
 }
 
 /**
  *
- * this function helps the loop determine 
+ * this function helps the loop determine
  * what kind of post this is
  *
- */	
+ */
 
 function the_loop_category() {
 	$before = '<ul class="post-categories"><li>';
@@ -111,47 +107,47 @@ function the_loop_category() {
 		break;
 	case 'song':
 		echo $before, '<a href="/music/">Song</a>', $after;
-		break;	
+		break;
 	case 'gallery':
 		echo $before, '<a href="/photos/">Photos</a>', $after;
-		break;	
+		break;
 	default:
 		the_category();
-		break;	
+		break;
 	}
 }
 
 
 /**
  *
- * this function helps the nav determine 
+ * this function helps the nav determine
  * when an item is active
  *
- */	
+ */
 
 function _on($term = '', $terms = array(), $cat = '') {
 	global $post, $wp_query;
 
-	if (is_page($term)) { 
+	if (is_page($term)) {
 		return 'class="on" ';
-	} else if (count($terms) && (in_array(get_post_type($post->ID), $terms) || 
+	} else if (count($terms) && (in_array(get_post_type($post->ID), $terms) ||
 		in_array(get_query_var('taxonomy'), $terms))
 	) {
-		return 'class="on" ';	 
+		return 'class="on" ';
 	} else if (is_single() && !empty($cat) &&
 		is_array($cats = get_the_category()) && count($cats)
-	) {	
+	) {
 		if ($cat == $cats[0]->name) {
-			return 'class="on" ';			
+			return 'class="on" ';
 		}
 	}
-} 
+}
 
 /**
  *
  * custom comment callback for this theme
  *
- */	
+ */
 
 function gp_comment($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment; ?>
@@ -171,7 +167,7 @@ function gp_comment($comment, $args, $depth) {
 			</div>
 			<div class="comment-body"><?php	 		 		 	 comment_text() ?></div>
 			<div class="tape medium_tape reply">
-				<?php	comment_reply_link(array_merge($args, 
+				<?php	comment_reply_link(array_merge($args,
 					array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
 			</div>
 		</div>
@@ -179,7 +175,7 @@ function gp_comment($comment, $args, $depth) {
 	<li class="post pingback">
 		<p><?php _e( 'Pingback:') ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)'), ' ') ?></p>
 	<?php  endif;?>
-	</li><?php	 		 		 	
+	</li><?php
 }
 
 /**
@@ -189,7 +185,7 @@ function gp_comment($comment, $args, $depth) {
  */
 
 function gp_author() {
-// If a user has filled out their description, show a bio on their entries 
+// If a user has filled out their description, show a bio on their entries
 	if (get_the_author_meta('description')): ?>
 		<div id="entry-author-info">
 			<div id="author-avatar">
@@ -200,13 +196,13 @@ function gp_author() {
 				<?php	 the_author_meta('description'); ?>
 				<div id="author-link">
 					<a href="<?php	echo get_author_posts_url(get_the_author_meta('ID')); ?>">
-						<?php	 		 		 	 
+						<?php
 						printf( __('View all posts by %s <span class="meta-nav">&rarr;</span>'), get_the_author()) ?>
 					</a>
 				</div>
 			</div>
-		</div><?php	 		 		 	
-	endif; 
+		</div><?php
+	endif;
 }
 
 /**
@@ -221,15 +217,15 @@ function get_facebook_cookie() {
 	$args = array();
 	parse_str(trim($_COOKIE['fbs_' . FACEBOOK_APP_ID], '\\"'), $args);
 	ksort($args);
-	
+
 	$payload = '';
-	
+
 	foreach ($args as $key => $value) {
 		if ($key != 'sig') {
 			$payload .= $key . '=' . $value;
 		}
 	}
-	
+
 	if (md5($payload . FACEBOOK_SECRET) != $args['sig']) {
 	    return null;
 	}
@@ -237,7 +233,7 @@ function get_facebook_cookie() {
 }
 
 function page_like_button($height = 80, $width = 780) {
-	echo '<fb:like href="http://www.facebook.com/goodbyepicasso" action="like" layout="standard" colorscheme="light" show_faces="true" height="', $height, '" width="', $width, '"></fb:like>';	
+	echo '<fb:like href="http://www.facebook.com/goodbyepicasso" action="like" layout="standard" colorscheme="light" show_faces="true" height="', $height, '" width="', $width, '"></fb:like>';
 }
 
 function the_like_button() {
@@ -245,21 +241,19 @@ function the_like_button() {
 }
 
 function full_like_button() {
-	?><fb:like></fb:like><?php	 		 		 	
+	?><fb:like></fb:like><?php
 }
 
 /**
  * Twitter Tweet button
- * 
+ *
  */
-
 function the_tweet_button() {
 	echo '<a href="http://twitter.com/share?url=', urlencode(get_permalink()), '&amp;text=', str_replace('"', '\"', get_the_title()),'" class="twitter-share-button" data-count="none" data-via="goodbyepicasso">Tweet</a>';
 }
 
-
 /**
- * 
+ *
  * AKISMET PLUGIN MUST BE ACTIVATED!!
  * function to call Akismet to filter mail for SPAM
  *
@@ -269,9 +263,7 @@ function the_tweet_button() {
  * $content['comment_content'] = $message;
  *
  */
-
 function gp_checkSpam($content) {
-
 	// innocent until proven guilty
 	$isSpam = FALSE;
 
@@ -309,11 +301,7 @@ function gp_checkSpam($content) {
 				update_option('akismet_spam_count', get_option('akismet_spam_count') + 1);
 				$isSpam = TRUE;
 			}
-
 		}
-
 	}
-
 	return $isSpam;
-
 }

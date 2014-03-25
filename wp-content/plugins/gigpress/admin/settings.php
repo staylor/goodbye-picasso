@@ -90,6 +90,12 @@ function gigpress_settings() {
 			</td>
 		</tr>
 		<tr>
+			<th scope="row"><?php _e("Buy tickets label", "gigpress") ?>:</th>
+			<td>
+				<input type="text" name="gigpress_settings[buy_tickets_label]" size="48" value="<?php echo $gpo['buy_tickets_label']; ?>" />
+			</td>
+		</tr>
+		<tr>
 			<th scope="row"><?php _e("Age restrictions", "gigpress") ?>:</th>
 			<td>
 				<input type="text" name="gigpress_settings[age_restrictions]" size="48" value="<?php echo $gpo['age_restrictions']; ?>" /> <span class="description"><?php _e("A pipe-separated list of available age restrictions.", "gigpress"); ?></span>
@@ -177,6 +183,14 @@ function gigpress_settings() {
 		<tr>
 			<th scope="row"><?php _e("Link behaviour", "gigpress") ?></th>
 			<td><p><label><input type="checkbox" name="gigpress_settings[target_blank]" value="1" <?php if(!empty($gpo['target_blank'])) echo('checked="checked"'); ?> /> <?php _e("Open external links in new windows.", "gigpress") ?></label>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><?php _e("Microdata", "gigpress") ?></th>
+			<td>	
+				<p><label><input type="checkbox" name="gigpress_settings[output_schema_json]" value="1" <?php if(!empty($gpo['output_schema_json'])) echo('checked="checked"'); ?> /> <?php _e("
+				Include Schema.org/Event structured data as JSON-LD", "gigpress") ?></label>
+				</p>
 			</td>
 		</tr>
 		<tr>

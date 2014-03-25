@@ -2,12 +2,16 @@
 /*
 Plugin Name: Memcached Redux
 Description: The real Memcached (not Memcache) backend for the WP Object Cache.
-Version: 0.1.2
+Version: 0.1.3
 Plugin URI: http://wordpress.org/extend/plugins/memcached/
 Author: Scott Taylor - uses code from Ryan Boren, Denis de Bernardy, Matt Martz, Mike Schroder
 
 Install this file to wp-content/object-cache.php
 */
+
+if ( !defined( 'WP_CACHE_KEY_SALT' ) ) {
+	define( 'WP_CACHE_KEY_SALT', '' );
+}
 
 if ( class_exists( 'Memcached' ) ):
 
@@ -296,7 +300,7 @@ class WP_Object_Cache {
 		else
 			$prefix = $this->blog_prefix;
 
-		return preg_replace( '/\s+/', '', "$prefix$group:$key" );
+		return preg_replace( '/\s+/', '', WP_CACHE_KEY_SALT . "$prefix$group:$key" );
 	}
 
 	function replace( $id, $data, $group = 'default', $expire = 0 ) {

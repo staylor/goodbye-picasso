@@ -79,6 +79,7 @@ $default_settings = array(
 	'artist_label' => 'Artist',		
 	'artist_link' => 1,	
 	'autocreate_post' => 0,
+	'buy_tickets_label' => 'Buy Tickets',		
 	'category_exclude' => 0,
 	'country_view' => 'long',
 	'date_format_long' => 'l, F jS Y',
@@ -97,6 +98,7 @@ $default_settings = array(
 	'load_jquery' => 1,
 	'nopast' => 'No shows in the archive yet.',
 	'noupcoming' => 'No shows booked at the moment.',
+	'output_schema_json' => 1,
 	'related_category' => 1,
 	'related_heading' => 'Related show',
 	'related_position' => 'after',
@@ -119,9 +121,16 @@ $default_settings = array(
 );
 
 global $gpo;
+
 if( ! $gpo = get_option('gigpress_settings') )
 {
 	$gpo = $default_settings;
+}
+
+if(empty($gpo['buy_tickets_label']))
+{
+	$gpo['buy_tickets_label'] = 'Buy Tickets';
+	update_option('gigpress_settings', $gpo);
 }
 
 function gigpress_install() {

@@ -262,3 +262,8 @@ audio {
 	max-width: 100%;
 	display: inline-block;
 }
+
+.entry-content {
+	max-width: 100%;
+	height: auto;
+}

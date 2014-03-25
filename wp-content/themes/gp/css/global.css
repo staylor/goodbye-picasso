@@ -256,3 +256,9 @@ em {text-transform: uppercase; color: #000}
 	width: 400px;
 	max-width: 100%;
 }
+
+audio {
+	width: 400px;
+	max-width: 100%;
+	display: inline-block;
+}

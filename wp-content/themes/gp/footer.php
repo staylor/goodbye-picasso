@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template used to display the footer
  *
@@ -7,14 +8,12 @@
  * @subpackage Goodbye Picasso
  * @since 3.0.0
  */
-
- global $theme, $root;
 ?>
 		</div><!-- .main -->
 	</div><!-- .stack_top -->
 	<div class="footer">
 		<p>&copy; <?php	 echo date( 'Y' ) ?> Goodbye Picasso, New York, NY - All Rights Reserved.
-		<a href="<?= $root ?>/credits/">Credits</a>.
+		<a href="<?= home_url( '/credits/' ) ?>">Credits</a>.
 		</p>
 		<ul>
 			<li><a target="_blank" class="apple" href="http://itunes.apple.com/us/album/the-book-of-aylene/id381329114"></a></li>
@@ -30,10 +29,10 @@
 		<span class="tape medium_tape tilt_bottom_left"></span>
 		<?php gp_lyrics(__('Most who started here have left... It\'s all in the name of progress')) ?>
 		<div id="facebook_widget">
-			<?php	page_like_button() ?>
+			<?php page_like_button() ?>
 		</div>
 	</div>
-</div><!-- .wrapper -->	
-<?php	wp_footer(); ?>
+</div><!-- .wrapper -->
+<?php wp_footer(); ?>
 </body>
 </html>

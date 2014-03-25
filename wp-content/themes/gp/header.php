@@ -3,7 +3,7 @@
 <html <?php	 language_attributes(); ?> xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title><?php	 		 		 	
+<title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
 	 */
@@ -25,9 +25,9 @@
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<?php	 		 		 	 if ( is_singular() && get_option('thread_comments') ) wp_enqueue_script( 'comment-reply' ); ?>
-<link rel="pingback" href="<?php	 		 		 	 bloginfo( 'pingback_url' ); ?>" />
-<?php	 		 		 		
+<?php if ( is_singular() && get_option('thread_comments') ) wp_enqueue_script( 'comment-reply' ); ?>
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<?php
 	wp_head();
 
 	if (isset($like_meta) && !empty($like_meta)) echo $like_meta;
@@ -42,7 +42,7 @@
   })();
 
 </script>
-<!--[if lt IE 7 ]><link rel="stylesheet" href="<?= $theme ?>/css/ie6.css"/><![endif]--> 
+<!--[if lt IE 7 ]><link rel="stylesheet" href="<?= $theme ?>/css/ie6.css"/><![endif]-->
 </head>
 <body <?php	 body_class(); ?>>
 <div class="wrapper">
@@ -53,7 +53,7 @@
 		<img class="alignnone" src="<?= $theme ?>/images/spacer.gif"/>
 	</div>
 	<div id="fb-root"></div>
-	<div id="decoy"></div>	
+	<div id="decoy"></div>
 	<div class="stack_item stack_top">
 		<ul class="main_nav">
 			<li>[<a <?= _on('shows') ?>href="<?= $root ?>/shows/">SHOWS</a>]</li>

@@ -1,4 +1,4 @@
-<?php	 		 		 	
+<?php
 /**
  * The template for displaying Author Archive pages.
  *
@@ -6,12 +6,12 @@
  * @subpackage Twenty_Ten
  * @since Twenty Ten 1.0
  */
- 
+
 if (!IS_AJAX): 
 
 get_header(); ?>
 
-<?php	 		 		 	
+<?php
 
 	if ( have_posts() )
 		the_post();
@@ -19,7 +19,7 @@ get_header(); ?>
 
 <h1 class="page-title author"><?php	 printf( __( 'Author Archives: %s', 'twentyten' ), "<span class='vcard'><a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a></span>" ); ?></h1>
 
-<?php	 		 		 	
+<?php
 // If a user has filled out their description, show a bio on their entries.
 if ( get_the_author_meta( 'description' ) ) : ?>
 	<div id="entry-author-info">
@@ -38,25 +38,25 @@ if ( get_the_author_meta( 'description' ) ) : ?>
 	rewind_posts();
 	 endif; ?>
 
-<?php	 		 		 	
+<?php
 
 	/* Run the loop for the author archive page to output the authors posts
 	 * If you want to overload this in a child theme then include a file
 	 * called loop-author.php and that will be used instead.
-	 */ 
+	 */
 ?>
 	<div id="loop-content">
 <?php	 		 		 	 endif;
 	band_get_posts_by_type(array(
 		'post_type' => array('post', 'video', 'gallery'),
 		'posts_per_page' => 5
-	)); 	 
-	 
+	));
+
 	get_template_part( 'loop', 'author' );
 
 if (!IS_AJAX): ?>
 	</div>
-<?php	 		 		 		
-get_footer(); 
+<?php
+get_footer();
 
 endif; ?>

@@ -1,4 +1,4 @@
-<?php	 		 		 	
+<?php
 /**
  * The template used to display the footer
  *
@@ -7,11 +7,11 @@
  * @subpackage Goodbye Picasso
  * @since 3.0.0
  */
- 
+
  global $theme, $root;
 ?>
-		</div><!-- .main -->	
-	</div><!-- .stack_top -->	
+		</div><!-- .main -->
+	</div><!-- .stack_top -->
 	<div class="footer">
 		<p>&copy; <?php	 echo date( 'Y' ) ?> Goodbye Picasso, New York, NY - All Rights Reserved.
 		<a href="<?= $root ?>/credits/">Credits</a>.
@@ -23,19 +23,16 @@
 			<li><a target="_blank" class="twitter" href="http://twitter.com/goodbyepicasso"></a></li>
 			<li><a target="_blank" class="reverb" href="http://www.reverbnation.com/goodbyepicasso"></a></li>
 		</ul>
-	</div>	
+	</div>
 	<div id="social_wrapper" class="email_form">
 		<span class="tape medium_tape tilt_left"></span>
 		<span class="tape medium_tape tilt_right"></span>
 		<span class="tape medium_tape tilt_bottom_left"></span>
-		<?php gp_lyrics(__('Most who started here have left... It\'s all in the name of progress')) ?>		
+		<?php gp_lyrics(__('Most who started here have left... It\'s all in the name of progress')) ?>
 		<div id="facebook_widget">
-			<?php	page_like_button() ?>		
+			<?php	page_like_button() ?>
 		</div>
-	</div>	
-	<div id="twitter_widget">
-		 <script type="text/javascript" src="<?= $theme ?>/js/twitter.js"></script>		
-	</div>		
+	</div>
 </div><!-- .wrapper -->	
 <?php	wp_footer(); ?>
 </body>

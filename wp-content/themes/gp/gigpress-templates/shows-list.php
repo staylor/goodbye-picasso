@@ -7,6 +7,7 @@
 //	If you're curious what all variables are available in the $showdata array,
 //	have a look at the docs: http://gigpress.com/docs/
 
+$country = isset( $gpo['display_country'] ) && 1 === (int) $gpo['display_country'];
 ?>
 
 <tbody class="vevent">
@@ -48,7 +49,7 @@
 
 		<td class="gigpress-venue location<?php	 if($venue) : ?> hide<?php	endif; ?>"><?php	 		 		 	 echo $showdata['venue']; ?></td>
 
-	<?php	if ( isset( $gpo['display_country'] ) && $gpo['display_country'] == 1): ?>
+	<?php	if ( $country ): ?>
 		<td class="gigpress-country"><?php	echo $showdata['country']; ?></td>
 	<?php	else: ?>
 		<td class="gigpress-tickets">
@@ -69,7 +70,7 @@
 				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Time", "gigpress"); ?>:</span> <?php echo $showdata['time']; ?></span>
 			<?php	endif; ?>
 
-			<?php if($showdata['price'] && $gpo['display_country'] == 1) : ?>
+			<?php if($showdata['price'] && $country ) : ?>
 				<span class="gigpress-info-item"><span class="gigpress-info-label"><?php _e("Admission", "gigpress"); ?>:</span> <?php echo $showdata['price']; ?></span>
 			<?php endif; ?>
 
@@ -91,14 +92,14 @@
 				<span class="gigpress-info-item tape medium_tape"><?php echo $showdata['related_link']; ?></span>
 			<?php endif; ?>
 
-			<?php if($showdata['ticket_link'] && $gpo['display_country'] == 1) : ?>
+			<?php if($showdata['ticket_link'] && $country ) : ?>
 				<span class="gigpress-info-item"><?php echo $showdata['ticket_link']; ?></span>
 			<?php endif; ?>
 			<?php if($showdata['notes']) : ?>
 				<br/><span class="gigpress-info-item gigpress-info-notes"><?php	 		 		 	 echo $showdata['notes']; ?></span>
 			<?php endif; ?>
 		</td>
-		<?php if ($gpo['display_country'] != 1): ?><td>
+		<?php if ( $country ): ?><td>
 			<?php if ($showdata['ticket_link']): ?><span class="tape medium_tape"><?php	 		 		 	 echo $showdata['ticket_link']; ?></span><?php	 		 		 	 endif; ?>
 		</td><?php	endif ?>
 	</tr>

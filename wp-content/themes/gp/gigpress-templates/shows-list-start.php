@@ -12,7 +12,7 @@
 	// We don't use this variable in this template, but we do need it in subsequent templates
 	$cols = 3;
 	$cols = ($total_artists == 1 || $artist || $group_artists == 'yes') ? $cols : $cols + 1;
-	$cols = ($gpo['display_country'] == 1) ? $cols + 1 : $cols;
+	$cols = (isset( $gpo['display_country'] ) && $gpo['display_country'] == 1) ? $cols + 1 : $cols;
 ?>
 
 <table class="gigpress-table <?php echo $scope; ?> hcalendar" cellspacing="0">

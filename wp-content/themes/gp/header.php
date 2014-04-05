@@ -1,30 +1,18 @@
-<?php global $root, $theme, $like_meta, $post ?>
+<?php global $root, $theme, $like_meta ?>
 <!DOCTYPE html>
-<html <?php	 language_attributes(); ?> xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<!--[if IE 7]>
+<html class="ie ie7" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" <?php language_attributes(); ?>>
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8) ]><!-->
+<html <?php language_attributes(); ?>>
+<!--<![endif]-->
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title><?php
-	/*
-	 * Print the <title> tag based on what is being viewed.
-	 */
-	global $page, $paged;
-
-	wp_title( '|', true, 'right' );
-
-	// Add the blog name.
-	bloginfo( 'name' );
-
-	// Add the blog description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		echo " | $site_description";
-
-	// Add a page number if necessary:
-	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . sprintf( __( 'Page %s' ), max( $paged, $page ) );
-
-	?></title>
-<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width">
+	<title><?php wp_title( '|', true, 'right' ); ?></title>
 <?php if ( is_singular() && get_option('thread_comments') ) wp_enqueue_script( 'comment-reply' ); ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php
@@ -32,17 +20,16 @@
 
 	if (isset($like_meta) && !empty($like_meta)) echo $like_meta;
 ?>
-<script type="text/javascript">
-  var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-1544578-3']); _gaq.push(['_trackPageview']);
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  ga('create', 'UA-1544578-3', 'goodbyepicasso.com');
+  ga('send', 'pageview');
 
 </script>
-<!--[if lt IE 7 ]><link rel="stylesheet" href="<?= $theme ?>/css/ie6.css"/><![endif]-->
 </head>
 <body <?php	 body_class(); ?>>
 <div class="wrapper">

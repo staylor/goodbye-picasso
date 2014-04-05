@@ -1,26 +1,18 @@
-"use strict";
-
-/*globals $, jQuery, window, document */
+/*globals $, jQuery, document */
 
 (function ($) {
-	var banner,
-		IMAGE_DIR = '/wp-content/uploads/2010/08/',
-		IMAGES_SIZE = 20;
+	"use strict";
+
+	var items = [2, 4, 6, 7, 9, 10];
 
 	function getIndex() {
-		return Math.floor(Math.random() * IMAGES_SIZE) + 1;
-	}
-
-	function addImage() {
-		banner.find('img').attr({
-			src: [IMAGE_DIR, 'header-', getIndex(), '.jpg'].join('')
-		});
+		return items[Math.floor(Math.random() * items.length) + 1];
 	}
 
 	$(document).ready(function () {
-		banner = $('.banner');
-
-		addImage();
+		$('.banner').find('img').attr({
+			src: ['/wp-content/uploads/2010/08/header-', getIndex(), '.jpg'].join('')
+		});
 	});
 
 }(jQuery));

@@ -20,12 +20,7 @@ define('FACEBOOK_SECRET', 'd313c2950363ec70949d14cbdf55c8f5');
 $root = get_bloginfo('url');
 $theme = get_bloginfo('stylesheet_directory');
 
-add_action( 'wp_print_scripts', 'disableAutoSave' );
 add_action( 'init', 'gp_setup' );
-
-function disableAutoSave() {
-	wp_deregister_script('autosave');
-}
 
 function gp_setup() {
 	global $theme;

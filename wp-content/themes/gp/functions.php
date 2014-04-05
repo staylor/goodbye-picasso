@@ -17,28 +17,21 @@ define('IS_AJAX', isset($_GET['ajax']) && $_GET['ajax']);
 define('FACEBOOK_APP_ID', '142875799055891');
 define('FACEBOOK_SECRET', 'd313c2950363ec70949d14cbdf55c8f5');
 
-$root = get_bloginfo('url');
-$theme = get_bloginfo('stylesheet_directory');
-
 add_action( 'init', 'gp_setup' );
 
 function gp_setup() {
-	global $theme;
+	$theme = '/wp-content/themes/gp';
 
 	add_theme_support('post-thumbnails');
 	add_theme_support('automatic-feed-links');
 
-	if (!is_admin()) {
+	if ( ! is_admin() ) {
 		wp_enqueue_style('gp-main', $theme . '/style.css');
 		wp_enqueue_style('gp-global', $theme . '/css/global.css');
 
 		wp_enqueue_script('gp-font', $theme . '/js/font.js', array('jquery'));
-		wp_enqueue_script('1', 'http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', array('jquery', 'gp-font'));
-		wp_enqueue_script('2', $theme . '/js/XHR.js', array('jquery'));
-		wp_enqueue_script('3', $theme . '/js/loop.js', array('jquery'));
-		wp_enqueue_script('4', $theme . '/js/banner.js', array('jquery'));
-		wp_enqueue_script('5', $theme . '/js/facebook.js', array('jquery'));
-		wp_enqueue_script('6', $theme . '/js/lyrics.js', array('jquery'));
+		wp_enqueue_script('ajax-font', 'http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', array('jquery', 'gp-font'));
+		wp_enqueue_script('gp-main', $theme . '/js/main.js', array('jquery'));
 	}
 }
 

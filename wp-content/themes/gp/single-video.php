@@ -1,10 +1,10 @@
-<?php	 		 		 	
+<?php
 /**
  * The Template for displaying all single posts.
  *
  */
 
-the_post(); 
+the_post();
 
 $part = explode('<param name="movie" value="', get_the_content());
 $href = explode('"', $part[1]);
@@ -21,13 +21,13 @@ ob_start(); ?>
 <meta property="og:title" content="<?= esc_attr(get_the_title()) ?>" />
 <meta property="og:type" content="article" />
 <meta property="og:description" content="<?= esc_attr($desc) ?>" />
-<?php	 		 		 	
+<?php
 $like_meta = ob_get_contents();
 ob_end_clean();
 
-get_header(); 
+get_header();
 
-band_go_back($root . '/media/#videos', 'Back to all Videos');
+band_go_back( home_url( '/media/#videos' ), 'Back to all Videos');
 ?>
 	<div id="post-<?php	the_ID(); ?>" <?php	  post_class(); ?>>
 		<h1 class="entry-title"><?php	the_title(); ?></h1>

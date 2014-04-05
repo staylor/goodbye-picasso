@@ -1,4 +1,4 @@
-<?php global $root, $theme, $like_meta ?>
+<?php global $like_meta ?>
 <!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
@@ -36,19 +36,19 @@
 	<div class="banner">
 		<span class="tape tilt_left"></span>
 		<span class="tape tilt_right"></span>
-		<a href="<?= $root ?>"></a>
-		<img class="alignnone" src="<?= $theme ?>/images/spacer.gif"/>
+		<a href="<?= home_url( '' ) ?>"></a>
+		<img class="alignnone" src="<?= get_stylesheet_directory_uri() ?>/images/spacer.gif"/>
 	</div>
 	<div id="fb-root"></div>
 	<div id="decoy"></div>
 	<div class="stack_item stack_top">
 		<ul class="main_nav">
-			<li>[<a <?= _on('shows') ?>href="<?= $root ?>/shows/">SHOWS</a>]</li>
-			<li>[<a <?= _on('media', array('song', 'album', 'video')) ?>href="<?= $root ?>/media/">MEDIA</a>]</li>
-			<li>[<a <?= _on('bio') ?>href="<?= $root ?>/bio/">BIO</a>]</li>
-			<li>[<a <?= _on('news', null, 'News') ?>href="<?= $root ?>/news/">NEWS</a>]</li>
-			<li>[<a <?= _on('photos', array('gallery')) ?>href="<?= $root ?>/photos/">PHOTOS</a>]</li>
-			<li>[<a <?= _on('blog', null, 'Blog') ?>href="<?= $root ?>/blog/">BLOG</a>]</li>
-			<li>[<a <?= _on('contact') ?>href="<?= $root ?>/contact/">CONTACT</a>]</li>
+			<li>[<a <?= _on('shows') ?>href="<?= home_url( '/shows/' ) ?>">SHOWS</a>]</li>
+			<li>[<a <?= _on('media', array('song', 'album', 'video')) ?>href="<?= home_url( '/media/' ) ?>">MEDIA</a>]</li>
+			<li>[<a <?= _on('bio') ?>href="<?= home_url( '/bio/' ) ?>">BIO</a>]</li>
+			<li>[<a <?= _on('news', null, 'News') ?>href="<?= home_url( '/news/' ) ?>">NEWS</a>]</li>
+			<li>[<a <?= _on('photos', array('gallery')) ?>href="<?= home_url( '/photos/' ) ?>">PHOTOS</a>]</li>
+			<li>[<a <?= _on('blog', null, 'Blog') ?>href="<?= home_url( '/blog/' ) ?>">BLOG</a>]</li>
+			<li>[<a <?= _on('contact') ?>href="<?= home_url( '/contact/' ) ?>">CONTACT</a>]</li>
 		</ul>
 		<div class="main" id="content">

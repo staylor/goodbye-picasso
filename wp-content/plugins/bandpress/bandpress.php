@@ -127,10 +127,8 @@ function band_nav_by_type( $args = array() ) {
 }
 function init_photos() {
 	if ( is_single() && 'gallery' === get_post_type() ) {
-		wp_enqueue_style( 'gallery', PLUGIN_PATH . '/css/jquery.fancybox-1.3.1.css' );
-		wp_enqueue_script('easing', '/wp-content/plugins/bandpress/js/jquery.easing-1.3.pack.js', array('jquery'));
-		wp_enqueue_script('fancybox', '/wp-content/plugins/bandpress/js/jquery.fancybox-1.3.1.pack.js', array('jquery', 'easing'));
-		wp_enqueue_script('bpr-gallery', '/wp-content/plugins/bandpress/js/bandpress-gallery.js', array('jquery', 'fancybox'));
+		wp_enqueue_style( 'gallery', '/wp-content/plugins/bandpress/css/jquery.fancybox.css' );
+		wp_enqueue_script('fancybox', '/wp-content/plugins/bandpress/js/jquery.fancybox.pack.js', array('jquery'));
 	}
 }
 add_action( 'template_redirect', 'init_photos' );
@@ -143,7 +141,7 @@ function band_check_title($str) {
 }
 
 function band_add_gallery_attrs($link, $title, $gallery) {
-	return str_replace('<a', '<a rel="' . $gallery . '" title="' .
+	return str_replace('<a', '<a rel="' . $gallery . '" class="fancybox" title="' .
 		band_check_title(apply_filters('the_title_attribute', $title)) . '"', $link);
 }
 
@@ -229,12 +227,14 @@ function band_gallery_images($p = -1) {
 		<?php while ( $q->have_posts() ): $q->the_post(); ?>
 		<li>
 			<?php
-			$link = wp_get_attachment_link(get_the_ID(), 'thumbnail', true);
-			echo band_add_gallery_attrs($link, get_the_title(), $gallery_name);
+			$link = wp_get_attachment_image_src( get_the_ID(), 'thumbnail', true );
+			$big = wp_get_attachment_image_src( get_the_ID(), 'full', true );
+			$title = band_check_title( get_the_title() );
 			?>
-			<span class="tape">
-				<?php echo apply_filters('the_title', band_check_title(get_the_title())) ?>
-			</span>
+			<a href="<?php echo reset( $big ) ?>" title="<?php echo $title ?>" class="fancybox" rel="<?php echo $gallery_name ?>">
+				<img class="attachment-thumbnail" src="<?php echo reset( $link ) ?>"/>
+			</a>
+			<span class="tape"><?php echo apply_filters( 'the_title', $title ) ?></span>
 		</li>
 		<?php endwhile ?>
 		</ul><?php

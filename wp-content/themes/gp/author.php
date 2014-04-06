@@ -7,12 +7,11 @@
  * @since Twenty Ten 1.0
  */
 
-if (!IS_AJAX):
+if ( ! IS_AJAX ):
 
 get_header(); ?>
 
 <?php
-
 	if ( have_posts() )
 		the_post();
 ?>
@@ -46,17 +45,13 @@ if ( get_the_author_meta( 'description' ) ) : ?>
 	 */
 ?>
 	<div id="loop-content">
-<?php	 		 		 	 endif;
-	band_get_posts_by_type(array(
-		'post_type' => array('post', 'video', 'gallery'),
-		'posts_per_page' => 5
-	));
+<?php endif;
 
 	get_template_part( 'loop', 'author' );
 
-if (!IS_AJAX): ?>
+if ( ! IS_AJAX ): ?>
 	</div>
 <?php
 get_footer();
 
-endif; ?>
+endif;

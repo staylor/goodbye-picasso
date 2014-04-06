@@ -36,7 +36,7 @@ class GoodbyePicassoTheme {
 			return;
 		}
 
-		if ( $query->is_home() ) {
+		if ( $query->is_home() || $query->is_author() ) {
 			$query->set( 'post_type', array( 'post', 'video', 'gallery' ) );
 			$query->set( 'posts_per_page', 5 );
 		}
@@ -124,21 +124,9 @@ function the_loop_category() {
  *
  */
 
-function _on($term = '', $terms = array(), $cat = '') {
-	global $post, $wp_query;
-
-	if (is_page($term)) {
+function _on( $truth ) {
+	if ( $truth ) {
 		return 'class="on" ';
-	} else if (count($terms) && (in_array(get_post_type($post->ID), $terms) ||
-		in_array(get_query_var('taxonomy'), $terms))
-	) {
-		return 'class="on" ';
-	} else if (is_single() && !empty($cat) &&
-		is_array($cats = get_the_category()) && count($cats)
-	) {
-		if ($cat == $cats[0]->name) {
-			return 'class="on" ';
-		}
 	}
 }
 

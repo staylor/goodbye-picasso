@@ -48,12 +48,12 @@ global $like_meta ?>
 	<div id="decoy"></div>
 	<div class="stack_item stack_top">
 		<ul class="main_nav">
-			<li>[<a <?= _on('shows') ?>href="<?= home_url( '/shows/' ) ?>">SHOWS</a>]</li>
-			<li>[<a <?= _on('media', array('song', 'album', 'video')) ?>href="<?= home_url( '/media/' ) ?>">MEDIA</a>]</li>
-			<li>[<a <?= _on('bio') ?>href="<?= home_url( '/bio/' ) ?>">BIO</a>]</li>
-			<li>[<a <?= _on('news', null, 'News') ?>href="<?= home_url( '/news/' ) ?>">NEWS</a>]</li>
-			<li>[<a <?= _on('photos', array('gallery')) ?>href="<?= home_url( '/photos/' ) ?>">PHOTOS</a>]</li>
-			<li>[<a <?= _on('blog', null, 'Blog') ?>href="<?= home_url( '/blog/' ) ?>">BLOG</a>]</li>
-			<li>[<a <?= _on('contact') ?>href="<?= home_url( '/contact/' ) ?>">CONTACT</a>]</li>
+			<li>[<a <?= _on( is_page( 'shows' ) ) ?>href="<?= home_url( '/shows/' ) ?>">SHOWS</a>]</li>
+			<li>[<a <?= _on( is_page( 'media' ) || in_array( get_post_type(), array('song', 'album', 'video') ) ) ?>href="<?= home_url( '/media/' ) ?>">MEDIA</a>]</li>
+			<li>[<a <?= _on( is_page( 'bio' ) ) ?>href="<?= home_url( '/bio/' ) ?>">BIO</a>]</li>
+			<li>[<a <?= _on( is_category( 'news' ) ) ?>href="<?= home_url( '/category/news/' ) ?>">NEWS</a>]</li>
+			<li>[<a <?= _on( is_post_type_archive( 'gallery' ) ) ?>href="<?= home_url( '/gallery/' ) ?>">PHOTOS</a>]</li>
+			<li>[<a <?= _on( is_category( 'Blog' ) ) ?>href="<?= home_url( '/category/blog/' ) ?>">BLOG</a>]</li>
+			<li>[<a <?= _on( is_page( 'contact' ) ) ?>href="<?= home_url( '/contact/' ) ?>">CONTACT</a>]</li>
 		</ul>
 		<div class="main" id="content">

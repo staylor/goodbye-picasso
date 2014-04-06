@@ -129,6 +129,7 @@ function init_photos() {
 	if ( is_single() && 'gallery' === get_post_type() ) {
 		wp_enqueue_style( 'gallery', '/wp-content/plugins/bandpress/css/jquery.fancybox.css' );
 		wp_enqueue_script('fancybox', '/wp-content/plugins/bandpress/js/jquery.fancybox.pack.js', array('jquery'));
+		wp_enqueue_script('bpr-gallery', '/wp-content/plugins/bandpress/js/bandpress-gallery.js', array('fancybox'));
 	}
 }
 add_action( 'template_redirect', 'init_photos' );

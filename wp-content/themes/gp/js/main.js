@@ -95,7 +95,11 @@
 
 				href = elem.attr('href');
 				wrapper = $('#loop-content');
-				doRequest(href);
+				doRequest(href, function () {
+					$('.wp-playlist:not(.ready)').addClass('ready').each(function () {
+						return new WPPlaylistView({ el: this });
+					});
+				});
 				return false;
 			} );
 

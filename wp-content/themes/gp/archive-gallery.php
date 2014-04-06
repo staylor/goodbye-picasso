@@ -14,7 +14,7 @@ get_header(); ?>
 	if (have_posts()): ?>
 		<div class="posts">
 		<?php
-		band_nav_by_type('photos');
+		band_nav_by_type( array( 'type' => 'photos' ) );
 		while (have_posts()): the_post(); ?>
 			<h2 class="entry-title"><a href="<?php	 the_permalink() ?>"><?php the_title() ?></a></h2>
 			<div class="entry-content">
@@ -22,7 +22,7 @@ get_header(); ?>
 				band_gallery_preview_strip();
 			?></div><?php
 		endwhile;
-		band_nav_by_type('photos', 'below'); ?>
+		band_nav_by_type( array( 'type' => 'photos', 'where' => 'below' ) ); ?>
 		</div>
 	<?php endif ?>
 

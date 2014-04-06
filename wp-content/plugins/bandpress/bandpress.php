@@ -77,42 +77,53 @@ function band_get_posts_by_type($overrides = null) {
 	), is_null($overrides) ? array() : $overrides));
 }
 
-function band_nav_by_type( $type = 'posts', $where = 'above', $use_qs = false, $in_cat = 0 ) {
+function band_nav_by_type( $args = array() ) {
 	global $wp_query;
-	$max = $wp_query->max_num_pages;
-	$page = get_query_var('paged') ? (int) get_query_var('paged') : 1;
+	$_q = $wp_query;
+
+	$defaults = array(
+		'type' => 'posts',
+		'where' => 'above',
+		'use_qs' => false,
+		'q' => $wp_query
+	);
+	$params = wp_parse_args( $args, $defaults );
+	$wp_query = $params['q'];
+
+	$max = $params['q']->max_num_pages;
+	$page = $params['q']->get( 'paged' ) ? $params['q']->get( 'paged' ) : 1;
 
 	if ( $max > 1 ):
 ?>
-	<div id="nav-<?php echo $where ?>" class="navigation">
+	<div id="nav-<?php echo $params['where'] ?>" class="navigation">
 		<div class="nav-previous">
 			<?php
 			$prev = $page - 1;
-			if ( $use_qs && $prev >= 1 ): ?>
-			<a href="?<?php echo PAGE_PARAM, '=', $prev ?>">
-			<?php
-				_e( '<span class="meta-nav">&larr;</span>Newer ' . $type . ' (' . $prev . ' of ' . $max . ')' ) ?></a>
-			<?php elseif (!$use_qs):
-				previous_posts_link( __( '<span class="meta-nav">&larr;</span> Newer ' . $type . ' (' . $prev . ' of ' . $max . ')' ), $in_cat );
+			$plabel = sprintf( '<span class="meta-nav">&larr;</span> Newer %s (%d of %d)', $params['type'], $prev, $max );
+
+			if ( $params['use_qs'] && $prev >= 1 ): ?>
+			<a href="?<?php echo PAGE_PARAM, '=', $prev ?>"><?php echo $plabel ?></a>
+			<?php elseif ( ! $params['use_qs'] ):
+				previous_posts_link( $plabel );
 			endif;
 		?>
 		</div>
 		<div class="nav-next">
 			<?php
 			$next = $page + 1;
+			$nlabel = sprintf( 'Older %s (%d of %d) <span class="meta-nav">&rarr;</span>', $params['type'], $next, $max );
 
-			if ( $use_qs && ( $max >= $next ) ): ?>
-			<a href="?<?php echo PAGE_PARAM, '=', $next ?>">
-			<?php
-				_e('Older ' . $type . ' (' . $next . ' of ' . $max . ') <span class="meta-nav">&rarr;</span>' ) ?></a>
-			<?php elseif ( ! $use_qs ):
-				next_posts_link( __('Older ' . $type . ' (' . $next . ' of ' . $max . ') <span class="meta-nav">&rarr;</span>' ), $in_cat );
+			if ( $params['use_qs'] && ( $max >= $next ) ): ?>
+			<a href="?<?php echo PAGE_PARAM, '=', $next ?>"><?php echo $nlabel ?></a>
+			<?php elseif ( ! $params['use_qs'] ):
+				next_posts_link( $nlabel );
 			endif;
 		?>
 		</div>
 	</div>
 <?php
 	endif;
+	$wp_query = $_q;
 }
 function init_photos() {
 	if ( is_single() && 'gallery' === get_post_type() ) {
@@ -209,11 +220,11 @@ function band_gallery_images($p = -1) {
 		'post_status'    => 'inherit',
 		'posts_per_page' => $p,
 		'numberposts' 	 => $p,
-		'paged'          => get_query_var('paged')
+		'paged'          => isset( $_GET['to'] ) ? $_GET['to'] : 1
 	));
 
 	if ( $q->have_posts() ):
-		band_nav_by_type('photos', 'above', true);?>
+		band_nav_by_type( array( 'type' => 'photos', 'use_qs' => true, 'q' => $q ) );?>
 		<ul class="band_gallery">
 		<?php while ( $q->have_posts() ): $q->the_post(); ?>
 		<li>

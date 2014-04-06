@@ -108,7 +108,7 @@ function the_loop_category() {
 		echo $before, '<a href="/music/">Song</a>', $after;
 		break;
 	case 'gallery':
-		echo $before, '<a href="/photos/">Photos</a>', $after;
+		echo $before, '<a href="', get_post_type_archive_link( 'gallery' ), '">Photos</a>', $after;
 		break;
 	default:
 		the_category();

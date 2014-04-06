@@ -26,13 +26,13 @@ if (!IS_AJAX):
 	ob_end_clean();
 
 	get_header();
-	band_go_back( home_url( '/photos/' ), 'Back to all Photos');
+	band_go_back( get_post_type_archive_link( 'gallery' ), 'Back to all Photos');
 	?>
 	<div id="post-<?php	 the_ID(); ?>" <?php post_class(); ?>>
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		<div class="entry-content">
 		<?php the_content(); ?>
-		<div id="band-gallery-content"><?php
+		<div id="loop-content"><?php
 endif;
 
 band_gallery_images(12);

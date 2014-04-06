@@ -1,14 +1,18 @@
 /*globals window, document, $, jQuery */
 
-var XHR = (function ($) {
+(function ($) {
 	"use strict";
 
-	var lastXhr, cache = {};
+	var wrapper,
+		lyrics,
+		bannerItems = [2, 4, 6, 7, 9, 10],
+		lastXhr,
+		cache = {};
 
-	function doRequest(href, wrapper, success, error) {
+	function doRequest(href, success, error) {
 		if ( cache[ href ] ) {
 			wrapper.html( cache[ href ] );
-			success();
+			success && success();
 		} else {
 			wrapper.addClass('loading');
 
@@ -19,10 +23,10 @@ var XHR = (function ($) {
 			lastXhr = $.ajax({
 				url : href
 			}).done(function (data) {
-				wrapper.html(data).removeClass('loading');
 				cache[ href ] = data;
+				wrapper.html(data).removeClass('loading');
 
-				success();
+				success && success();
 			}).fail(error);
 		}
 
@@ -40,18 +44,10 @@ var XHR = (function ($) {
 		item.click(callback);
 	}
 
-	return {
+	window.XHR = {
 		doRequest: doRequest,
-		ajaxify  : ajaxify
+		ajaxify: ajaxify
 	};
-}(jQuery));
-
-(function ($) {
-	"use strict";
-
-	var wrapper,
-		lyrics,
-		bannerItems = [2, 4, 6, 7, 9, 10];
 
 	function getBannerIndex() {
 		return bannerItems[Math.floor(Math.random() * bannerItems.length)];
@@ -96,8 +92,10 @@ var XHR = (function ($) {
 			.on( 'click', '.band_gallery_strip_wrapper', goToGallery )
 			.on( 'click', '#nav-above a, #nav-below a', function (e) {
 				var href, elem = $( e.currentTarget );
-				href = elem.attr('href') + (elem.attr('href').indexOf('?') > -1 ? '&ajax=1' : '?ajax=1');
-				XHR.doRequest(href, wrapper);
+
+				href = elem.attr('href');
+				wrapper = $('#loop-content');
+				doRequest(href);
 				return false;
 			} );
 

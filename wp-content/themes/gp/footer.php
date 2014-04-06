@@ -1,5 +1,7 @@
 <?php
-
+if ( IS_AJAX ) {
+	return;
+}
 /**
  * The template used to display the footer
  *

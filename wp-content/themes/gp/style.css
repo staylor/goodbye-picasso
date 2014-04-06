@@ -5,7 +5,6 @@ Description: Goodbye Picasso 4.0
 Author: Scott Taylor
 Version: 1.0
 Tags: threaded-comments, translation-ready, rtl-language-support, editor-style, buddypress
-Template: twentyten
 */
 
 
@@ -561,7 +560,7 @@ h3.entry-meta {font-size: 16px}
 }
 
 #commentform {
-/*	padding-right: 400px; 
+/*	padding-right: 400px;
  	background: rgba(255,255,255,0.8) url(images/typewriter.jpg) no-repeat 100% 0;  */
 	min-height: 419px
 }

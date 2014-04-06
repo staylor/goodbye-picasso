@@ -7,7 +7,7 @@
  * @since Twenty Ten 1.0
  */
 
-if (!IS_AJAX): 
+if (!IS_AJAX):
 
 get_header(); ?>
 

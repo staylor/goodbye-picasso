@@ -55,7 +55,6 @@
 	$(document).ready(function () {
 		wrapper = $('#band-gallery-content');
 		if ( wrapper.length ) {
-			console.log( 'hmmmm' );
 			galleries = $('.band_gallery');
 			galleries.each(doGalleries);
 		}

@@ -115,7 +115,8 @@ function band_nav_by_type( $type = 'posts', $where = 'above', $use_qs = false, $
 	endif;
 }
 function init_photos() {
-	if ( is_single() && 'gallery' === get_post_type ) {
+	if ( is_single() && 'gallery' === get_post_type() ) {
+		wp_enqueue_style( 'gallery', PLUGIN_PATH . '/css/jquery.fancybox-1.3.1.css' );
 		wp_enqueue_script('easing', '/wp-content/plugins/bandpress/js/jquery.easing-1.3.pack.js', array('jquery'));
 		wp_enqueue_script('fancybox', '/wp-content/plugins/bandpress/js/jquery.fancybox-1.3.1.pack.js', array('jquery', 'easing'));
 		wp_enqueue_script('bpr-gallery', '/wp-content/plugins/bandpress/js/bandpress-gallery.js', array('jquery', 'fancybox'));

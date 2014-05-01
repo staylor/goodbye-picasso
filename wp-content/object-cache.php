@@ -10,7 +10,7 @@ Install this file to wp-content/object-cache.php
 */
 
 if ( !defined( 'WP_CACHE_KEY_SALT' ) ) {
-	define( 'WP_CACHE_KEY_SALT', $_SERVER['HTTP_HOST'] );
+	define( 'WP_CACHE_KEY_SALT', 'goodbye-picasso' );
 }
 
 if ( class_exists( 'Memcached' ) ):

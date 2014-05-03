@@ -22,7 +22,7 @@ class batcache {
 
 	var $unique  = array(); // If you conditionally serve different content, put the variable values here.
 
-	var $headers = array(); // Add headers here. These will be sent with every response from the cache.
+	var $headers = array('X-nananana' => 'Batcache'); // Add headers here. These will be sent with every response from the cache.
 
 	var $cache_redirects = false; // Set true to enable redirect caching.
 	var $redirect_status = false; // This is set to the response code during a redirect.

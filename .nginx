@@ -23,45 +23,15 @@ server {
     # this prevents hidden files (beginning with a period) from being served
 	      location ~ /\.          { access_log off; log_not_found off; deny all; }
 
-    # Rewrite multisite '.../wp-.*' and '.../*.php'.
-    if (!-e $request_filename) {
-	rewrite ^(/[_0-9a-zA-Z-]+)?(/wp-.*) /wordpress$2 last;
-	rewrite ^(/[_0-9a-zA-Z-]+.*)?(/wp-admin/.*\.php)$ /wordpress$2 last;
-	rewrite ^(/[_0-9a-zA-Z-]+)?(/.*\.php)$ /wordpress$2 last;
-   }
+	# Rewrite multisite '.../wp-.*' and '.../*.php'.
+	if (!-e $request_filename) {
+		rewrite ^(/[_0-9a-zA-Z-]+)?(/wp-.*) /wordpress$2 last;
+		rewrite ^(/[_0-9a-zA-Z-]+.*)?(/wp-admin/.*\.php)$ /wordpress$2 last;
+		rewrite ^(/[_0-9a-zA-Z-]+)?(/.*\.php)$ /wordpress$2 last;
+	}
 
     location ~ \.php$ {
-		# Set some proxy cache stuff
-		fastcgi_cache microcache_fpm;
-		fastcgi_cache_key $scheme$host$request_method$request_uri;
-		fastcgi_cache_valid 200 304 10m;
-		fastcgi_cache_use_stale updating;
-		fastcgi_max_temp_file_size 1M;
 
-		set $no_cache_set  0;
-		set $no_cache_get  0;
-
-		if ( $http_cookie ~* "comment_author_|wordpress_(?!test_cookie)|wp-postpass_" ) {
-			set $no_cache_set 1;
-			set $no_cache_get 1;
-		}
-
-		# If a request comes in with a X-Nginx-Cache-Purge: 1 header, do not grab from cache
-		# But note that we will still store to cache
-		# We use this to proactively update items in the cache!
-		if ( $http_x_nginx_cache_purge ) {
-			set $no_cache_get 1;
-		}
-
-		# For cached requests, tell client to hang on to them for 5 minutes
-		if ( $no_cache_set = 0 ) {
-				expires 5m;
-		}
-
-		# fastcgi_no_cache means "Do not store this proxy response in the cache"
-		fastcgi_no_cache $no_cache_set;
-		# fastcgi_cache_bypass means "Do not look in the cache for this request"
-		fastcgi_cache_bypass $no_cache_get;
 
         try_files      $uri =404;
         fastcgi_pass   unix:/var/run/php5-fpm.sock;

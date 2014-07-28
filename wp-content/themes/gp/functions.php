@@ -42,7 +42,7 @@ class GoodbyePicassoTheme {
 			return;
 		}
 
-		if ( $query->get( 'album' ) && $this->is_archive() ) {
+		if ( $query->get( 'album' ) && $query->is_archive() ) {
 			$query->set( 'orderby', 'menu_order' );
 			$query->set( 'order', 'ASC' );
 			$query->set( 'posts_per_page', -1 );

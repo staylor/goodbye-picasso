@@ -42,8 +42,10 @@ class GoodbyePicassoTheme {
 			return;
 		}
 
-		if ( $query->is_tax() ) {
-			echo '<!-- ' . print_r( $query->query ) . ' -->';
+		if ( $query->get( 'album' ) && $this->is_archive() ) {
+			$query->set( 'orderby', 'menu_order' );
+			$query->set( 'order', 'ASC' );
+			$query->set( 'posts_per_page', -1 );
 		}
 	}
 

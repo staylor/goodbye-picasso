@@ -39,6 +39,11 @@ class GoodbyePicassoTheme {
 		if ( $query->is_home() || $query->is_author() ) {
 			$query->set( 'post_type', array( 'post', 'video', 'gallery' ) );
 			$query->set( 'posts_per_page', 5 );
+			return;
+		}
+
+		if ( $query->is_tax() ) {
+			echo '<!-- ' . print_r( $query->query ) . ' -->';
 		}
 	}
 

@@ -26,13 +26,7 @@ class Jetpack_Omnisearch_Posts extends WP_List_Table {
 
 		$num_results = apply_filters( 'omnisearch_num_results', 5 );
 
-		$this->posts = get_posts( array(
-			's'                => $search_term,
-			'post_type'        => $this->post_type,
-			'posts_per_page'   => $num_results,
-			'post_status'      => 'any',
-			'suppress_filters' => false,
-		) );
+		$this->posts = get_posts( array( 's' => $search_term, 'post_type' => $this->post_type, 'posts_per_page' => $num_results, 'post_status' => 'any' ) );
 
 		$this->prepare_items();
 

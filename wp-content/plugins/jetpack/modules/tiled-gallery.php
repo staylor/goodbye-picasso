@@ -2,12 +2,11 @@
 
 /**
  * Module Name: Tiled Galleries
- * Module Description: Display your image galleries in a variety of sleek, graphic arrangements.
+ * Module Description: Create elegant magazine-style mosaic layouts for your photos without using an external graphic editor.
  * First Introduced: 2.1
- * Requires Connection: No
+ * Requires Connection: Yes
  * Auto Activate: No
  * Module Tags: Photos and Videos
- * Sort Order: 24
  */
 
 function jetpack_load_tiled_gallery() {

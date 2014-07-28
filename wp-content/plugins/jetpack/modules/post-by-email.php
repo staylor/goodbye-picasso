@@ -2,9 +2,9 @@
 
 /**
  * Module Name: Post by Email
- * Module Description: Publish posts by email, using any device and email client.
+ * Module Description: Publish posts to your blog directly from your personal email account.
  * First Introduced: 2.0
- * Sort Order: 14
+ * Sort Order: 4
  * Requires Connection: Yes
  * Auto Activate: Yes
  * Module Tags: Writing
@@ -42,7 +42,7 @@ class Jetpack_Post_By_Email {
 		add_action( 'init', array( &$this, 'action_init' ) );
 	}
 
-	static function module_toggle() {
+	function module_toggle() {
 		$jetpack = Jetpack::init();
 		$jetpack->sync->register( 'noop' );
 	}
@@ -67,8 +67,7 @@ class Jetpack_Post_By_Email {
 	function profile_scripts() {
 		wp_enqueue_script( 'post-by-email', plugins_url( 'post-by-email/post-by-email.js', __FILE__ ), array( 'jquery' ) );
 		wp_enqueue_style( 'post-by-email', plugins_url( 'post-by-email/post-by-email.css', __FILE__ ) );
-		// Do we really need `admin_styles`? With the new admin UI, it's breaking some bits.
-		// Jetpack::init()->admin_styles();
+		Jetpack::init()->admin_styles();
 	}
 
 	function check_user_connection() {

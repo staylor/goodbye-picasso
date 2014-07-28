@@ -20,11 +20,10 @@
 			$el.find( 'select[name=type]' ).on( 'change', function () {
 				var columnSetting = $el.find( 'select[name=columns]' ).closest( 'label.setting' );
 
-				if ( 'default' === $( this ).val() ) {
+				if ( 'default' == $( this ).val() )
 					columnSetting.show();
-				} else {
+				else
 					columnSetting.hide();
-				}
 			} ).change();
 
 			return this;

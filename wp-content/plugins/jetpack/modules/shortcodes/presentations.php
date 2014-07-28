@@ -109,7 +109,7 @@ class Presentations {
 		}
 
 		foreach ( $GLOBALS['posts'] as $p ) {
-			if ( has_shortcode( $p->post_content, 'presentation' ) ) {
+			if ( false !== strpos( $p->post_content, '[presentation' ) ) {
 				$this->scripts_and_style_included = true;
 				break;
 			}

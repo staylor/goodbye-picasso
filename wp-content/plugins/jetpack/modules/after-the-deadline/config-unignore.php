@@ -12,8 +12,6 @@ function AtD_ignore_call() {
 	if ( ! $user || $user->ID == 0 )
 		return;
 
-	check_admin_referer( 'atd_ignore' );
-
 	$ignores = explode( ',', AtD_get_setting( $user->ID, 'AtD_ignored_phrases') );
 	array_push( $ignores, $_GET['phrase'] );
 
@@ -113,7 +111,7 @@ function atd_ignore () {
 
 function atd_ignore_init() {
 	jQuery( '#AtD_message' ).hide();
-	jQuery( '#atd_ignores' ).on( 'click', 'a', function() {
+	jQuery( '#atd_ignores' ).delegate( 'a', 'click', function() {
 		atd_unignore( jQuery(this).data( 'ignored' ) );
 		return false;
 	} );

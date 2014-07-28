@@ -1,9 +1,9 @@
 <?php
 /**
  * Module Name: VaultPress
- * Module Description: Protect your site with automatic backups and security scans. (Subscription required.)
+ * Module Description: Realtime backup and security scanning for your WordPress site.
  * First Introduced: 0:1.2
- * Sort Order: 32
+ * Sort Order: 7
  * Deactivate: false
  * Free: false
  * Requires Connection: Yes

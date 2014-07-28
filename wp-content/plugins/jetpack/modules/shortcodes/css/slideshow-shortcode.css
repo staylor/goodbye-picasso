@@ -9,11 +9,6 @@
 	height: 410px;
 }
 
-.slideshow-window.slideshow-white {
-	background-color: #fff;
-	border-color: #fff;
-}
-
 .slideshow-window, .slideshow-window * {
 	-moz-box-sizing: content-box;
 	-webkit-box-sizing: content-box;
@@ -54,7 +49,7 @@ body div.slideshow-window * img {
 }
 
 .slideshow-line-height-hack {
-	overflow: hidden;
+	overflow: hide;
 	width: 0px;
 	font-size: 0px;
 }

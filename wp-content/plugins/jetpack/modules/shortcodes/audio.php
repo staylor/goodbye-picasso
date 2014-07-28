@@ -254,10 +254,14 @@ CONTROLS;
 		}
 		$html5_audio .= "<span id='wp-as-{$post->ID}_{$ap_playerID}-playing'></span>";
 
+		if ( is_ssl() )
+			$protocol = 'https';
+		else
+			$protocol = 'http';
+
 		$swfurl = apply_filters(
 			'jetpack_static_url',
-			set_url_scheme( "http://en.wordpress.com/wp-content/plugins/audio-player/player.swf" )
-		 );
+			"$protocol://en.wordpress.com/wp-content/plugins/audio-player/player.swf" );
 
 		// all the fancy javascript is causing Google Reader to break, just include flash in GReader
 		// override html5 audio code w/ just not supported code

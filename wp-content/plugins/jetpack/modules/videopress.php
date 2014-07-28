@@ -1,11 +1,11 @@
 <?php
 /**
  * Module Name: VideoPress
- * Module Description: Upload and host video right on your site. (Subscription required.)
+ * Module Description: Quite possibly the easiest way to upload beautiful videos to your blog.
  * First Introduced: 2.5
  * Free: false
  * Requires Connection: Yes
- * Sort Order: 27
+ * Sort Order: 100
  * Module Tags: Photos and Videos
  */
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * Module Name: WordPress.com Stats
- * Module Description: Monitor your stats with clear, concise reports and no additional load on your server.
+ * Module Description: Simple, concise site stats with no additional load on your server.
  * Sort Order: 1
  * First Introduced: 1.1
  * Requires Connection: Yes
@@ -339,17 +339,19 @@ function stats_reports_page() {
 	if ( isset( $_GET['dashboard'] ) )
 		return stats_dashboard_widget_content();
 
-	$blog_id = stats_get_option( 'blog_id' );
-
 	if ( !isset( $_GET['noheader'] ) && empty( $_GET['nojs'] ) && empty( $_COOKIE['stnojs'] ) ) {
 		$nojs_url = add_query_arg( 'nojs', '1' );
 		$http = is_ssl() ? 'https' : 'http';
 		// Loading message
 		// No JS fallback message
 ?>
+<style type="text/css">
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	img.wpcom-loading-64 { width: 32px; height: 32px; }
+}
+</style>
 <div id="stats-loading-wrap" class="wrap">
-<p class="hide-if-no-js"><img width="32" height="32" alt="<?php esc_attr_e( 'Loading&hellip;', 'jetpack' ); ?>" src="<?php echo esc_url( apply_filters( 'jetpack_static_url', "{$http}://en.wordpress.com/i/loading/loading-64.gif" ) ); ?>" /></p>
-<p style="font-size: 11pt; margin: 0;"><a href="http://wordpress.com/my-stats/?blog=<?php echo $blog_id; ?>">View stats on WordPress.com right now</a></p>
+<p class="hide-if-no-js"><img class="wpcom-loading-64" alt="<?php esc_attr_e( 'Loading&hellip;', 'jetpack' ); ?>" src="<?php echo esc_url( apply_filters( 'jetpack_static_url', is_ssl() ? 'https' : 'http' . '://en.wordpress.com/i/loading/loading-64.gif' ) ); ?>" /></p>
 <p class="hide-if-js"><?php esc_html_e( 'Your Site Stats work better with Javascript enabled.', 'jetpack' ); ?><br />
 <a href="<?php echo esc_url( $nojs_url ); ?>"><?php esc_html_e( 'View Site Stats without Javascript', 'jetpack' ); ?></a>.</p>
 </div>
@@ -357,6 +359,7 @@ function stats_reports_page() {
 		return;
 	}
 
+	$blog_id = stats_get_option( 'blog_id' );
 	$day = isset( $_GET['day'] ) && preg_match( '/^\d{4}-\d{2}-\d{2}$/', $_GET['day'] ) ? $_GET['day'] : false;
 	$q = array(
 		'noheader' => 'true',
@@ -405,11 +408,9 @@ function stats_reports_page() {
 		}
 	}
 
-	if ( isset( $_GET['chart'] ) ) {
-		if ( preg_match( '/^[a-z0-9-]+$/', $_GET['chart'] ) ) {
-			$chart = sanitize_title( $_GET['chart'] );
-			$url = 'http://' . STATS_DASHBOARD_SERVER . "/wp-includes/charts/{$chart}.php";
-		}
+	if ( isset( $_REQUEST['chart'] ) ) {
+		if ( preg_match( '/^[a-z0-9-]+$/', $_REQUEST['chart'] ) )
+			$url = 'http://' . STATS_DASHBOARD_SERVER . "/wp-includes/charts/{$_GET['chart']}.php";
 	} else {
 		$url = 'http://' . STATS_DASHBOARD_SERVER . "/wp-admin/index.php";
 	}
@@ -449,7 +450,7 @@ function stats_convert_admin_urls( $html ) {
 }
 
 function stats_convert_image_urls( $html ) {
-	$url = set_url_scheme( 'http://' . STATS_DASHBOARD_SERVER );
+	$url = ( is_ssl() ? 'https' : 'http' ) . '://' . STATS_DASHBOARD_SERVER;
 	$html = preg_replace( '|(["\'])(/i/stats.+)\\1|', '$1' . $url . '$2$1', $html );
 	return $html;
 }
@@ -1027,9 +1028,9 @@ function stats_print_wp_remote_error( $get, $url ) {
 	<div class="wrap">
 	<p><?php printf( __( 'We were unable to get your stats just now. Please reload this page to try again. If this error persists, please <a href="%1$s">contact support</a>. In your report please include the information below.', 'jetpack' ), 'http://support.wordpress.com/contact/?jetpack=needs-service' ); ?></p>
 	<pre>
-	User Agent: "<?php echo esc_html( $_SERVER['HTTP_USER_AGENT'] ); ?>"
-	Page URL: "http<?php echo (is_ssl()?'s':'') . '://' . esc_html( $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ); ?>"
-	API URL: "<?php echo clean_url( $url ); ?>"
+	User Agent: "<?php print htmlspecialchars( $_SERVER['HTTP_USER_AGENT'] ); ?>"
+	Page URL: "http<?php print (is_ssl()?'s':'') . '://' . htmlspecialchars( $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ); ?>"
+	API URL: "<?php print clean_url( $url ); ?>"
 <?php
 	if ( is_wp_error( $get ) ) {
 		foreach ( $get->get_error_codes() as $code ) {

@@ -50,26 +50,24 @@ function shortcode_handler_bandcamp( $atts ) {
 	// do with an IE-only flash bug which required this URL
 	// to contain no querystring
 
-	if ( !isset( $attributes['album'] ) && !isset( $attributes['track'] ) ) {
-		return "[bandcamp: shortcode must include track or album id]";
-	}
-
-	$url = "//bandcamp.com/EmbeddedPlayer/v=2";
+	$url = "http://bandcamp.com/EmbeddedPlayer/v=2/";
 	if ( isset( $attributes['track'] ) ) {
 		$track = (int) $attributes['track'];
-		$url .= "/track={$track}";
-	}
-	if ( isset( $attributes['album'] ) ) {
-		$album = (int) $attributes['album'];
-		$url .= "/album={$album}";
-	}
+		$url .= "track={$track}";
 
-	if ( $sizekey == 'tall' ) {
-		if ( isset( $attributes['album'] ) ) {
-			$sizekey .= '_album';
-		} else {
+		if ( $sizekey == 'tall' ) {
 			$sizekey .= '_track';
 		}
+	} elseif ( isset( $attributes['album'] ) ) {
+		$album = (int) $attributes['album'];
+		$url .= "album={$album}";
+		$type = 'album';
+
+		if ( $sizekey == 'tall' ) {
+			$sizekey .= '_album';
+		}
+	} else {
+		return "[bandcamp: shortcode must include track or album id]";
 	}
 
 	// if size specified that we don't recognize, fall back on venti
@@ -130,8 +128,8 @@ function shortcode_handler_bandcamp( $atts ) {
 		$url .= "/notracklist=true";
 	}
 
-	// 'tracklist' arg deprecates 'notracklist=true' to be less weird.  note, behavior
-	// if both are specified is undefined
+	// 'tracklist' arg deprecates 'notracklist=true' to be less weird.
+	// Note, behavior if both are specified is undefinied
 	switch ( $attributes['tracklist'] ) {
 		case "false":
 		case "none":

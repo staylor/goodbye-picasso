@@ -1,8 +1,8 @@
 <?php
 /**
  * Module Name: Notifications
- * Module Description: Receive notification of site activity via the admin toolbar and your Mobile devices.
- * Sort Order: 13
+ * Module Description: Monitor and manage your site's activity with Notifications in your Toolbar and on WordPress.com.
+ * Sort Order: 1
  * First Introduced: 1.9
  * Requires Connection: Yes
  * Auto Activate: Yes
@@ -49,8 +49,9 @@ class Jetpack_Notifications {
 
 	function wpcom_static_url($file) {
 		$i = hexdec( substr( md5( $file ), -1 ) ) % 2;
-		$url = 'http://s' . $i . '.wp.com' . $file;
-		return set_url_scheme( $url );
+		$http = is_ssl() ? 'https' : 'http';
+		$url = $http . '://s' . $i . '.wp.com' . $file;
+		return $url;
 	}
 
 	// return the major version of Internet Explorer the viewer is using or false if it's not IE

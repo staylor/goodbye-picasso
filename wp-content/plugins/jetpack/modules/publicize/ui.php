@@ -166,7 +166,7 @@ class Publicize_UI {
 											if ( !empty( $profile_link ) ) : ?>
 
 											</style>
-												<?php esc_html_e( 'Connected as:', 'jetpack' ); ?>
+												<?php echo esc_html( __( 'Connected as: ') ); ?>
 												<a class="publicize-profile-link" href="<?php echo esc_url( $profile_link ); ?>" target="_top">
 													<?php echo esc_html( $connection_display ); ?>
 												</a><?php
@@ -370,13 +370,7 @@ jQuery( function($) {
 		authClick = true;
 		$(this).after( '<img src="images/loading.gif" class="alignleft" style="margin: 0 .5em" />' );
 		$.ajaxSetup( { async: false } );
-
-		if ( window.wp && window.wp.autosave ) {
-			window.wp.autosave.server.triggerSave();
-		} else {
-			autosave();
-		}
-
+		autosave();
 		return true;
 	} );
 
@@ -554,11 +548,7 @@ jQuery( function($) {
 
 							// Should we be skipping this one?
 							$skip = (
-								(
-									in_array( $post->post_status, array( 'publish', 'draft', 'future' ) )
-									&&
-									get_post_meta( $post->ID, $this->publicize->POST_SKIP . $unique_id, true )
-								)
+								get_post_meta( $post->ID, $this->publicize->POST_SKIP . $unique_id, true )
 								||
 								(
 									is_array( $connection )

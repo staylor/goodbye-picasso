@@ -34,7 +34,7 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 define( 'WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . '/wp-content' );
-define( 'WP_CONTENT_URL', 'http://www.goodbyepicasso.com/wp-content' );
+define( 'WP_CONTENT_URL', 'http://goodbyepicasso.com/wp-content' );
 
 /**#@+
  * Authentication Unique Keys and Salts.

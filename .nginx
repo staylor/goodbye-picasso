@@ -23,16 +23,16 @@ server {
     # this prevents hidden files (beginning with a period) from being served
 	      location ~ /\.          { access_log off; log_not_found off; deny all; }
 
+	location = /xmlrpc.php {
+		deny all;
+		access_log off; #to prevent from filling up the access log file
+	}
+
 	# Rewrite multisite '.../wp-.*' and '.../*.php'.
 	if (!-e $request_filename) {
 		rewrite ^(/[_0-9a-zA-Z-]+)?(/wp-.*) /wordpress$2 last;
 		rewrite ^(/[_0-9a-zA-Z-]+.*)?(/wp-admin/.*\.php)$ /wordpress$2 last;
 		rewrite ^(/[_0-9a-zA-Z-]+)?(/.*\.php)$ /wordpress$2 last;
-	}
-
-	location = /xmlrpc.php {
-		deny all;
-		access_log off; #to prevent from filling up the access log file
 	}
 
     location ~ \.php$ {

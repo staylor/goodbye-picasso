@@ -3,11 +3,12 @@
 Plugin Name: GigPress
 Plugin URI: http://gigpress.com
 Description: GigPress is a live performance listing and management plugin built for musicians and performers.
-Version: 2.3.8
+Version: 2.3.12
 Author: Derek Hogue
 Author URI: http://amphibian.info
+Text Domain: gigpress
 
-Copyright 2007-2013 DEREK HOGUE
+Copyright 2007-2015 DEREK HOGUE
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,7 +28,7 @@ define('GIGPRESS_SHOWS', $wpdb->prefix . 'gigpress_shows');
 define('GIGPRESS_TOURS', $wpdb->prefix . 'gigpress_tours');
 define('GIGPRESS_ARTISTS', $wpdb->prefix . 'gigpress_artists');
 define('GIGPRESS_VENUES', $wpdb->prefix . 'gigpress_venues');
-define('GIGPRESS_VERSION', '2.3.8');
+define('GIGPRESS_VERSION', '2.3.12');
 define('GIGPRESS_DB_VERSION', '1.6');
 define('GIGPRESS_RSS', get_bloginfo('url') . '/?feed=gigpress');
 define('GIGPRESS_ICAL', get_bloginfo('url') . '/?feed=gigpress-ical');
@@ -324,7 +325,7 @@ function gigpress_related_link($postid, $format) {
 			$output = $link;
 			break;
 		case 'edit':
-			$link = get_bloginfo('wpurl') . '/wp-admin/post.php?action=edit&amp;post=' . $postid;
+			$link = admin_url('post.php?action=edit&amp;post=' . $postid);
 			$output = '<a href="' . $link . '">' . $gpo['related'] . '</a>';
 			break;
 		case 'view':
@@ -603,7 +604,7 @@ add_action('init','gigpress_intl');
 add_action('admin_init', 'register_gigpress_settings'); 
 add_action('admin_menu', 'gigpress_admin_menu');
 add_action('delete_post', 'gigpress_remove_related');
-if(strpos($_SERVER['QUERY_STRING'], 'gigpress') !== FALSE) {
+if(!empty($_SERVER['QUERY_STRING']) && strpos($_SERVER['QUERY_STRING'], 'gigpress') !== FALSE) {
 	add_action('admin_init','gigpress_admin_head');
 	add_action('admin_footer_text', 'gigpress_admin_footer');
 }

@@ -1,13 +1,13 @@
 === WP Smush ===
 Plugin Name: WP Smush
-Version: 2.0.5
+Version: 2.0.6.3
 Author: WPMU DEV
 Author URI: http://premium.wpmudev.org/
 Contributors: WPMUDEV, alexdunae
 Tags: Attachment,Attachments,Compress,Compress Image File,Compress Image Size,Compress JPG,Compressed JPG, Compression Image,Image,Images,JPG,Optimise,Optimize,Photo,Photos,Pictures,PNG,Reduce Image Size,Smush,Smush.it,Upload,WordPress Compression,WordPress Image Tool,Yahoo, Yahoo Smush.it
 Requires at least: 3.5
-Tested up to: 4.2
-Stable tag: 2.0.5
+Tested up to: 4.3
+Stable tag: 2.0.6.3
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 Reduce image file sizes, improve performance and boost your SEO using the free <a href="https://premium.wpmudev.org/">WPMU DEV</a> WordPress Smush API.
@@ -39,7 +39,7 @@ Install WP Smush and find out why it's the most popular image optimization plugi
 <ul>
   <li>"Super-Smush" your images with our intelligent multi-pass lossy compression. Get over 2x more compression than lossless with almost no noticeable quality loss!</li>
   <li>Get even better lossless compression. We try multiple methods to squeeze every last byte out of your images.</li>
-  <li>Smush images up to 8MB (WP Smush is limited to 1MB)</li>
+  <li>Smush images up to 32MB (WP Smush is limited to 1MB)</li>
   <li>Bulk smush ALL your images with one click! No more rate limiting.</li>
   <li>Keep a backup of your original un-smushed images in case you want to restore later.</li>
 	<li>24/7/365 support from <a href="https://premium.wpmudev.org/support/?utm_source=wordpress.org&utm_medium=readme">the best WordPress support team on the planet</a>.</li>
@@ -81,12 +81,39 @@ Yahoo's Smush.it API is gone forever. So WPMU DEV built our own free API that is
 
 == Changelog ==
 
+= 2.0.6.3 =
+
+* Fixed: Change File permission after replacing image
+* Fixed: Directory path for files
+* Fixed: Workaround for Auto Smush issue on Hostgator
+* Fixed: Smush button doesn't works in media library dialog on post screen, when add media is clicked
+		 (https://wordpress.org/support/topic/like-wp-smush-a-lot)
+* New:   Show number of images smushed in stats column
+* Added: Support for WP Retina 2x Plugin
+* Added: Filter `WP_SMUSH_API_TIMEOUT` to change the default time out value from 60s
+* Added: Smush original image option (Pro Only)
+
+= 2.0.6.2 =
+
+* Use string for text domain instead of PHP Constant ( WordPress Guideline )
+
+= 2.0.6.1 =
+
+* Updated: Max image size limit to 32Mb for Pro Version
+
+= 2.0.6 =
+
+* Fixed: Conflict with various themes while editing post and page
+* Fixed: Word Count not working
+* Fixed: Notice and Warnings
+
 = 2.0.5 =
 
 * New:   Allow Super-smush for existing smushed images (Pro Only)
 * Fixed: IMPORTANT - broken transient caching for is_pro
 * Fixed: Fixed conflict with wp gallery link plugin in grid view
 * Fixed: Other small fixes
+
 
 = 2.0.4 =
 * Fix: Fatal error conflict with some plugins on fronted of site

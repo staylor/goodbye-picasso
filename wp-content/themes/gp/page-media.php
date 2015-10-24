@@ -29,7 +29,7 @@ $posts = null; band_get_posts_by_type( array( 'post_type' => 'video' ) );
 
 if ( have_posts() ): ?>
 <div class="posts">
-	<?php gp_header(__('Video'), array('id' => 'videos')) ?>
+	<?php gp_header( 'Video', array('id' => 'videos')) ?>
 	<div class="entry-content">
 		<?php while ( have_posts() ): the_post(); ?>
 		<h3>

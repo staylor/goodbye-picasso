@@ -1,13 +1,5 @@
 <?php
 /**
- * GoodbyePicasso functions and definitions
- *
- * @package WordPress
- * @subpackage Goodbye Picasso
- * @since 3.0.0
- */
-
-/**
  *
  * $root and $theme can be inherited throughout
  * $theme references the child theme, this one
@@ -129,107 +121,83 @@ function the_loop_category() {
 	}
 }
 
-
-/**
- *
- * this function helps the nav determine
- * when an item is active
- *
- */
-
 function _on( $truth ) {
 	if ( $truth ) {
 		return 'class="on" ';
 	}
 }
 
-/**
- *
- * custom comment callback for this theme
- *
- */
-
-function gp_comment($comment, $args, $depth) {
+function gp_comment($comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment; ?>
-	<?php if ('' == $comment->comment_type): ?>
-	<li <?php	comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-		<div id="comment-<?php	 		 		 	 comment_ID(); ?>">
+	<?php if ('' == $comment->comment_type ): ?>
+	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+		<div id="comment-<?php comment_ID(); ?>">
 			<div class="comment-author vcard">
-				<?php	echo get_avatar($comment, 40); ?>
-				<?php	printf( __('%s <span class="says">says:</span>'), sprintf('<cite class="fn">%s</cite>', get_comment_author_link())); ?>
+				<?php
+				echo get_avatar( $comment, 40 );
+				printf(
+					'%s <span class="says">says:</span>',
+					sprintf(
+						'<cite class="fn">%s</cite>',
+						get_comment_author_link()
+					)
+				);
+			?>
 			</div>
-			<?php	if ($comment->comment_approved == '0'): ?>
-				<em><?php	 		 		 	 _e('Your comment is awaiting moderation.'); ?></em><br /><?php	 		 		 	 endif ?>
-			<div class="comment-meta commentmetadata"><a href="<?= esc_url(get_comment_link($comment->comment_ID)) ?>">
-				<?php	 /* translators: 1: date, 2: time */
-				printf( __('%1$s at %2$s'), get_comment_date(), get_comment_time()) ?></a>
-				<?php	edit_comment_link( __('(Edit)'), ' ') ?>
+			<?php if ( $comment->comment_approved == '0' ): ?>
+			<em>Your comment is awaiting moderation.</em><br />
+			<?php endif ?>
+			<div class="comment-meta commentmetadata">
+				<a href="<?php echo esc_url( get_comment_link( $comment ) ) ?>">
+				<?php
+				printf( '%1$s at %2$s', get_comment_date(), get_comment_time()) ?></a>
+				<?php edit_comment_link( '(Edit)', ' ' ) ?>
 			</div>
-			<div class="comment-body"><?php	 		 		 	 comment_text() ?></div>
-			<div class="tape medium_tape reply">
-				<?php	comment_reply_link(array_merge($args,
-					array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
+			<div class="comment-body"><?php comment_text() ?></div>
+			<div class="tape medium-tape reply">
+			<?php
+				comment_reply_link( array_merge( $args, array(
+					'depth' => $depth,
+					'max_depth' => $args['max_depth']
+				) ) );
+			?>
 			</div>
 		</div>
-	<?php	else : ?>
+	<?php else : ?>
 	<li class="post pingback">
-		<p><?php _e( 'Pingback:') ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)'), ' ') ?></p>
-	<?php  endif;?>
+		<p>Pingback: <?php
+			comment_author_link();
+			edit_comment_link( '(Edit)', ' ' );
+		?></p>
+	<?php endif;?>
 	</li><?php
 }
 
-/**
- *
- * pulled out author data, easier to debug design
- *
- */
-
 function gp_author() {
 // If a user has filled out their description, show a bio on their entries
-	if (get_the_author_meta('description')): ?>
-		<div id="entry-author-info">
-			<div id="author-avatar">
-				<?php	 echo get_avatar(get_the_author_meta('user_email'), 60) ?>
-			</div>
-			<div id="author-description">
-				<h2><?php	 printf(esc_attr__('About %s'), get_the_author()) ?></h2>
-				<?php	 the_author_meta('description'); ?>
-				<div id="author-link">
-					<a href="<?php	echo get_author_posts_url(get_the_author_meta('ID')); ?>">
-						<?php
-						printf( __('View all posts by %s <span class="meta-nav">&rarr;</span>'), get_the_author()) ?>
-					</a>
-				</div>
-			</div>
-		</div><?php
-	endif;
-}
-
-/**
- *
- * generic Like button function for posts in a loop
- * requires meta tags in the template the permalink
- * refers to
- *
- */
-
-function get_facebook_cookie() {
-	$args = array();
-	parse_str(trim($_COOKIE['fbs_' . FACEBOOK_APP_ID], '\\"'), $args);
-	ksort($args);
-
-	$payload = '';
-
-	foreach ($args as $key => $value) {
-		if ($key != 'sig') {
-			$payload .= $key . '=' . $value;
-		}
+	if ( ! get_the_author_meta( 'description' ) ) {
+		return;
 	}
-
-	if (md5($payload . FACEBOOK_SECRET) != $args['sig']) {
-	    return null;
-	}
-	return $args;
+	?>
+	<div id="entry-author-info">
+		<div id="author-avatar">
+			<?php echo get_avatar( get_the_author_meta( 'user_email' ), 60 ) ?>
+		</div>
+		<div id="author-description">
+			<h2>About <?php echo get_the_author() ?></h2>
+			<?php the_author_meta( 'description' ); ?>
+			<div id="author-link">
+				<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
+				<?php
+					printf(
+						'View all posts by %s <span class="meta-nav">&rarr;</span>',
+						get_the_author()
+					);
+				?>
+				</a>
+			</div>
+		</div>
+	</div><?php
 }
 
 function page_like_button($height = 80, $width = 780) {
@@ -244,109 +212,16 @@ function full_like_button() {
 	?><fb:like></fb:like><?php
 }
 
-/**
- * Twitter Tweet button
- *
- */
 function the_tweet_button() {
 	echo '<a href="http://twitter.com/share?url=', urlencode(get_permalink()), '&amp;text=', str_replace('"', '\"', get_the_title()),'" class="twitter-share-button" data-count="none" data-via="goodbyepicasso">Tweet</a>';
 }
 
-/**
- *
- * AKISMET PLUGIN MUST BE ACTIVATED!!
- * function to call Akismet to filter mail for SPAM
- *
- * $content['comment_author'] = $name;
- * $content['comment_author_email'] = $email;
- * $content['comment_author_url'] = $website;
- * $content['comment_content'] = $message;
- *
- */
-function gp_checkSpam($content) {
-	// innocent until proven guilty
-	$isSpam = FALSE;
-
-	$content = (array) $content;
-
-	if (function_exists('akismet_init')) {
-
-		$wpcom_api_key = get_option('wordpress_api_key');
-
-		if (!empty($wpcom_api_key)) {
-
-			global $akismet_api_host, $akismet_api_port;
-
-			// set remaining required values for akismet api
-			$content['user_ip'] = preg_replace( '/[^0-9., ]/', '', $_SERVER['REMOTE_ADDR'] );
-			$content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
-			$content['referrer'] = $_SERVER['HTTP_REFERER'];
-			$content['blog'] = get_option('home');
-
-			if (empty($content['referrer'])) {
-				$content['referrer'] = get_permalink();
-			}
-
-			$queryString = '';
-
-			foreach ($content as $key => $data) {
-				if (!empty($data)) {
-					$queryString .= $key . '=' . urlencode(stripslashes($data)) . '&';
-				}
-			}
-
-			$response = akismet_http_post($queryString, $akismet_api_host, '/1.1/comment-check', $akismet_api_port);
-
-			if ($response[1] == 'true') {
-				update_option('akismet_spam_count', get_option('akismet_spam_count') + 1);
-				$isSpam = TRUE;
-			}
-		}
-	}
-	return $isSpam;
-}
-
-/**
- * Create a nicely formatted and more specific title element text for output
- * in head of document, based on current view.
- *
- * @since Twenty Fourteen 1.0
- *
- * @param string $title Default title text for current view.
- * @param string $sep Optional separator.
- * @return string The filtered title.
- */
-function gp_wp_title( $title, $sep ) {
-	global $paged, $page;
-
-	if ( is_feed() ) {
-		return $title;
-	}
-
-	// Add the site name.
-	$title .= get_bloginfo( 'name', 'display' );
-
-	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) ) {
-		$title = "$title $sep $site_description";
-	}
-
-	// Add a page number if necessary.
-	if ( $paged >= 2 || $page >= 2 ) {
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'gp' ), max( $paged, $page ) );
-	}
-
-	return $title;
-}
-add_filter( 'wp_title', 'gp_wp_title', 10, 2 );
-
-function band_go_back($url = '', $text = '') {
-	?>
+function band_go_back( $url = '', $text = '' ) {
+?>
 	<div class="navigation">
 		<div class="nav-previous">
 			<a href="<?php echo $url ?>"><span class="meta-nav">&larr;</span> <?php echo $text ?></a>
 		</div>
 	</div>
-	<?php
+<?php
 }

@@ -89,7 +89,7 @@
 		wrapper = $('#loop-content');
 
 		$( document.body )
-			.on( 'click', '.band_gallery_strip_wrapper', goToGallery )
+			.on( 'click', '.band-gallery-strip-wrapper', goToGallery )
 			.on( 'click', '#nav-above a, #nav-below a', function (e) {
 				var href, elem = $( e.currentTarget );
 

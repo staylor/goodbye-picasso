@@ -7,10 +7,10 @@ gp_header( 'Shows' );
 gp_lyrics( 'It\'s much harder than it sounds (being no one in this town)' );
 
 if ( isset( $_GET[ 'gpy' ] ) ):
-	band_go_back('?upcoming', __('View upcoming shows'));
+	band_go_back( '?upcoming', 'View upcoming shows' );
 	echo do_shortcode('[gigpress_shows scope=past sort=desc show_menu=yearly]');
 else:
-	band_go_back('?gpy=' . date('Y'), __('View past dates'));
+	band_go_back( '?gpy=' . date( 'Y' ), 'View past dates' );
  	the_content();
 endif;
 

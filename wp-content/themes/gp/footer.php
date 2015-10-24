@@ -17,11 +17,11 @@ if ( IS_AJAX ) {
 			<li><a target="_blank" class="reverb" href="http://www.reverbnation.com/goodbyepicasso"></a></li>
 		</ul>
 	</div>
-	<div id="social_wrapper" class="email_form">
-		<span class="tape medium_tape tilt_left"></span>
-		<span class="tape medium_tape tilt_right"></span>
-		<span class="tape medium_tape tilt_bottom_left"></span>
-		<?php gp_lyrics(__('Most who started here have left... It\'s all in the name of progress')) ?>
+	<div id="social-wrapper">
+		<span class="tape medium-tape tilt-left"></span>
+		<span class="tape medium-tape tilt-right"></span>
+		<span class="tape medium-tape tilt-bottom_left"></span>
+		<?php gp_lyrics( 'Most who started here have left... It\'s all in the name of progress' ) ?>
 		<div id="facebook_widget">
 			<?php page_like_button() ?>
 		</div>

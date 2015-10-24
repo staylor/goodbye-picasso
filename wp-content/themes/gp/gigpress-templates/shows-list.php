@@ -89,7 +89,7 @@ $country = isset( $gpo['display_country'] ) && 1 === (int) $gpo['display_country
 			<?php endif; ?>
 
 			<?php if($showdata['related_link']) : ?>
-				<span class="gigpress-info-item tape medium_tape"><?php echo $showdata['related_link']; ?></span>
+				<span class="gigpress-info-item tape medium-tape"><?php echo $showdata['related_link']; ?></span>
 			<?php endif; ?>
 
 			<?php if($showdata['ticket_link'] && $country ) : ?>
@@ -100,7 +100,7 @@ $country = isset( $gpo['display_country'] ) && 1 === (int) $gpo['display_country
 			<?php endif; ?>
 		</td>
 		<?php if ( $country ): ?><td>
-			<?php if ($showdata['ticket_link']): ?><span class="tape medium_tape"><?php	 		 		 	 echo $showdata['ticket_link']; ?></span><?php	 		 		 	 endif; ?>
+			<?php if ($showdata['ticket_link']): ?><span class="tape medium-tape"><?php	 		 		 	 echo $showdata['ticket_link']; ?></span><?php	 		 		 	 endif; ?>
 		</td><?php	endif ?>
 	</tr>
 </tbody>

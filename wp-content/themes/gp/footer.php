@@ -2,14 +2,6 @@
 if ( IS_AJAX ) {
 	return;
 }
-/**
- * The template used to display the footer
- *
- *
- * @package WordPress
- * @subpackage Goodbye Picasso
- * @since 3.0.0
- */
 ?>
 		</div><!-- .main -->
 	</div><!-- .stack_top -->

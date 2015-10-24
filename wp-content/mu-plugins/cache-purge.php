@@ -5,10 +5,10 @@ class CachePurge {
 
 	public static function get_instance() {
 		$c = get_called_class();
-		if ( ! isset( self::$instance[ $c ] ) ) {
-			self::$instance[ $c ] = new $c;
+		if ( ! isset( static::$instance[ $c ] ) ) {
+			static::$instance[ $c ] = new $c;
 		}
-		return self::$instance[ $c ];
+		return static::$instance[ $c ];
 	}
 
 	private function __construct() {

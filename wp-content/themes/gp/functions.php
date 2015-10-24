@@ -13,22 +13,24 @@
  * $theme references the child theme, this one
  *
  */
-define('IS_AJAX', ! empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) );
-define('FACEBOOK_APP_ID', '142875799055891');
-define('FACEBOOK_SECRET', 'd313c2950363ec70949d14cbdf55c8f5');
+define( 'IS_AJAX', ! empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) );
+define( 'FACEBOOK_APP_ID', '142875799055891');
+define( 'FACEBOOK_SECRET', 'd313c2950363ec70949d14cbdf55c8f5' );
 
 class GoodbyePicassoTheme {
 	private static $instance;
+
 	public static function get_instance() {
-		if ( ! self::$instance instanceof GoodbyePicassoTheme ) {
-			self::$instance = new self;
+		if ( ! static::$instance instanceof GoodbyePicassoTheme ) {
+			static::$instance = new static;
 		}
 
-		return self::$instance;
+		return static::$instance;
 	}
 	private function __construct() {
-		add_action( 'init', array( $this, 'init' ) );
-		add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ) );
+		add_action( 'init', [ $this, 'init' ] );
+		add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ] );
+		add_action( 'template_redirect', [ $this, 'template_redirect' ] );
 	}
 
 	function pre_get_posts( &$query ) {
@@ -50,19 +52,17 @@ class GoodbyePicassoTheme {
 	}
 
 	function init() {
-		$theme = '/wp-content/themes/gp';
+		add_theme_support( 'title-tag' );
+		add_theme_support( 'post-thumbnails' );
+		add_theme_support( 'automatic-feed-links' );
+	}
 
-		add_theme_support('post-thumbnails');
-		add_theme_support('automatic-feed-links');
+	function template_redirect() {
+		$theme = get_stylesheet_directory_uri();
+		wp_enqueue_style( 'gp-main', get_stylesheet_uri() );
+		wp_enqueue_style( 'gp-global', $theme . '/css/global.css' );
 
-		if ( ! is_admin() ) {
-			wp_enqueue_style('gp-main', $theme . '/style.css');
-			wp_enqueue_style('gp-global', $theme . '/css/global.css');
-
-			wp_enqueue_script('gp-font', $theme . '/js/font.js', array('jquery'));
-			wp_enqueue_script('ajax-font', 'http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', array('jquery', 'gp-font'));
-			wp_enqueue_script('gp-main', $theme . '/js/main.js', array('jquery'));
-		}
+		wp_enqueue_script( 'gp-main', $theme . '/js/main.js', array( 'jquery' ) );
 	}
 }
 GoodbyePicassoTheme::get_instance();
@@ -118,6 +118,12 @@ function the_loop_category() {
 		echo $before, '<a href="', get_post_type_archive_link( 'gallery' ), '">Photos</a>', $after;
 		break;
 	default:
+		$category = get_the_category();
+
+		if ( is_array( $category ) && 1 === count( $category ) && 'Uncategorized' === reset( $category )->name ) {
+			break;
+		}
+
 		the_category();
 		break;
 	}

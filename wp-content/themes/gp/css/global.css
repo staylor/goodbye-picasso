@@ -227,26 +227,26 @@ em {text-transform: uppercase; color: #000}
 .single-song #content .entry-content p {font: 32px/36px 'Reenie Beanie'; margin-bottom: 30px; color: #555}
 
 /* AJAX requests */
-.band_galleries .loading, .type-gallery .loading, .home .loading {
+.band-galleries .loading, .type-gallery .loading, .home .loading {
 	background: url(../images/loading-dots-white.gif) 50% 100px no-repeat; height: 300px}
-.band_galleries .loading .posts, .type-gallery .loading ul, .home .loading .posts {visibility: hidden}
+.band-galleries .loading .posts, .type-gallery .loading ul, .home .loading .posts {visibility: hidden}
 
 /* bandpress gallleries */
 .band_gallery {overflow: hidden}
-#content .band_galleries .entry-title, #content .band_galleries .entry-title a {
+#content .band-galleries .entry-title, #content .band-galleries .entry-title a {
 	font: 30px/34px 'typey', courier; color: #444;
 }
-#content .band_galleries .entry-title a:hover {color: #000}
+#content .band-galleries .entry-title a:hover {color: #000}
 .band_gallery li {float: left; 	background: #eee; border: 1px solid #fff;
 	padding: 10px 10px 0 10px; margin: 15px;
 	box-shadow: 0px 2px 15px #333; -moz-box-shadow: 0px 2px 15px #333; -webkit-box-shadow: 0px 2px 15px #333; -o-box-shadow: 0px 2px 15px #333; -khtml-box-shadow: 0px 2px 15px #333;	position: relative}
 .band_gallery .tape {position: absolute; top: -20px; left: 22px; font-size: 14px}
 .band_gallery_p {margin-bottom: 0px !important}
-#content .band_galleries .posts .entry-content {margin-top: 10px}
-#content .band_galleries p {margin: 0 80px 20px 20px; font: 13px/18px helvetica, arial; color: #666;}
+#content .band-galleries .posts .entry-content {margin-top: 10px}
+#content .band-galleries p {margin: 0 80px 20px 20px; font: 13px/18px helvetica, arial; color: #666;}
 #content .type-gallery p {margin: 10px 0}
 .single #content .type-gallery p {margin: 10px 15px}
-.band_galleries .entry-content {margin-bottom: 20px; border-bottom: 1px dashed #ccc}
+.band-galleries .entry-content {margin-bottom: 20px; border-bottom: 1px dashed #ccc}
 
 /* Gallery Strip for lists of Galleries  */
 .band_gallery_strip_wrapper {position: relative; margin: 15px 15px 30px 15px; width: 795px; cursor: pointer}

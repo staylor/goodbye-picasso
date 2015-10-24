@@ -34,7 +34,7 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 define( 'WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . '/wp-content' );
-define( 'WP_CONTENT_URL', 'http://goodbyepicasso.com/wp-content' );
+define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp-content' );
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -82,8 +82,9 @@ define('WPLANG', '');
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-define( 'WP_CACHE', true );
+//define( 'WP_CACHE', true );
 define( 'WP_DEBUG_DISPLAY', false );
+error_reporting( -1 );
 define( 'WP_DEBUG', true );
 
 /* That's all, stop editing! Happy blogging. */

@@ -7,6 +7,11 @@ Version: 1.0
 Tags: threaded-comments, translation-ready, rtl-language-support, editor-style, buddypress
 */
 
+@font-face {
+  font-family: 'typey'; font-style: normal; font-weight: normal;
+  src: url('/wp-content/themes/gp/fonts/Trixie-Plain.ttf') format('truetype'),
+  	   url('/wp-content/themes/gp/fonts/Trixie-Plain.otf') format('opentype');
+}
 
 /* Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
 -------------------------------------------------------------- */

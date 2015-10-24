@@ -9,7 +9,6 @@ Author URI: http://scotty-t.com
 define('PLUGIN_PATH', WP_PLUGIN_URL . '/bandpress');
 
 add_action( 'init', 'band_register_types' );
-add_action( 'admin_print_styles', 'band_admin_styles' );
 
 function band_inflection( $term, $plural = '' ) {
     $u = ucfirst( $term );
@@ -59,10 +58,6 @@ function band_register_types() {
 		'query_var' => true,
 		'rewrite' => true
 	) );
-}
-
-function band_admin_styles() {
-	wp_enqueue_style('band_admin', PLUGIN_PATH . '/css/admin.css');
 }
 
 define('PAGE_PARAM', 'to');

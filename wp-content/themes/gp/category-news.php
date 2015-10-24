@@ -1,9 +1,10 @@
 <?php
 get_header();
 
-gp_header(__('News'));
-gp_lyrics(__('Did you get that magazine? There\'s an article on me'));
+gp_header( 'News' );
 
-get_template_part('loop');
+gp_lyrics( 'Did you get that magazine? There\'s an article on me' );
 
-get_footer(); ?>
+get_template_part( 'loop' );
+
+get_footer();

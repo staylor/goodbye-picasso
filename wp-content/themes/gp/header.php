@@ -4,22 +4,17 @@ if ( IS_AJAX ) {
 }
 ?>
 <!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8) ]><!-->
-<html <?php language_attributes(); ?>>
-<!--<![endif]-->
+<html lang="en-US" class="no-js">
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link href='https://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
-<?php if ( is_singular() && get_option('thread_comments') ) wp_enqueue_script( 'comment-reply' ); ?>
 <?php
-	wp_head();
+if ( is_singular() && get_option('thread_comments') ) {
+	wp_enqueue_script( 'comment-reply' );
+}
+
+wp_head();
 ?>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -32,24 +27,24 @@ if ( IS_AJAX ) {
 
 </script>
 </head>
-<body <?php	 body_class(); ?>>
+<body <?php	body_class(); ?>>
 <div class="wrapper">
 	<div class="banner">
 		<span class="tape tilt_left"></span>
 		<span class="tape tilt_right"></span>
-		<a href="<?= home_url( '' ) ?>"></a>
-		<img class="alignnone" src="<?= get_stylesheet_directory_uri() ?>/images/spacer.gif"/>
+		<a href="<?php echo home_url() ?>"></a>
+		<img class="alignnone" src="<?php echo get_stylesheet_directory_uri() ?>/images/spacer.gif"/>
 	</div>
 	<div id="fb-root"></div>
 	<div id="decoy"></div>
 	<div class="stack_item stack_top">
 		<ul class="main_nav">
-			<li>[<a <?= _on( is_page( 'shows' ) ) ?>href="<?= home_url( '/shows/' ) ?>">SHOWS</a>]</li>
-			<li>[<a <?= _on( is_page( 'media' ) || in_array( get_post_type(), array('song', 'album', 'video') ) ) ?>href="<?= home_url( '/media/' ) ?>">MEDIA</a>]</li>
-			<li>[<a <?= _on( is_page( 'bio' ) ) ?>href="<?= home_url( '/bio/' ) ?>">BIO</a>]</li>
-			<li>[<a <?= _on( is_category( 'news' ) ) ?>href="<?= home_url( '/category/news/' ) ?>">NEWS</a>]</li>
-			<li>[<a <?= _on( is_post_type_archive( 'gallery' ) ) ?>href="<?= home_url( '/gallery/' ) ?>">PHOTOS</a>]</li>
-			<li>[<a <?= _on( is_category( 'Blog' ) ) ?>href="<?= home_url( '/category/blog/' ) ?>">BLOG</a>]</li>
-			<li>[<a <?= _on( is_page( 'contact' ) ) ?>href="<?= home_url( '/contact/' ) ?>">CONTACT</a>]</li>
+			<li>[<a <?php echo _on( is_page( 'shows' ) ) ?>href="<?php echo home_url( '/shows/' ) ?>">SHOWS</a>]</li>
+			<li>[<a <?php echo _on( is_page( 'media' ) || in_array( get_post_type(), array('song', 'album', 'video') ) ) ?>href="<?php echo home_url( '/media/' ) ?>">MEDIA</a>]</li>
+			<li>[<a <?php echo _on( is_page( 'bio' ) ) ?>href="<?php echo home_url( '/bio/' ) ?>">BIO</a>]</li>
+			<li>[<a <?php echo _on( is_category( 'news' ) ) ?>href="<?php echo home_url( '/category/news/' ) ?>">NEWS</a>]</li>
+			<li>[<a <?php echo _on( is_post_type_archive( 'gallery' ) ) ?>href="<?php echo home_url( '/gallery/' ) ?>">PHOTOS</a>]</li>
+			<li>[<a <?php echo _on( is_category( 'Blog' ) ) ?>href="<?php echo home_url( '/category/blog/' ) ?>">BLOG</a>]</li>
+			<li>[<a <?php echo _on( is_page( 'contact' ) ) ?>href="<?php echo home_url( '/contact/' ) ?>">CONTACT</a>]</li>
 		</ul>
 		<div class="main" id="content">

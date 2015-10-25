@@ -5,49 +5,7 @@
 
 	var wrapper,
 		lyrics,
-		bannerItems = [2, 4, 6, 7, 9, 10],
-		lastXhr,
-		cache = {};
-
-	function doRequest(href, success, error) {
-		if ( cache[ href ] ) {
-			wrapper.html( cache[ href ] );
-			success && success();
-		} else {
-			wrapper.addClass('loading');
-
-			if (lastXhr) {
-				lastXhr.abort();
-			}
-
-			lastXhr = $.ajax({
-				url : href
-			}).done(function (data) {
-				cache[ href ] = data;
-				wrapper.html(data).removeClass('loading');
-
-				success && success();
-			}).fail(error);
-		}
-
-		return false;
-	}
-
-	function ajaxify(item, callback) {
-		var href = item.attr('href');
-
-		// TODO: consider Apache rewrites to avoid using query string (which will leverage caching better)
-		if (href.indexOf('ajax=1') === -1) {
-			item.attr('href', href + (href.indexOf('?') > -1 ? '&ajax=1' : '?ajax=1'));
-		}
-
-		item.click(callback);
-	}
-
-	window.XHR = {
-		doRequest: doRequest,
-		ajaxify: ajaxify
-	};
+		bannerItems = [2, 4, 6, 7, 9, 10];
 
 	function getBannerIndex() {
 		return bannerItems[Math.floor(Math.random() * bannerItems.length)];
@@ -88,20 +46,7 @@
 
 		wrapper = $('#loop-content');
 
-		$( document.body )
-			.on( 'click', '.band-gallery-strip-wrapper', goToGallery )
-			.on( 'click', '#nav-above a, #nav-below a', function (e) {
-				var href, elem = $( e.currentTarget );
-
-				href = elem.attr('href');
-				wrapper = $('#loop-content');
-				doRequest(href, function () {
-					$('.wp-playlist:not(.ready)').addClass('ready').each(function () {
-						return new WPPlaylistView({ el: this });
-					});
-				});
-				return false;
-			} );
+		$( document.body ).on( 'click', '.band-gallery-strip-wrapper', goToGallery );
 
 		if ( ! $('body').hasClass( 'page-template-media-php' ) ) {
 			lyrics = $('span.lyrics');

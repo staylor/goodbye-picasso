@@ -1,7 +1,6 @@
 <?php
-if ( ! IS_AJAX ):
 
-	get_header();
+get_header();
 ?>
 <div class="band-galleries">
 	<?php
@@ -12,9 +11,7 @@ if ( ! IS_AJAX ):
 
 ?>
 	<div id="loop-content">
-<?php endif;
-
-	if ( have_posts() ): ?>
+	<?php if ( have_posts() ): ?>
 		<div class="posts">
 		<?php
 		band_nav_by_type( array( 'type' => 'photos' ) );
@@ -33,12 +30,8 @@ if ( ! IS_AJAX ):
 
 		band_nav_by_type( array( 'type' => 'photos', 'where' => 'below' ) ); ?>
 		</div>
-	<?php endif;
-
-if ( ! IS_AJAX ): ?>
+	<?php endif; ?>
 	</div>
 </div>
 <?php
 get_footer();
-
-endif;

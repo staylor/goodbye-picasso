@@ -223,6 +223,14 @@ em {
   font: 22px/40px 'typey', courier;
 }
 
+.main-nav li ::before {
+  content: '[';
+}
+
+.main-nav li ::after {
+  content: ']';
+}
+
 .main-nav a {
   padding: 0 3px;
 }
@@ -276,10 +284,7 @@ em {
 .footer {
   overflow: hidden;
   display: block;
-  position: absolute;
   z-index: 7;
-  width: 1000px;
-  bottom: -10px;
 }
 
 .footer a:hover {
@@ -288,15 +293,14 @@ em {
 
 .footer p {
   float: left;
-  font: 10px 'lucida grande', arial;
+  font: 12px arial;
   color: #fff;
 }
 
 .footer ul {
   float: right;
   overflow: hidden;
-  margin: 15px 0;
-  width: 170px;
+  margin: 10px 0;
 }
 
 .footer li {
@@ -320,19 +324,9 @@ em {
   background-position: -29px 0;
 }
 
-.footer li .myspace {
-  width: 18px;
-  background-position: -52px 0;
-}
-
 .footer li .twitter {
   width: 14px;
   background-position: -84px 0;
-}
-
-.footer li .reverb {
-  width: 20px;
-  background-position: -112px 0;
 }
 
 .turn_right, .turn_left {
@@ -468,6 +462,26 @@ em {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
+#content tr td {
+  border: 0 none;
+}
+
+#content .vevent {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+#content .entry-title {
+  margin-bottom: 0;
+}
+
+#content .entry-content {
+  margin: 20px 0 0;
+}
+
+#content .posts .entry-content {
+  margin: 20px 0 0;
+}
+
 .post .meta {
   display: block;
   margin-top: 10px;
@@ -513,57 +527,34 @@ em {
   border-left: 1px solid #eee;
 }
 
-#content tr td {
-  border: 0 none;
-}
-
-#content .vevent {
-  border-bottom: 1px solid #e7e7e7;
-}
-
-#content .entry-title {
-  margin-bottom: 0;
-}
-
-#content .entry-content {
-  margin: 20px 0 0;
-}
-
-#content .posts .entry-content {
-  margin: 20px 0 0;
-}
-
-#content .post-wide .entry-title,
-#content .post-wide .entry-title a {
+.post-wide .entry-title,
+.post-wide .entry-title a {
   font: 30px/34px 'typey', courier;
   color: #444;
 }
 
-#content .post-wide .entry-title a:hover {
+.post-wide .entry-title a:hover {
   color: #000;
 }
 
-#content .post-wide p,
-#content .post-wide strong {
+.post-wide p,
+.post-wide strong {
   font: 13px/22px helvetica, arial;
   color: #666;
 }
 
-#content .post-wide strong {
+.post-wide strong {
   font-weight: bold;
 }
 
-#content .type-gallery .post-wide p {
+.type-gallery .post-wide p {
   margin: 0 15px 20px;
 }
 
 .alignleft, .alignright, .aligncenter, .alignnone {
-  background: #eee;
-  border: 1px solid #fff;
+  background: #fefefe;
+  border: 1px solid #eee;
   padding: 10px;
-  box-shadow: 0px 2px 15px #333;
-  -moz-box-shadow: 0px 2px 15px #333;
-  -webkit-box-shadow: 0px 2px 15px #333;
   max-width: 100%;
   height: auto;
 }
@@ -717,8 +708,9 @@ em {
 
 .page-template-media-php #content .lyrics {
   right: 0;
-  width: 400px;
-  color: #ccc;
+  width: 275px;
+  color: #bbb;
+  font: 28px/32px 'Reenie Beanie';
 }
 
 .page-template-blog-php #content .lyrics,
@@ -758,29 +750,31 @@ em {
 }
 
 /* bandpress gallleries */
-.band_gallery {
+.band-gallery {
   overflow: hidden;
 }
 
-.band_gallery li {
+.band-gallery li {
   float: left;
-  background: #eee;
-  border: 1px solid #fff;
-  padding: 10px 10px 0 10px;
-  margin: 15px;
-  -webkit-box-shadow: 0px 2px 15px #333;
-  box-shadow: 0px 2px 15px #333;
+  background: #fefefe;
+  border: 1px solid #eee;
+  padding: 5px;
+  margin: 10px;
   position: relative;
 }
 
-.band_gallery .tape {
+.band-gallery li img {
+  display: block;
+}
+
+.band-gallery .tape {
   position: absolute;
-  top: -20px;
-  left: 22px;
+  top: -18px;
+  left: 18px;
   font-size: 14px;
 }
 
-.band_gallery_p {
+.band-gallery_p {
   margin-bottom: 0px !important;
 }
 
@@ -843,13 +837,11 @@ em {
 }
 
 .band-gallery-strip {
-  background: #eee;
-  border: 1px solid #fff;
+  background: #fefefe;
+  border: 1px solid #eee;
   padding: 10px;
   overflow: hidden;
   width: 775px;
-  -webkit-box-shadow: 0px 2px 15px #333;
-  box-shadow: 0px 2px 15px #333;
 }
 
 .home .band-gallery-strip {

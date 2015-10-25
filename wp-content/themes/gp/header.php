@@ -1,8 +1,3 @@
-<?php
-if ( IS_AJAX ) {
-	return;
-}
-?>
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
@@ -39,12 +34,12 @@ wp_head();
 	<div id="decoy"></div>
 	<div class="stack-item stack-top">
 		<ul class="main-nav">
-			<li>[<a <?php echo _on( is_page( 'shows' ) ) ?>href="<?php echo home_url( '/shows/' ) ?>">SHOWS</a>]</li>
-			<li>[<a <?php echo _on( is_page( 'media' ) || in_array( get_post_type(), array('song', 'album', 'video') ) ) ?>href="<?php echo home_url( '/media/' ) ?>">MEDIA</a>]</li>
-			<li>[<a <?php echo _on( is_page( 'bio' ) ) ?>href="<?php echo home_url( '/bio/' ) ?>">BIO</a>]</li>
-			<li>[<a <?php echo _on( is_category( 'news' ) ) ?>href="<?php echo home_url( '/category/news/' ) ?>">NEWS</a>]</li>
-			<li>[<a <?php echo _on( is_post_type_archive( 'gallery' ) ) ?>href="<?php echo home_url( '/gallery/' ) ?>">PHOTOS</a>]</li>
-			<li>[<a <?php echo _on( is_category( 'Blog' ) ) ?>href="<?php echo home_url( '/category/blog/' ) ?>">BLOG</a>]</li>
-			<li>[<a <?php echo _on( is_page( 'contact' ) ) ?>href="<?php echo home_url( '/contact/' ) ?>">CONTACT</a>]</li>
+			<li><a <?php echo _on( is_page( 'shows' ) ) ?>href="<?php echo home_url( '/shows/' ) ?>">SHOWS</a></li>
+			<li><a <?php echo _on( is_page( 'media' ) || in_array( get_post_type(), array('song', 'album', 'video') ) ) ?>href="<?php echo home_url( '/media/' ) ?>">MEDIA</a></li>
+			<li><a <?php echo _on( is_page( 'bio' ) ) ?>href="<?php echo home_url( '/bio/' ) ?>">BIO</a></li>
+			<li><a <?php echo _on( is_category( 'news' ) ) ?>href="<?php echo home_url( '/category/news/' ) ?>">NEWS</a></li>
+			<li><a <?php echo _on( is_post_type_archive( 'gallery' ) ) ?>href="<?php echo home_url( '/gallery/' ) ?>">PHOTOS</a></li>
+			<li><a <?php echo _on( is_category( 'Blog' ) ) ?>href="<?php echo home_url( '/category/blog/' ) ?>">BLOG</a></li>
+			<li><a <?php echo _on( is_page( 'contact' ) ) ?>href="<?php echo home_url( '/contact/' ) ?>">CONTACT</a></li>
 		</ul>
 		<div class="main" id="content">

@@ -7,8 +7,6 @@
  * @since Twenty Ten 1.0
  */
 
-if ( ! IS_AJAX ):
-
 get_header();
 ?>
 <h1 class="page-title"><?php
@@ -24,13 +22,7 @@ get_header();
 	}
 ?>
 	<div id="loop-content">
-<?php endif;
-
-	get_template_part( 'loop', 'category' );
-
-if ( ! IS_AJAX ): ?>
+	<?php get_template_part( 'loop', 'category' ); ?>
 	</div>
 <?php
 get_footer();
-
-endif;

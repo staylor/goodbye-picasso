@@ -206,6 +206,14 @@ em {
 	display: block;
 
 	li {
+		::before {
+			content: '[';
+		}
+
+		::after {
+			content: ']';
+		}
+
 		float: left;
 		width: 131px;
 		height: 40px;
@@ -267,10 +275,7 @@ em {
 .footer {
 	overflow: hidden;
 	display: block;
-	position: absolute;
 	z-index: 7;
-	width: 1000px;
-	bottom: -10px;
 
 	a:hover {
 		color: #fff;
@@ -278,15 +283,14 @@ em {
 
 	p {
 		float: left;
-		font: 10px 'lucida grande', arial;
+		font: 12px arial;
 		color: #fff;
 	}
 
 	ul {
 		float: right;
 		overflow: hidden;
-		margin: 15px 0;
-		width: 170px;
+		margin: 10px 0;
 	}
 
 	li {
@@ -308,16 +312,8 @@ em {
 			width: 10px; background-position: -29px 0;
 		}
 
-		.myspace {
-			width: 18px; background-position: -52px 0;
-		}
-
 		.twitter {
 			width: 14px; background-position: -84px 0;
-		}
-
-		.reverb {
-			width: 20px; background-position: -112px 0;
 		}
 	}
 }
@@ -431,6 +427,12 @@ em {
 	background-color: rgba(255, 255, 255, 0.7);
 }
 
+#content tr td {border: 0 none}
+#content .vevent {border-bottom: 1px solid #e7e7e7}
+#content .entry-title {margin-bottom: 0}
+#content .entry-content {margin: 20px 0 0}
+#content .posts .entry-content {margin: 20px 0 0}
+
 .post .meta {
 	display: block;
 	margin-top: 10px;
@@ -474,32 +476,35 @@ em {
 	width: 630px;
 	padding-left: 20px;
 	border-left: 1px solid #eee;
+
+	.entry-title,
+	.entry-title a {
+		font: 30px/34px 'typey', courier; color: #444;
+	}
+
+	.entry-title a:hover {
+		color: #000;
+	}
+
+	p,
+	strong {
+		font: 13px/22px helvetica, arial; color: #666;
+	}
+
+	strong {
+		font-weight: bold;
+	}
+
+	.type-gallery & p {
+		margin: 0 15px 20px;
+	}
 }
 
-#content tr td {border: 0 none}
-#content .vevent {border-bottom: 1px solid #e7e7e7}
-#content .entry-title {margin-bottom: 0}
-#content .entry-content {margin: 20px 0 0}
-#content .posts .entry-content {margin: 20px 0 0}
-#content .post-wide .entry-title,
-#content .post-wide .entry-title a {
-	font: 30px/34px 'typey', courier; color: #444;
-}
-#content .post-wide .entry-title a:hover {color: #000}
-#content .post-wide p,
-#content .post-wide strong {
-	font: 13px/22px helvetica, arial; color: #666;
-}
-#content .post-wide strong {font-weight: bold}
-#content .type-gallery .post-wide p {margin: 0 15px 20px}
 
 .alignleft, .alignright, .aligncenter, .alignnone {
-	background: #eee;
-	border: 1px solid #fff;
+	background: #fefefe;
+	border: 1px solid #eee;
 	padding: 10px;
-	box-shadow: 0px 2px 15px #333;
-	-moz-box-shadow: 0px 2px 15px #333;
-	-webkit-box-shadow: 0px 2px 15px #333;
 	max-width: 100%;
 	height: auto;
 }
@@ -615,8 +620,9 @@ em {
 	}
 	.page-template-media-php #content & {
 		right: 0;
-		width: 400px;
-		color: #ccc;
+		width: 275px;
+		color: #bbb;
+		font: 28px/32px 'Reenie Beanie';
 	}
 	.page-template-blog-php #content &,
 	.page-template-contact-php #content & {
@@ -631,7 +637,9 @@ em {
 	}
 }
 
-.page-template-media-php #content {min-height: 400px;}
+.page-template-media-php #content {
+	min-height: 400px;
+}
 .single-song #content .entry-content p {font: 32px/36px 'Reenie Beanie'; margin-bottom: 30px; color: #555}
 
 /* AJAX requests */
@@ -643,27 +651,31 @@ em {
 .home .loading .posts {visibility: hidden}
 
 /* bandpress gallleries */
-.band_gallery {
+.band-gallery {
 	overflow: hidden;
 
-	li {float: left;
-		background: #eee;
-		border: 1px solid #fff;
-		padding: 10px 10px 0 10px;
-		margin: 15px;
-		box-shadow: 0px 2px 15px #333;
+	li {
+		float: left;
+		background: #fefefe;
+		border: 1px solid #eee;
+		padding: 5px;
+		margin: 10px;
 		position: relative;
+
+		img {
+			display: block;
+		}
 	}
 
 	.tape {
 		position: absolute;
-		top: -20px;
-		left: 22px;
+		top: -18px;
+		left: 18px;
 		font-size: 14px;
 	}
 }
 
-.band_gallery_p {margin-bottom: 0px !important}
+.band-gallery_p {margin-bottom: 0px !important}
 
 #content .band-galleries {
 
@@ -717,12 +729,11 @@ em {
 }
 
 .band-gallery-strip {
-	background: #eee;
-	border: 1px solid #fff;
+	background: #fefefe;
+	border: 1px solid #eee;
 	padding: 10px;
 	overflow: hidden;
 	width: 775px;
-	box-shadow: 0px 2px 15px #333;
 
 	.home & {
 		width: 620px

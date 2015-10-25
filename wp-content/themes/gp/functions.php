@@ -5,7 +5,6 @@
  * $theme references the child theme, this one
  *
  */
-define( 'IS_AJAX', ! empty( $_SERVER['HTTP_X_REQUESTED_WITH'] ) );
 define( 'FACEBOOK_APP_ID', '142875799055891');
 define( 'FACEBOOK_SECRET', 'd313c2950363ec70949d14cbdf55c8f5' );
 

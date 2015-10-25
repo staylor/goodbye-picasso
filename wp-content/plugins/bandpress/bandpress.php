@@ -219,7 +219,7 @@ function band_gallery_images($p = -1) {
 
 	if ( $q->have_posts() ):
 		band_nav_by_type( array( 'type' => 'photos', 'use_qs' => true, 'q' => $q ) );?>
-		<ul class="band_gallery">
+		<ul class="band-gallery">
 		<?php while ( $q->have_posts() ): $q->the_post(); ?>
 		<li>
 			<?php

@@ -1,8 +1,6 @@
 <?php
 the_post();
 
-if ( ! IS_AJAX ):
-
 get_header(); ?>
 
 <h1 class="page-title author"><?php
@@ -24,15 +22,10 @@ get_header(); ?>
 	</div><!-- #entry-author-info -->
 <?php
 	rewind_posts();
-endif; ?>
+endif;
+?>
 	<div id="loop-content">
-<?php endif;
-
-	get_template_part( 'loop', 'author' );
-
-if ( ! IS_AJAX ): ?>
+	<?php get_template_part( 'loop', 'author' );  ?>
 	</div>
 <?php
 get_footer();
-
-endif;

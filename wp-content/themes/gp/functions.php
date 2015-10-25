@@ -96,18 +96,15 @@ function gp_lyrics($lyrics, $attrs = '') {
  */
 
 function the_loop_category() {
-	$before = '<ul class="post-categories"><li>';
-	$after = '</li></ul>';
-
-	switch (get_post_type()) {
+	switch ( get_post_type() ) {
 	case 'video':
-		echo $before, '<a href="/media/#videos">Video</a>', $after;
+		echo '<a href="/media/#videos">Video</a>';
 		break;
 	case 'song':
-		echo $before, '<a href="/music/">Song</a>', $after;
+		echo '<a href="/music/">Song</a>';
 		break;
 	case 'gallery':
-		echo $before, '<a href="', get_post_type_archive_link( 'gallery' ), '">Photos</a>', $after;
+		echo '<a href="', get_post_type_archive_link( 'gallery' ), '">Photos</a>';
 		break;
 	default:
 		$category = get_the_category();
@@ -116,7 +113,7 @@ function the_loop_category() {
 			break;
 		}
 
-		the_category();
+		the_category( ', ' );
 		break;
 	}
 }
@@ -210,10 +207,6 @@ function the_like_button() {
 
 function full_like_button() {
 	?><fb:like></fb:like><?php
-}
-
-function the_tweet_button() {
-	echo '<a href="http://twitter.com/share?url=', urlencode(get_permalink()), '&amp;text=', str_replace('"', '\"', get_the_title()),'" class="twitter-share-button" data-count="none" data-via="goodbyepicasso">Tweet</a>';
 }
 
 function band_go_back( $url = '', $text = '' ) {

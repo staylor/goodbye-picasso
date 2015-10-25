@@ -37,4 +37,4 @@ if ( ! IS_AJAX ): ?>
 	comments_template( '', true );
 
 	get_footer();
-endif; ?>
+endif;

@@ -20,12 +20,10 @@ band_nav_by_type();
 
 while ( have_posts() ) : the_post(); ?>
 	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<div class="post_narrow">
-			<span class="post-date"><?php the_date( 'M <\s\p\a\n>j</\s\p\a\n>') ?></span>
-			<?php
-			the_loop_category();
-			the_tags('<ul><li>', '</li><li>', '</li></ul>');
-			?>
+		<div class="post-narrow">
+			<span class="post-date"><?php the_date( "M j, 'y") ?></span>
+			<div class="post-categories"><?php the_loop_category(); ?></div>
+			<?php the_tags( '<ul><li>', '</li><li>', '</li></ul>'); ?>
 			<span class="tape medium-tape comments-link">
 				<?php comments_popup_link( 'Comments?', '1 Comment', '% Comments' ); ?>
 			</span>
@@ -40,7 +38,7 @@ while ( have_posts() ) : the_post(); ?>
 			</span>
 			<?php comments_template( '', true ); ?>
 		</div>
-		<div class="post_wide">
+		<div class="post-wide">
 			<h2 class="entry-title">
 				<a href="<?php the_permalink(); ?>" title="<?php printf( 'Permalink to %s', the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php	the_title(); ?></a>
 			</h2>

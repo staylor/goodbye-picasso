@@ -52,7 +52,7 @@ class GoodbyePicassoTheme {
 	function template_redirect() {
 		$theme = get_stylesheet_directory_uri();
 		wp_enqueue_style( 'gp-main', get_stylesheet_uri() );
-		wp_enqueue_style( 'gp-global', $theme . '/css/global.css' );
+		wp_enqueue_style( 'gp-global', $theme . '/css/global.min.css' );
 
 		wp_enqueue_script( 'gp-main', $theme . '/js/main.js', array( 'jquery' ) );
 	}

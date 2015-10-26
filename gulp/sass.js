@@ -37,12 +37,18 @@ module.exports = function () {
 		.pipe( sass( {
 			outputStyle: 'expanded'
 		} ).on( 'error', sass.logError ) )
-		.pipe( postcss( processors ) )
-		.pipe( gulp.dest( DEST ) )
 		.on( 'end', function () {
 			gutil.log( 'Running', c( 'PostCSS' ) , 'tasks...' );
 		})
+		.pipe( postcss( processors ) )
+		.pipe( gulp.dest( DEST ) )
+		.on( 'end', function () {
+			gutil.log( 'Saved unminified to', c( DEST )  );
+		})
 		.pipe( postcss( [ csswring ] ) )
+		.on( 'end', function () {
+			gutil.log( 'Minified' );
+		} )
 		.pipe( rename({ extname: '.min.css' }) )
 		.pipe( gulp.dest( DEST ) )
 		.on( 'end', function () {

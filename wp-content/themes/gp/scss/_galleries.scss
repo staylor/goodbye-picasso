@@ -1,0 +1,103 @@
+/* Gallery Strip for lists of Galleries  */
+.gallery-strip-wrapper {
+	position: relative;
+	margin: 15px 15px 30px 15px;
+	width: 795px;
+	cursor: pointer;
+
+	.home & {
+		width: 645px;
+	}
+
+	.tape {
+		position: absolute;
+		top: 0;
+	}
+
+	.tilt-left {
+		left: -30px;
+	}
+
+	.tilt-right {
+		right: -30px;
+	}
+}
+
+.gallery-strip {
+	background: #fefefe;
+	border: 1px solid #eee;
+	padding: 10px;
+	overflow: hidden;
+	width: 775px;
+
+	.home & {
+		width: 620px
+	}
+
+	li {
+		float: left;
+		margin: 0 5px 0 0;
+
+		img {
+			display: block;
+			width: 150px;
+			height: 150px;
+		}
+	}
+}
+
+.gallery {
+	overflow: hidden;
+
+	li {
+		float: left;
+		background: #fefefe;
+		border: 1px solid #eee;
+		padding: 5px;
+		margin: 10px;
+		position: relative;
+
+		img {
+			display: block;
+		}
+	}
+
+	.tape {
+		position: absolute;
+		top: -18px;
+		left: 18px;
+		font-size: 14px;
+	}
+}
+
+.gallery p {margin-bottom: 0px !important}
+
+#content .galleries {
+
+	.entry-title,
+	.entry-title a {
+		font: 30px/34px 'typey', courier; color: #444;
+	}
+
+	.entry-title a:hover {
+		color: #000;
+	}
+
+	.posts .entry-content {
+		margin-top: 10px;
+	}
+
+	p {
+		margin: 0 80px 20px 20px;
+		font: 13px/18px helvetica, arial;
+		color: #666;
+	}
+}
+
+#content .type-gallery p {
+	margin: 10px 0;
+}
+
+.single #content .type-gallery p {
+	margin: 10px 15px;
+}

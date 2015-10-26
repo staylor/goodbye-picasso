@@ -1,0 +1,65 @@
+/* lyrics */
+
+.lyrics {
+	display: block;
+	visibility: hidden;
+	font: 32px/36px 'Reenie Beanie';
+	color: #ddd;
+
+	span {
+		text-decoration: line-through;
+	}
+
+	.page-template-media-php & {
+		visibility: visible;
+	}
+	.home & {
+		display: block;
+		width: 825px;
+		height: 72px;
+	}
+
+	.page-template-shows-php #content &,
+	.page-template-media-php #content &,
+	.page-template-bio-php #content &,
+	.page-template-news-php #content &,
+	.page-template-blog-php #content &,
+	.page-template-contact-php #content & {
+		display: block;
+		width: 380px;
+		position: absolute;
+		top: 10px;
+		right: 120px;
+	}
+
+	.page-template-bio-php #content &,
+	.page-template-news-php #content & {
+		top: 10px;
+		width: 600px;
+		right: 40px
+	}
+
+	.page-template-photos-php #content & {
+		display: block;
+		width: 705px;
+		height: 72px;
+	}
+
+	.page-template-media-php #content & {
+		right: 0;
+		width: 275px;
+		font: 28px/32px 'Reenie Beanie';
+	}
+
+	.page-template-blog-php #content &,
+	.page-template-contact-php #content & {
+		right: 20px;
+		top: -5px;
+		width: 500px;
+		line-height: 32px;
+	}
+
+	.page-template-contact-php #content & {
+		width: 450px;
+	}
+}

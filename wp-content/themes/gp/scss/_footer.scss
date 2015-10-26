@@ -1,0 +1,63 @@
+.footer {
+	overflow: hidden;
+	display: block;
+	z-index: 7;
+
+	a:hover {
+		color: #000;
+	}
+
+	p {
+		float: left;
+		font: 12px arial;
+		color: #333;
+	}
+
+	ul {
+		float: right;
+		overflow: hidden;
+	}
+
+	li {
+		float: left;
+		width: 25px;
+		height: 25px;
+		margin: 0 5px;
+		padding: 5px;
+		background: #333;
+		border-radius: 50%;
+		position: relative;
+
+		&:hover {
+			background: #000;
+		}
+
+		a {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -10px 0 0 -12px;
+			display: block;
+			height: 20px;
+			width: 25px;
+			background: url(/wp-content/themes/gp/images/external.png) no-repeat 0 0;
+		}
+
+		.apple {
+			margin: -10px 0 0 -8px;
+			width: 17px;
+		}
+
+		.facebook {
+			margin: -10px 0 0 -4px;
+			width: 10px;
+			background-position: -29px 0;
+		}
+
+		.twitter {
+			margin: -10px 0 0 -6px;
+			width: 14px;
+			background-position: -84px 0;
+		}
+	}
+}

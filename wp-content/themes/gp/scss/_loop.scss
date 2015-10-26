@@ -1,0 +1,42 @@
+.post-narrow {
+	float: left;
+	width: 145px;
+	text-align: center;
+
+	.tape {
+		margin: 0 auto;
+	}
+
+	.author-link {
+		display: block;
+		margin-bottom: 10px;
+	}
+}
+
+.post-wide {
+	float: left;
+	width: 630px;
+	padding-left: 20px;
+
+	.entry-title,
+	.entry-title a {
+		font: 30px/34px 'typey', courier; color: #444;
+	}
+
+	.entry-title a:hover {
+		color: #000;
+	}
+
+	p,
+	strong {
+		font: 13px/22px helvetica, arial; color: #666;
+	}
+
+	strong {
+		font-weight: bold;
+	}
+
+	.type-gallery & p {
+		margin: 0 15px 20px;
+	}
+}

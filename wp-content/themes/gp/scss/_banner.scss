@@ -1,0 +1,38 @@
+.banner {
+	position: absolute;
+	z-index: 2;
+	left: 14px;
+	top: -$bannerHeight;
+	display: block;
+	width: $bannerWidth;
+	height: $bannerHeight;
+
+	.tilt-left {
+		position: absolute;
+		left: -30px;
+		z-index: 5;
+	}
+
+	.tilt-right {
+		position: absolute;
+		right: -30px;
+		z-index: 5;
+	}
+
+	img {
+		display: block;
+		position: absolute;
+		z-index: 3;
+		width: $bannerWidth;
+		height: $bannerHeight;
+	}
+
+	a {
+		position: absolute;
+		z-index: 4;
+		display: block;
+		width: $bannerWidth;
+		height: $bannerHeight;
+		background: url(/wp-content/themes/gp/images/headers/header-mask.png) no-repeat;
+	}
+}

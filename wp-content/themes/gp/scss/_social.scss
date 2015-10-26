@@ -1,0 +1,48 @@
+/* Social widgets, etc, this stuff is loaded in the footer */
+#social-wrapper {
+	position: absolute;
+	top: -( $bannerHeight + $socialHeight ) + 22px;
+	left: -15px;
+	padding: 2px 10px 20px 10px;
+	width: 900px;
+	height: $socialHeight;
+	z-index: 1;
+
+	.lyrics {
+		position: absolute;
+		top: 75px;
+		left: 20px;
+		z-index: 0;
+		width: 750px;
+		display: block;
+	}
+
+	.tape {
+		position: absolute;
+		top: 0;
+		z-index: 0;
+	}
+
+	form .tape {
+		position: static;
+	}
+
+	.tilt-left,
+	.tilt-bottom_left {
+		left: -30px;
+	}
+
+	.tilt-bottom_left {
+		top: 152px;
+	}
+
+	.tilt-right {
+		right: -30px;
+	}
+}
+
+#facebook_widget {
+	position: relative;
+	z-index: 999;
+	padding: 5px 10px;
+}

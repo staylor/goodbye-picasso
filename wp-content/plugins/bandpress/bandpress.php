@@ -154,12 +154,12 @@ function band_gallery_preview_strip($number = 5) {
 		'numberposts' 	 => $number
 	));
 
-	$gallery = '<div class="band-gallery-strip-wrapper">';
+	$gallery = '<div class="gallery-strip-wrapper">';
 
 	if ($attachments) {
 		$gallery .= '<span class="tape tilt-left"></span>';
 		$gallery .= '<span class="tape tilt-right"></span>';
-		$gallery .= '<ul class="band-gallery-strip">';
+		$gallery .= '<ul class="gallery-strip">';
 		foreach ($attachments as $att) {
 			$src = wp_get_attachment_image_src($att->ID, 'thumbnail', true);
 			$gallery .= '<li><img src="' . $src[0] . '"/></li>';
@@ -200,7 +200,7 @@ function band_gallery_images($p = -1) {
 
 	if ( $q->have_posts() ):
 		band_nav_by_type( array( 'type' => 'photos', 'use_qs' => true, 'q' => $q ) );?>
-		<ul class="band-gallery">
+		<ul class="gallery">
 		<?php while ( $q->have_posts() ): $q->the_post(); ?>
 		<li>
 			<?php

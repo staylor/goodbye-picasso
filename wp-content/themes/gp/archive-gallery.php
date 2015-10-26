@@ -2,13 +2,11 @@
 
 get_header();
 ?>
-<div class="band-galleries">
-	<?php
+<div class="galleries">
+<?php
+gp_header( 'Photos' );
 
-	gp_header( 'Photos' );
-
-	gp_lyrics( 'I\'ve been drinking me straight whiskey, three bottles of Ten High With a barely legal peddler of pills that make me right' );
-
+gp_lyrics( 'I\'ve been drinking me straight whiskey, three bottles of Ten High With a barely legal peddler of pills that make me right' );
 ?>
 	<div id="loop-content">
 	<?php if ( have_posts() ): ?>

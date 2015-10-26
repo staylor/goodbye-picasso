@@ -1,0 +1,22 @@
+.tape {
+	display: block;
+	width: 107px;
+	padding: 0 15px 0 9px;
+	height: 40px;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	background: url(/wp-content/themes/gp/images/tape_131x40.png) no-repeat;
+	font: 22px/40px 'typey', courier;
+	text-overflow: ellipsis;
+}
+
+.medium-tape {
+	width: 100px;
+	height: 31px;
+	background-image: url(/wp-content/themes/gp/images/tape_100x31.png);
+	text-transform: uppercase;
+	font: normal 13px/30px 'typey', courier;
+	display: block;
+	padding: 0;
+}

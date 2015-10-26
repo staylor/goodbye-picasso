@@ -47,7 +47,7 @@
 
 		wrapper = $('#loop-content');
 
-		$( document.body ).on( 'click', '.band-gallery-strip-wrapper', goToGallery );
+		$( document.body ).on( 'click', '.gallery-strip-wrapper', goToGallery );
 
 		if ( ! $('body').hasClass( 'page-template-media-php' ) ) {
 			lyrics = $('span.lyrics');

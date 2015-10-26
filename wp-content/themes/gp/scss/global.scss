@@ -2,333 +2,17 @@ $socialHeight: 157px;
 $bannerWidth: 920px;
 $bannerHeight: 420px;
 
-.clear {
-	clear: both;
-}
-
-body {
-	font: 16px/22px 'typey', courier;
-	color: #252525;
-}
-
-a {
-	text-decoration: none;
-	color: #666;
-
-	&:hover {
-		color: #000;
-	}
-
-	p & {
-		text-decoration: underline;
-	}
-}
-
-em {
-	text-transform: uppercase;
-	color: #000;
-}
-
-.wrapper {
-	margin: 0 auto;
-	padding-bottom: 40px;
-	width: 948px;
-	position: relative;
-
-	strong {
-		font: 18px arial;
-	}
-
-	h1 {
-		font-size: 56px;
-		line-height: 56px;
-		margin: 0 auto;
-		display: block;
-		width: 100%;
-		text-align: center;
-	}
-
-	h2 {
-		font-size: 32px;
-		margin: 0 0 20px;
-	}
-
-	p {
-		margin: 10px 0;
-		line-height: 22px;
-	}
-
-	.wp-caption-text {
-		margin: 5px 0 0 !important;
-		font: 14px/18px 'typey', courier !important;
-		text-transform: uppercase;
-		color: #000 !important;
-	}
-}
-
-#content {
-	position: relative;
-	margin: 24px 0;
-
-	h1 {
-		line-height: 42px;
-	}
-
-	p {
-		margin-bottom: 10px;
-	}
-}
-
-.banner {
-	position: absolute;
-	z-index: 2;
-	left: 14px;
-	top: -$bannerHeight;
-	display: block;
-	width: $bannerWidth;
-	height: $bannerHeight;
-
-	.tilt-left {
-		position: absolute;
-		left: -30px;
-		z-index: 5;
-	}
-
-	.tilt-right {
-		position: absolute;
-		right: -30px;
-		z-index: 5;
-	}
-
-	img {
-		display: block;
-		position: absolute;
-		z-index: 3;
-		width: $bannerWidth;
-		height: $bannerHeight;
-	}
-
-	a {
-		position: absolute;
-		z-index: 4;
-		display: block;
-		width: $bannerWidth;
-		height: $bannerHeight;
-		background: url(/wp-content/themes/gp/images/headers/header-mask.png) no-repeat;
-	}
-}
-
-/* Social widgets, etc, this stuff is loaded in the footer */
-#social-wrapper {
-	position: absolute;
-	top: -( $bannerHeight + $socialHeight ) + 22px;
-	left: -15px;
-	padding: 2px 10px 20px 10px;
-	width: 900px;
-	height: $socialHeight;
-	z-index: 1;
-
-	.lyrics {
-		position: absolute;
-		top: 75px;
-		left: 20px;
-		z-index: 0;
-		width: 750px;
-		display: block;
-	}
-
-	.tape {
-		position: absolute;
-		top: 0;
-		z-index: 0;
-	}
-
-	form .tape {
-		position: static;
-	}
-
-	.tilt-left,
-	.tilt-bottom_left {
-		left: -30px;
-	}
-
-	.tilt-bottom_left {
-		top: 152px;
-	}
-
-	.tilt-right {
-		right: -30px;
-	}
-}
-
-#facebook_widget {
-	position: relative;
-	z-index: 999;
-	padding: 5px 10px;
-}
-
-.stack-item {
-	padding: 0;
-	z-index: 6;
-	padding: 10px;
-	width: 928px;
-	min-height: 320px;
-	margin-top: ( $socialHeight + $bannerHeight );
-	display: block;
-	position: relative;
-}
-
-.main {
-	margin: 0 20px;
-}
-
-.main-nav {
-	margin: 10px auto;
-	overflow: hidden;
-	display: block;
-
-	li {
-		::before {
-			content: '[';
-		}
-
-		::after {
-			content: ']';
-		}
-
-		float: left;
-		width: 131px;
-		height: 40px;
-		text-align: center;
-		color: #666;
-		background: #fff url(/wp-content/themes/gp/images/tape_131x40.png) no-repeat;
-		font: 22px/40px 'typey', courier;
-	}
-
-	a {
-		padding: 0 3px;
-
-		&:hover {
-			text-decoration: underline
-		}
-	}
-
-	.on {
-		font-weight: bold;
-		text-decoration: underline;
-		padding: 0 5px;
-		color: #000;
-	}
-}
-
-
-.tape {
-	display: block;
-	width: 107px;
-	padding: 0 15px 0 9px;
-	height: 40px;
-	text-align: center;
-	white-space: nowrap;
-	overflow: hidden;
-	background: url(/wp-content/themes/gp/images/tape_131x40.png) no-repeat;
-	font: 22px/40px 'typey', courier;
-	text-overflow: ellipsis;
-}
-
-.medium-tape {
-	width: 100px;
-	height: 31px;
-	background-image: url(/wp-content/themes/gp/images/tape_100x31.png);
-	text-transform: uppercase;
-	font: normal 13px/30px 'typey', courier;
-	display: block;
-	padding: 0;
-}
-
-.main_image {
-	padding: 10px 10px 25px 10px;
-	margin: 10px 0;
-	background: #eee;
-	border: 1px solid #fff;
-	box-shadow: 0px 2px 15px #333;
-	transform: rotate(-2.5deg);
-}
-
-.footer {
-	overflow: hidden;
-	display: block;
-	z-index: 7;
-
-	a:hover {
-		color: #000;
-	}
-
-	p {
-		float: left;
-		font: 12px arial;
-		color: #333;
-	}
-
-	ul {
-		float: right;
-		overflow: hidden;
-	}
-
-	li {
-		float: left;
-		width: 25px;
-		height: 25px;
-		margin: 0 5px;
-		padding: 5px;
-		background: #333;
-		border-radius: 50%;
-		position: relative;
-
-		&:hover {
-			background: #000;
-		}
-
-		a {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin: -10px 0 0 -12px;
-			display: block;
-			height: 20px;
-			width: 25px;
-			background: url(/wp-content/themes/gp/images/external.png) no-repeat 0 0;
-		}
-
-		.apple {
-			margin: -10px 0 0 -8px;
-			width: 17px;
-		}
-
-		.facebook {
-			margin: -10px 0 0 -4px;
-			width: 10px;
-			background-position: -29px 0;
-		}
-
-		.twitter {
-			margin: -10px 0 0 -6px;
-			width: 14px;
-			background-position: -84px 0;
-		}
-	}
-}
-
-.turn_right, .turn_left {
-	width: 50%;
-	margin: 20px 0;
-	padding: 20px;
-	box-shadow: 0px 2px 15px #333;
-	transform: rotate(1deg);
-}
-
-.turn_left {
-	transform: rotate(-1deg);
-}
+@import "base";
+@import "main-nav";
+@import "tape";
+@import "footer";
+@import "social";
+@import "navigation";
+@import "lyrics";
+@import "banner";
+@import "loop";
+@import "galleries";
+@import "single";
 
 .tilt-right,
 .tilt-bottom_left {
@@ -339,8 +23,6 @@ em {
 	transform: rotate(-20deg);
 }
 
-.setlist h2 {font: bold 20px helvetica, arial}
-
 /* 2010 overrides */
 .posts {
 	margin: 0;
@@ -350,85 +32,20 @@ em {
 	}
 }
 
-#nav-above {
-	margin: 40px 0;
+.wrapper .page-title {
+	font: bold 44px/52px helvetica;
+	margin-bottom: 20px;
 }
 
-#nav-below {
-	margin: 0 0 20px;
+.page-title span {
+	font: italic 48px/56px georgia;
 }
-
-.navigation {
-	font: 20px/24px 'typey', courier;
-
-	a:link,
-	a:visited {
-		color: #ff4b33;
-		text-decoration: none;
-	}
-}
-
-.wrapper .page-title {font: bold 44px/52px helvetica; margin-bottom: 20px}
-.page-title span {font: italic 48px/56px georgia}
 
 .hentry, .post {
 	position: relative;
 	overflow: hidden;
 	padding-bottom: 24px;
 	border-bottom: 1px solid #eee;
-}
-
-.single-post {
-
-	.post {
-		padding: 36px;
-		overflow: visible;
-	}
-
-	.hentry {
-		margin: 20px 0 0;
-	}
-
-	.tape {
-		font-size: 16px;
-	}
-
-	.tilt-left, .tilt-right {
-		position: absolute;
-		top: 0;
-	}
-
-	.tilt-left {
-		left: -30px;
-	}
-
-	.tilt-right {
-		right: -30px;
-		font-size: 28px;
-		text-transform: uppercase;
-	}
-
-	.entry-meta {
-		font: 22px/30px 'typey', courier;
-	}
-	.entry-meta,
-	 #content .entry-content {
-		padding-bottom: 10px;
-		margin-bottom: 20px;
-		border-bottom: 1px dashed #ccc;
-	}
-
-	#content .entry-content {
-
-		p, strong {
-			font: 13px/22px helvetica, arial;
-			color: #666;
-		}
-
-		strong {
-			font-weight: bold;
-		}
-	}
 }
 
 #content tr td {border: 0 none}
@@ -459,50 +76,6 @@ em {
 		color: #ff4b33;
 	}
 }
-
-.post-narrow {
-	float: left;
-	width: 145px;
-	text-align: center;
-
-	.tape {
-		margin: 0 auto;
-	}
-
-	.author-link {
-		display: block;
-		margin-bottom: 10px;
-	}
-}
-
-.post-wide {
-	float: left;
-	width: 630px;
-	padding-left: 20px;
-
-	.entry-title,
-	.entry-title a {
-		font: 30px/34px 'typey', courier; color: #444;
-	}
-
-	.entry-title a:hover {
-		color: #000;
-	}
-
-	p,
-	strong {
-		font: 13px/22px helvetica, arial; color: #666;
-	}
-
-	strong {
-		font-weight: bold;
-	}
-
-	.type-gallery & p {
-		margin: 0 15px 20px;
-	}
-}
-
 
 .alignleft,
 .alignright,
@@ -538,44 +111,6 @@ em {
 	}
 }
 
-.commentlist {
-	padding: 20px;
-
-	p {
-		font: 12px/16px helvetica, arial;
-	}
-
-	cite a {
-		font: normal 18px/24px 'typey', courier;
-	}
-
-	.reply {
-		margin: 10px 0;
-		font-size: 16px;
-	}
-
-	.avatar {
-		left: 5px;
-	}
-
-	li.comment {
-		margin-bottom: 5px;
-	}
-
-	.children {
-		margin: 0 0 10px 60px;
-
-		li {
-			background: #eee;
-			margin: 5px 0;
-			padding: 5px 0 5px 56px;
-			border-bottom: 1px solid #ddd;
-		}
-	}
-}
-
-.comment-meta {margin-bottom: 0 !important}
-
 #reply-title a {width: 100px; height: 31px; background-image: url(/wp-content/themes/gp/images/tape_100x31.png);
 	text-transform: uppercase; font: normal 14px/30px typey, courier; display: inline-block; padding: 0; text-align: center}
 
@@ -584,72 +119,6 @@ em {
 .page-template-contact-php #commentform {min-height: 100px}
 .page-template-contact-php .post {
 	margin: 20px 0;
-}
-
-/* lyrics */
-
-.lyrics {
-	display: block;
-	visibility: hidden;
-	font: 32px/36px 'Reenie Beanie';
-	color: #ddd;
-
-	span {
-		text-decoration: line-through;
-	}
-
-	.page-template-media-php & {
-		visibility: visible;
-	}
-	.home & {
-		display: block;
-		width: 825px;
-		height: 72px;
-	}
-
-	.page-template-shows-php #content &,
-	.page-template-media-php #content &,
-	.page-template-bio-php #content &,
-	.page-template-news-php #content &,
-	.page-template-blog-php #content &,
-	.page-template-contact-php #content & {
-		display: block;
-		width: 380px;
-		position: absolute;
-		top: 10px;
-		right: 120px;
-	}
-
-	.page-template-bio-php #content &,
-	.page-template-news-php #content & {
-		top: 10px;
-		width: 600px;
-		right: 40px
-	}
-
-	.page-template-photos-php #content & {
-		display: block;
-		width: 705px;
-		height: 72px;
-	}
-
-	.page-template-media-php #content & {
-		right: 0;
-		width: 275px;
-		font: 28px/32px 'Reenie Beanie';
-	}
-
-	.page-template-blog-php #content &,
-	.page-template-contact-php #content & {
-		right: 20px;
-		top: -5px;
-		width: 500px;
-		line-height: 32px;
-	}
-
-	.page-template-contact-php #content & {
-		width: 450px;
-	}
 }
 
 .page-template-media-php #content {
@@ -664,119 +133,6 @@ em {
 	font: 32px/36px 'Reenie Beanie';
 	margin-bottom: 30px;
 	color: #555;
-}
-
-/* AJAX requests */
-.band-galleries .loading,
-.type-gallery .loading,
-.home .loading {
-	background: url(/wp-content/themes/gp/images/loading-dots-white.gif) 50% 100px no-repeat;
-	height: 300px;
-}
-.band-galleries .loading .posts,
-.type-gallery .loading ul,
-.home .loading .posts {
-	visibility: hidden;
-}
-
-/* bandpress gallleries */
-.band-gallery {
-	overflow: hidden;
-
-	li {
-		float: left;
-		background: #fefefe;
-		border: 1px solid #eee;
-		padding: 5px;
-		margin: 10px;
-		position: relative;
-
-		img {
-			display: block;
-		}
-	}
-
-	.tape {
-		position: absolute;
-		top: -18px;
-		left: 18px;
-		font-size: 14px;
-	}
-}
-
-.band-gallery_p {margin-bottom: 0px !important}
-
-#content .band-galleries {
-
-	.entry-title,
-	.entry-title a {
-		font: 30px/34px 'typey', courier; color: #444;
-	}
-
-	.entry-title a:hover {
-		color: #000;
-	}
-
-	.posts .entry-content {
-		margin-top: 10px;
-	}
-
-	p {
-		margin: 0 80px 20px 20px;
-		font: 13px/18px helvetica, arial;
-		color: #666;
-	}
-}
-
-#content .type-gallery p {margin: 10px 0}
-.single #content .type-gallery p {margin: 10px 15px}
-
-/* Gallery Strip for lists of Galleries  */
-.band-gallery-strip-wrapper {
-	position: relative;
-	margin: 15px 15px 30px 15px;
-	width: 795px;
-	cursor: pointer;
-
-	.home & {
-		width: 645px;
-	}
-
-	.tape {
-		position: absolute;
-		top: 0;
-	}
-
-	.tilt-left {
-		left: -30px;
-	}
-
-	.tilt-right {
-		right: -30px;
-	}
-}
-
-.band-gallery-strip {
-	background: #fefefe;
-	border: 1px solid #eee;
-	padding: 10px;
-	overflow: hidden;
-	width: 775px;
-
-	.home & {
-		width: 620px
-	}
-
-	li {
-		float: left;
-		margin: 0 5px 0 0;
-
-		img {
-			display: block;
-			width: 150px;
-			height: 150px;
-		}
-	}
 }
 
 .wp-audio-shortcode {

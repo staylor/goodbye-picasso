@@ -1,0 +1,39 @@
+.main-nav {
+	margin: 10px auto;
+	overflow: hidden;
+	display: block;
+
+	li {
+		::before {
+			content: '[';
+		}
+
+		::after {
+			content: ']';
+		}
+
+		float: left;
+		width: 131px;
+		height: 40px;
+		text-align: center;
+		color: #666;
+		background: #fff url(/wp-content/themes/gp/images/tape_131x40.png) no-repeat;
+		font: 22px/40px 'typey', courier;
+		margin: 0 10px;
+	}
+
+	a {
+		padding: 0 3px;
+
+		&:hover {
+			text-decoration: underline
+		}
+	}
+
+	.on {
+		font-weight: bold;
+		text-decoration: underline;
+		padding: 0 5px;
+		color: #000;
+	}
+}

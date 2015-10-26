@@ -1,0 +1,53 @@
+.single-post {
+	.post {
+		padding: 36px;
+		overflow: visible;
+	}
+
+	.tape {
+		font-size: 16px;
+		float: right;
+	}
+
+	.tilt-left, .tilt-right {
+		position: absolute;
+		top: 0;
+	}
+
+	.tilt-left {
+		left: -30px;
+	}
+
+	.tilt-right {
+		right: -30px;
+		font-size: 28px;
+		text-transform: uppercase;
+	}
+
+	.entry-meta {
+		font: 22px/30px 'typey', courier;
+		margin: 14px 0;
+	}
+
+	.entry-meta,
+	 #content .entry-content {
+		padding-bottom: 10px;
+		margin-bottom: 20px;
+		border-bottom: 1px dashed #ccc;
+	}
+
+	#content .entry-content {
+
+		p {
+			margin-bottom: 24px;
+		}
+
+		p, strong {
+			font: 14px/22px helvetica, arial;
+		}
+
+		strong {
+			font-weight: bold;
+		}
+	}
+}

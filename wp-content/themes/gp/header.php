@@ -31,7 +31,7 @@ wp_head();
 		<img src="<?php echo get_stylesheet_directory_uri() ?>/images/spacer.gif"/>
 	</div>
 	<div id="fb-root"></div>
-	<div class="stack-item stack-top">
+	<div class="content-wrapper">
 		<ul class="main-nav">
 			<li><a <?php echo _on( is_page( 'shows' ) ) ?>href="<?php echo home_url( '/shows/' ) ?>">SHOWS</a></li>
 			<li><a <?php echo _on( is_page( 'media' ) || in_array( get_post_type(), array('song', 'album', 'video') ) ) ?>href="<?php echo home_url( '/media/' ) ?>">MEDIA</a></li>
@@ -40,4 +40,4 @@ wp_head();
 			<li><a <?php echo _on( is_post_type_archive( 'gallery' ) ) ?>href="<?php echo home_url( '/gallery/' ) ?>">PHOTOS</a></li>
 			<li><a <?php echo _on( is_page( 'contact' ) ) ?>href="<?php echo home_url( '/contact/' ) ?>">CONTACT</a></li>
 		</ul>
-		<div class="main" id="content">
+		<div id="content">

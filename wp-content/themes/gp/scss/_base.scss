@@ -1,0 +1,87 @@
+.clear {
+	clear: both;
+}
+
+body {
+	font: 16px/22px 'typey', courier;
+	color: #252525;
+}
+
+a {
+	text-decoration: none;
+	color: #666;
+
+	&:hover {
+		color: #000;
+	}
+
+	p & {
+		text-decoration: underline;
+	}
+}
+
+em {
+	text-transform: uppercase;
+	color: #000;
+}
+
+.wrapper {
+	margin: 0 auto;
+	padding-bottom: 40px;
+	width: 948px;
+	position: relative;
+
+	strong {
+		font: 18px arial;
+	}
+
+	h1 {
+		font-size: 56px;
+		line-height: 56px;
+		margin: 0 auto;
+		display: block;
+		width: 100%;
+		text-align: center;
+	}
+
+	h2 {
+		font-size: 32px;
+		margin: 0 0 20px;
+	}
+
+	p {
+		margin: 10px 0;
+		line-height: 22px;
+	}
+
+	.wp-caption-text {
+		margin: 5px 0 0 !important;
+		font: 14px/18px 'typey', courier !important;
+		text-transform: uppercase;
+		color: #000 !important;
+	}
+}
+
+.content-wrapper {
+	padding: 0;
+	z-index: 6;
+	padding: 10px;
+	width: 928px;
+	min-height: 320px;
+	margin-top: ( $socialHeight + $bannerHeight );
+	display: block;
+	position: relative;
+}
+
+#content {
+	position: relative;
+	margin: 24px 0;
+
+	h1 {
+		line-height: 42px;
+	}
+
+	p {
+		margin-bottom: 10px;
+	}
+}

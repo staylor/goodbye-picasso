@@ -28,7 +28,7 @@ em {
 .wrapper {
   margin: 0 auto;
   padding-bottom: 40px;
-  width: 1200px;
+  width: 1100px;
   max-width: 100%;
   position: relative;
 }
@@ -304,7 +304,7 @@ em {
 
 .post-wide {
   float: left;
-  width: 850px;
+  width: 700px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -326,7 +326,6 @@ em {
 .post-wide p {
   font: 16px/24px sans-serif;
   color: #444;
-  max-width: 700px;
 }
 
 .post-wide strong {

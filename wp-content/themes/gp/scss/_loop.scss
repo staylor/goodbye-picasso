@@ -32,7 +32,7 @@
 
 .post-wide {
 	float: left;
-	width: 850px;
+	width: 700px;
 	box-sizing: border-box;
 
 	@include respond-to(phone) {
@@ -57,7 +57,6 @@
 	p {
 		font: 16px/24px sans-serif;
 		color: #444;
-		max-width: 700px;
 	}
 
 	strong {

@@ -69,7 +69,7 @@ em {
   box-sizing: border-box;
   padding: 0;
   z-index: 6;
-  padding: 10px;
+  padding: 0 10px;
   display: block;
   position: relative;
 }
@@ -98,7 +98,7 @@ em {
 }
 
 .main-nav {
-  margin: 20px auto 0;
+  margin: 24px auto;
   overflow: hidden;
   display: block;
   max-width: 900px;
@@ -177,7 +177,7 @@ em {
 }
 
 #nav-above {
-  margin: 20px 0 40px;
+  margin: 0 0 48px;
 }
 
 #nav-below {
@@ -186,6 +186,9 @@ em {
 
 .navigation {
   font: 20px/24px 'typey', courier;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
 }
 
 .single .navigation {
@@ -196,6 +199,10 @@ em {
 .navigation a:visited {
   color: #ff4b33;
   text-decoration: none;
+}
+
+.page-template-shows-php .nav-previous {
+  width: 100%;
 }
 
 /* lyrics */
@@ -209,10 +216,9 @@ em {
   text-decoration: line-through;
 }
 
-.page-template-photos-php #content .lyrics {
+.post-type-archive-gallery #content .lyrics {
   display: block;
-  width: 705px;
-  height: 72px;
+  margin: 20px 0;
 }
 
 .page-template-shows-php #content .lyrics {
@@ -239,8 +245,8 @@ em {
 
 .page-template-contact-php #content .lyrics {
   position: absolute;
-  width: 450px;
-  top: -5px;
+  width: 400px;
+  top: 0;
   right: 20px;
   line-height: 32px;
 }
@@ -285,6 +291,32 @@ em {
   z-index: 4;
   display: block;
   background: url(/wp-content/themes/gp/images/headers/header-mask.png) no-repeat 95% 95%;
+}
+
+.hentry, .post {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eee;
+}
+
+.hentry iframe, .post iframe {
+  max-width: 100%;
+}
+
+.hentry:last-of-type, .post:last-of-type {
+  margin: 0;
+  border-bottom: 0 none;
+}
+
+.post .meta {
+  display: block;
+  margin-top: 10px;
+}
+
+.post-date {
+  display: block;
+  color: #000;
 }
 
 .post-narrow {
@@ -491,6 +523,14 @@ em {
   min-height: 100px;
 }
 
+.gigpress-menu-container {
+  margin: 12px 0;
+}
+
+#content .gigpress-empty {
+  margin: 48px 0;
+}
+
 .tilt-right,
 .tilt-bottom_left {
   -webkit-transform: rotate(20deg);
@@ -504,15 +544,6 @@ em {
   transform: rotate(-20deg);
 }
 
-/* 2010 overrides */
-.posts {
-  margin: 0;
-}
-
-.archive .posts {
-  margin-top: 24px;
-}
-
 .wrapper .page-title {
   font: bold 44px/52px helvetica;
   margin-bottom: 20px;
@@ -522,33 +553,12 @@ em {
   font: italic 48px/56px georgia;
 }
 
-.hentry, .post {
-  position: relative;
-  overflow: hidden;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #eee;
-}
-
-.hentry iframe, .post iframe {
-  max-width: 100%;
-}
-
 #content tr td {
   border: 0 none;
 }
 
 #content .vevent {
   border-bottom: 1px solid #e7e7e7;
-}
-
-.post .meta {
-  display: block;
-  margin-top: 10px;
-}
-
-.post-date {
-  display: block;
-  color: #000;
 }
 
 .alignleft,
@@ -596,7 +606,7 @@ em {
   min-height: 440px;
 }
 
-.page-template-media-php #content .posts {
+.page-template-media-php #content .discography-list {
   margin-bottom: 24px;
 }
 
@@ -643,8 +653,16 @@ audio {
     padding: 0 20px;
   }
 
+  #content td {
+    padding: 6px 12px 6px 0;
+  }
+
+  #content th {
+    padding: 6px;
+  }
+
   .main-nav {
-    margin: 10px auto;
+    margin: 10px auto 0;
   }
 
   .main-nav li {
@@ -661,7 +679,7 @@ audio {
   }
 
   #nav-above {
-    margin: 0;
+    margin: 0 0 20px;
   }
 
   #nav-below {
@@ -677,6 +695,26 @@ audio {
     padding: 0 20px;
   }
 
+  .post-type-archive-gallery #content .lyrics {
+    display: none;
+  }
+
+  .page-template-shows-php #content .lyrics {
+    display: none;
+  }
+
+  .page-template-media-php #content .lyrics {
+    display: none;
+  }
+
+  .page-template-bio-php #content .lyrics {
+    display: none;
+  }
+
+  .page-template-contact-php #content .lyrics {
+    display: none;
+  }
+
   .banner {
     height: auto;
   }
@@ -688,6 +726,10 @@ audio {
   .banner a {
     -webkit-background-size: contain;
     background-size: contain;
+  }
+
+  .hentry, .post {
+    margin: 0 0 24px;
   }
 
   .post-narrow {
@@ -717,8 +759,36 @@ audio {
     margin: 10px auto;
   }
 
-  .hentry, .post {
-    margin: 0 0 24px;
+  .vevent .tape {
+    display: inline;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    background: 0 none;
+  }
+
+  .vevent abbr {
+    font: 13px/18px typey, courier;
+  }
+
+  .vevent .gigpress-row .location,
+  .vevent .gigpress-row .summary,
+  .vevent .location a {
+    font-size: 13px;
+  }
+
+  #content .vevent .gigpress-city {
+    padding-right: 24px;
+  }
+
+  .alignleft, img.alignleft {
+    float: none;
+    margin: 12px auto 24px;
+  }
+
+  .alignright, img.alignright {
+    float: none;
+    margin: 12px auto 24px;
   }
 }
 

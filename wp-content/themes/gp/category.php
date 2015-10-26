@@ -16,13 +16,11 @@ get_header();
 	);
 ?></h1>
 <?php
-	$category_description = category_description();
-	if ( ! empty( $category_description ) ) {
-		echo '<div class="archive-meta">' . $category_description . '</div>';
-	}
-?>
-	<div id="loop-content">
-	<?php get_template_part( 'loop', 'category' ); ?>
-	</div>
-<?php
+$category_description = category_description();
+if ( ! empty( $category_description ) ) {
+	echo '<div class="archive-meta">' . $category_description . '</div>';
+}
+
+get_template_part( 'loop', 'category' );
+
 get_footer();

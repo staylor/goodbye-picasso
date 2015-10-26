@@ -6,9 +6,8 @@ get_header(); ?>
 	printf( 'Tag Archives: %s', '<span>' . single_tag_title( '', false ) . '</span>' );
 ?></h1>
 
-<div id="loop-content">
-	<?php get_template_part( 'loop', 'tag' ); ?>
-</div>
 <?php
-get_footer();
 
+get_template_part( 'loop', 'tag' );
+
+get_footer();

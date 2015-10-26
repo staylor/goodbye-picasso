@@ -19,10 +19,11 @@ band_go_back( get_post_type_archive_link( 'gallery' ), 'Back to all Photos' );
 <div <?php post_class(); ?>>
 	<h1 class="entry-title"><?php the_title(); ?></h1>
 	<div class="entry-content">
-	<?php the_content(); ?>
-	<div id="loop-content">
-	<?php band_gallery_images( 12 ); ?>
-	</div>
+	<?php
+		the_content();
+	
+		band_gallery_images( 12 );
+	?>
 </div>
 <?php
 	$wp_query = $temp;

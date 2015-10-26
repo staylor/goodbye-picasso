@@ -13,6 +13,7 @@
 @import "galleries";
 @import "single";
 @import "comments";
+@import "shows";
 
 .tilt-right,
 .tilt-bottom_left {
@@ -21,15 +22,6 @@
 
 .tilt-left{
 	transform: rotate(-20deg);
-}
-
-/* 2010 overrides */
-.posts {
-	margin: 0;
-
-	.archive & {
-		margin-top: 24px;
-	}
 }
 
 .wrapper .page-title {
@@ -41,33 +33,8 @@
 	font: italic 48px/56px georgia;
 }
 
-.hentry, .post {
-	position: relative;
-	overflow: hidden;
-	padding-bottom: 24px;
-	border-bottom: 1px solid #eee;
-
-	@include respond-to(phone) {
-		margin: 0 0 24px;
-	}
-
-	iframe {
-		max-width: 100%;
-	}
-}
-
 #content tr td {border: 0 none}
 #content .vevent {border-bottom: 1px solid #e7e7e7}
-
-.post .meta {
-	display: block;
-	margin-top: 10px;
-}
-
-.post-date {
-	display: block;
-	color: #000;
-}
 
 .alignleft,
 .alignright,
@@ -79,11 +46,22 @@
 
 .alignleft, img.alignleft {
 	float: left;
-	margin: 6px 36px 6px 0
+	margin: 6px 36px 6px 0;
+
+	@include respond-to(phone) {
+		float: none;
+		margin: 12px auto 24px;
+	}
 }
+
 .alignright, img.alignright {
 	float: right;
 	margin: 6px 0 6px 36px;
+
+	@include respond-to(phone) {
+		float: none;
+		margin: 12px auto 24px;
+	}
 }
 
 .aligncenter, img.aligncenter {
@@ -112,7 +90,7 @@
 .page-template-media-php #content {
 	min-height: 440px;
 
-	.posts {
+	.discography-list {
 		margin-bottom: 24px;
 	}
 }

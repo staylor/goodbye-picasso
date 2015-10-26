@@ -14,16 +14,23 @@
 		text-decoration: line-through;
 	}
 
-	.page-template-photos-php #content & {
+	.post-type-archive-gallery #content & {
 		display: block;
-		width: 705px;
-		height: 72px;
+		margin: 20px 0;
+
+		@include respond-to(phone) {
+			display: none;
+		}
 	}
 
 	.page-template-shows-php #content & {
 		position: absolute;
 		top: 10px;
 		left: 200px;
+
+		@include respond-to(phone) {
+			display: none;
+		}
 	}
 
 	.page-template-media-php #content & {
@@ -33,6 +40,10 @@
 		top: 10px;
 		right: 0;
 		font: 28px/32px 'Reenie Beanie';
+
+		@include respond-to(phone) {
+			display: none;
+		}
 	}
 
 	.page-template-bio-php #content & {
@@ -40,13 +51,21 @@
 		width: 600px;
 		top: 10px;
 		right: 40px;
+
+		@include respond-to(phone) {
+			display: none;
+		}
 	}
 
 	.page-template-contact-php #content & {
 		position: absolute;
-		width: 450px;
-		top: -5px;
+		width: 400px;
+		top: 0;
 		right: 20px;
 		line-height: 32px;
+
+		@include respond-to(phone) {
+			display: none;
+		}
 	}
 }

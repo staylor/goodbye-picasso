@@ -1,12 +1,13 @@
-<div class="posts">
 <?php if ( ! have_posts() ) : ?>
-	<div id="post-0" class="post error404 not-found">
-		<h1 class="entry-title">Not Found</h1>
-		<div class="entry-content">
-			<p>Apologies, but no results were found for the requested Archive. Perhaps searching will help find a related post.</p>
-			<?php get_search_form(); ?>
-		</div><!-- .entry-content -->
-	</div><!-- #post-0 -->
+
+<div id="post-0" class="post error404 not-found">
+	<h1 class="entry-title">Not Found</h1>
+	<div class="entry-content">
+		<p>Apologies, but no results were found for the requested Archive. Perhaps searching will help find a related post.</p>
+		<?php get_search_form(); ?>
+	</div><!-- .entry-content -->
+</div><!-- #post-0 -->
+
 <?php endif; ?>
 
 <?php
@@ -41,5 +42,4 @@ while ( have_posts() ) : the_post(); ?>
 	</div>
 <?php endwhile;
 
-band_nav_by_type( array( 'where' => 'below' ) ); ?>
-</div>
+band_nav_by_type( array( 'where' => 'below' ) );

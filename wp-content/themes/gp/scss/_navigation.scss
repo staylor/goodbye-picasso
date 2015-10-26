@@ -1,8 +1,8 @@
 #nav-above {
-	margin: 20px 0 40px;
+	margin: 0 0 48px;
 
 	@include respond-to(phone) {
-		margin: 0;
+		margin: 0 0 20px;
 	}
 }
 
@@ -16,6 +16,9 @@
 
 .navigation {
 	font: 20px/24px 'typey', courier;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	padding: 20px 0;
 
 	.single & {
 		margin: 0 0 20px;
@@ -33,4 +36,8 @@
 		color: #ff4b33;
 		text-decoration: none;
 	}
+}
+
+.page-template-shows-php .nav-previous {
+	width: 100%;
 }

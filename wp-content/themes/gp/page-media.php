@@ -7,7 +7,7 @@ get_header();
 gp_lyrics( 'I am watching silhouettes<br/>I am talking with nothing but my ill intent to know<br/>How far you want to go<br/><br/>You are holding cheap champagne<br/>You are toasting every single face and name, and oh...<br/>Here\'s one for the show<br/><br/>You look so beautiful<br/><span> I\'m </span> You\'re losing your control' );
 
 if ( ! empty( $albums ) ): ?>
-<div class="posts">
+<div class="discography-list">
 	<?php
 
 	gp_header( 'Discography' , array( 'id' => 'discography' ) );
@@ -32,7 +32,7 @@ $q = new WP_Query( array(
 ) );
 
 if ( $q->have_posts() ): ?>
-<div class="posts">
+<div class="video-list">
 	<?php gp_header( 'Video', array('id' => 'videos')) ?>
 	<div class="entry-content">
 		<?php while ( $q->have_posts() ): $q->the_post(); ?>

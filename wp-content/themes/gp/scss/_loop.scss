@@ -1,3 +1,33 @@
+.hentry, .post {
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 24px;
+	border-bottom: 1px solid #eee;
+
+	@include respond-to(phone) {
+		margin: 0 0 24px;
+	}
+
+	iframe {
+		max-width: 100%;
+	}
+
+	&:last-of-type {
+		margin: 0;
+		border-bottom: 0 none;
+	}
+}
+
+.post .meta {
+	display: block;
+	margin-top: 10px;
+}
+
+.post-date {
+	display: block;
+	color: #000;
+}
+
 .post-narrow {
 	float: left;
 	width: 300px;

@@ -1,0 +1,34 @@
+.vevent {
+
+	@include respond-to(phone) {
+		.tape {
+			display: inline;
+			width: auto;
+			padding: 0;
+			margin: 0;
+			background: 0 none;
+		}
+
+		abbr {
+			font: 13px/18px typey, courier;
+		}
+
+		.gigpress-row .location,
+		.gigpress-row .summary,
+		.location a {
+			font-size: 13px;
+		}
+
+		#content & .gigpress-city {
+			padding-right: 24px;
+		}
+	}
+}
+
+.gigpress-menu-container {
+	margin: 12px 0;
+}
+
+#content .gigpress-empty {
+	margin: 48px 0;
+}

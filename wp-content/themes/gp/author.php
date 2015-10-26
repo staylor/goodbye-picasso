@@ -23,9 +23,7 @@ get_header(); ?>
 <?php
 	rewind_posts();
 endif;
-?>
-	<div id="loop-content">
-	<?php get_template_part( 'loop', 'author' );  ?>
-	</div>
-<?php
+
+get_template_part( 'loop', 'author' );
+
 get_footer();

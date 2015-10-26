@@ -3,20 +3,19 @@
 (function ($) {
 	"use strict";
 
-	var wrapper,
-		bannerItems = [
-			'header-1.jpg',
-			'header-2.jpg',
-			'header-3.jpg',
-			'header-4.jpg',
-			'header-5.jpg',
-			'header-6.jpg',
-			'header-7.jpg',
-			'header-8.jpg',
-			'header-9.jpg',
-			'header-10.jpg',
-			'header-11.jpg'
-		];
+	var bannerItems = [
+		'header-1.jpg',
+		'header-2.jpg',
+		'header-3.jpg',
+		'header-4.jpg',
+		'header-5.jpg',
+		'header-6.jpg',
+		'header-7.jpg',
+		'header-8.jpg',
+		'header-9.jpg',
+		'header-10.jpg',
+		'header-11.jpg'
+	];
 
 	function getBannerIndex() {
 		return bannerItems[Math.floor(Math.random() * bannerItems.length)];
@@ -31,8 +30,6 @@
 		$('.banner').find('img').attr({
 			src: ['/wp-content/themes/gp/images/headers/latest/', getBannerIndex()].join('')
 		}).parent().find( 'a' ).addClass( 'banner-loaded' );
-
-		wrapper = $('#loop-content');
 
 		$( document.body ).on( 'click', '.gallery-strip-wrapper', goToGallery );
 

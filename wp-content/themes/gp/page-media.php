@@ -25,13 +25,17 @@ if ( ! empty( $albums ) ): ?>
 <?php
 endif;
 
-$posts = null; band_get_posts_by_type( array( 'post_type' => 'video' ) );
+$q = new WP_Query( array(
+	'order_by' => 'menu_order',
+	'post_type' => 'video',
+	'posts_per_page' => -1,
+) );
 
-if ( have_posts() ): ?>
+if ( $q->have_posts() ): ?>
 <div class="posts">
 	<?php gp_header( 'Video', array('id' => 'videos')) ?>
 	<div class="entry-content">
-		<?php while ( have_posts() ): the_post(); ?>
+		<?php while ( $q->have_posts() ): $q->the_post(); ?>
 		<h3>
 			<a title="<?php	the_title_attribute() ?>" href="<?php the_permalink() ?>"><?php the_title() ?></a>
 		<h3>

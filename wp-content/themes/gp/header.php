@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" class="no-js">
+<html lang="en-US">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
@@ -28,18 +28,16 @@ wp_head();
 		<span class="tape tilt-left"></span>
 		<span class="tape tilt-right"></span>
 		<a href="<?php echo home_url() ?>"></a>
-		<img class="alignnone" src="<?php echo get_stylesheet_directory_uri() ?>/images/spacer.gif"/>
+		<img src="<?php echo get_stylesheet_directory_uri() ?>/images/spacer.gif"/>
 	</div>
 	<div id="fb-root"></div>
-	<div id="decoy"></div>
 	<div class="stack-item stack-top">
 		<ul class="main-nav">
 			<li><a <?php echo _on( is_page( 'shows' ) ) ?>href="<?php echo home_url( '/shows/' ) ?>">SHOWS</a></li>
 			<li><a <?php echo _on( is_page( 'media' ) || in_array( get_post_type(), array('song', 'album', 'video') ) ) ?>href="<?php echo home_url( '/media/' ) ?>">MEDIA</a></li>
 			<li><a <?php echo _on( is_page( 'bio' ) ) ?>href="<?php echo home_url( '/bio/' ) ?>">BIO</a></li>
-			<li><a <?php echo _on( is_category( 'news' ) ) ?>href="<?php echo home_url( '/category/news/' ) ?>">NEWS</a></li>
+			<li><a <?php echo _on( is_home() ) ?>href="<?php echo home_url( '/' ) ?>">NEWS</a></li>
 			<li><a <?php echo _on( is_post_type_archive( 'gallery' ) ) ?>href="<?php echo home_url( '/gallery/' ) ?>">PHOTOS</a></li>
-			<li><a <?php echo _on( is_category( 'Blog' ) ) ?>href="<?php echo home_url( '/category/blog/' ) ?>">BLOG</a></li>
 			<li><a <?php echo _on( is_page( 'contact' ) ) ?>href="<?php echo home_url( '/contact/' ) ?>">CONTACT</a></li>
 		</ul>
 		<div class="main" id="content">

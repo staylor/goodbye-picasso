@@ -24,6 +24,7 @@
 			letters = words.split('');
 			total = letters.length;
 
+			elem.css( 'height', elem.height() );
 			elem.text('').css('visibility', 'visible');
 
 			go = window.setInterval(function () {

@@ -62,16 +62,6 @@ function band_register_types() {
 
 define('PAGE_PARAM', 'to');
 
-function band_get_posts_by_type($overrides = null) {
-	query_posts(array_merge(array(
-		'order_by' => 'menu_order',
-		'order' => 'DESC',
-		'post_type' => 'post',
-		'posts_per_page' => -1,
-		'paged' => get_query_var('paged')
-	), is_null($overrides) ? array() : $overrides));
-}
-
 function band_nav_by_type( $args = array() ) {
 	global $wp_query;
 	$_q = $wp_query;
@@ -120,15 +110,6 @@ function band_nav_by_type( $args = array() ) {
 	endif;
 	$wp_query = $_q;
 }
-function init_photos() {
-	if ( is_single() && 'gallery' === get_post_type() ) {
-		wp_enqueue_style( 'gallery', '/wp-content/plugins/bandpress/css/jquery.fancybox.css' );
-		wp_enqueue_script('fancybox', '/wp-content/plugins/bandpress/js/jquery.fancybox.pack.js', array('jquery'));
-		wp_enqueue_script('bpr-gallery', '/wp-content/plugins/bandpress/js/bandpress-gallery.js', array('fancybox'));
-	}
-}
-add_action( 'template_redirect', 'init_photos' );
-
 
 function band_check_title($str) {
 	if ($str !== 'photo' && !strstr($str, 'photo-')) {

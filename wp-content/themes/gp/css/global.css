@@ -3,7 +3,6 @@
 }
 
 body {
-  background: url(/wp-content/themes/gp/images/background.jpg);
   font: 16px/22px 'typey', courier;
   color: #252525;
 }
@@ -65,6 +64,7 @@ em {
 
 #content {
   position: relative;
+  margin: 24px 0;
 }
 
 #content h1 {
@@ -75,23 +75,11 @@ em {
   margin-bottom: 10px;
 }
 
-.lyrics {
-  font: 32px/36px 'Reenie Beanie';
-  color: #ccc;
-}
-
-.lyrics span {
-  text-decoration: line-through;
-}
-
 .banner {
   position: absolute;
   z-index: 2;
-  left: -40px;
-  top: -335px;
-  -webkit-transform: rotate(-1deg);
-  -ms-transform: rotate(-1deg);
-  transform: rotate(-1deg);
+  left: 14px;
+  top: -420px;
   display: block;
   width: 920px;
   height: 420px;
@@ -113,31 +101,28 @@ em {
   display: block;
   position: absolute;
   z-index: 3;
-  width: 900px;
-  height: 400px;
+  width: 920px;
+  height: 420px;
 }
 
 .banner a {
   position: absolute;
   z-index: 4;
   display: block;
-  width: 900px;
-  height: 400px;
+  width: 920px;
+  height: 420px;
   background: url(/wp-content/themes/gp/images/headers/header-mask.png) no-repeat;
 }
 
 /* Social widgets, etc, this stuff is loaded in the footer */
 #social-wrapper {
   position: absolute;
-  top: -460px;
+  top: -555px;
   left: -15px;
   padding: 2px 10px 20px 10px;
   width: 900px;
   height: 157px;
-  background: url(/wp-content/themes/gp/images/paper.jpg);
   z-index: 1;
-  -webkit-box-shadow: 0px 2px 15px #333;
-  box-shadow: 0px 2px 15px #333;
 }
 
 #social-wrapper .lyrics {
@@ -178,27 +163,13 @@ em {
   padding: 5px 10px;
 }
 
-/* template */
-#decoy {
-  width: 948px;
-  padding: 0;
-  position: absolute;
-  height: 400px;
-  display: none;
-  z-index: 8;
-}
-
 .stack-item {
   padding: 0;
-  min-height: 400px;
-  background: #f2f1f3 url(/wp-content/themes/gp/images/paper.jpg);
-  -webkit-box-shadow: 0px 2px 15px #333;
-  box-shadow: 0px 2px 15px #333;
   z-index: 6;
-  padding: 10px 10px 40px;
+  padding: 10px;
   width: 928px;
   min-height: 320px;
-  margin-top: 470px;
+  margin-top: 577px;
   display: block;
   position: relative;
 }
@@ -219,7 +190,7 @@ em {
   height: 40px;
   text-align: center;
   color: #666;
-  background: url(/wp-content/themes/gp/images/tape_131x40.png) no-repeat;
+  background: #fff url(/wp-content/themes/gp/images/tape_131x40.png) no-repeat;
   font: 22px/40px 'typey', courier;
 }
 
@@ -288,27 +259,41 @@ em {
 }
 
 .footer a:hover {
-  color: #fff;
+  color: #000;
 }
 
 .footer p {
   float: left;
   font: 12px arial;
-  color: #fff;
+  color: #333;
 }
 
 .footer ul {
   float: right;
   overflow: hidden;
-  margin: 10px 0;
 }
 
 .footer li {
   float: left;
-  margin-left: 10px;
+  width: 25px;
+  height: 25px;
+  margin: 0 5px;
+  padding: 5px;
+  background: #333;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  position: relative;
+}
+
+.footer li:hover {
+  background: #000;
 }
 
 .footer li a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -12px;
   display: block;
   height: 20px;
   width: 25px;
@@ -316,15 +301,18 @@ em {
 }
 
 .footer li .apple {
+  margin: -10px 0 0 -8px;
   width: 17px;
 }
 
 .footer li .facebook {
+  margin: -10px 0 0 -4px;
   width: 10px;
   background-position: -29px 0;
 }
 
 .footer li .twitter {
+  margin: -10px 0 0 -6px;
   width: 14px;
   background-position: -84px 0;
 }
@@ -333,8 +321,6 @@ em {
   width: 50%;
   margin: 20px 0;
   padding: 20px;
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.8);
   -webkit-box-shadow: 0px 2px 15px #333;
   box-shadow: 0px 2px 15px #333;
   -webkit-transform: rotate(1deg);
@@ -367,16 +353,29 @@ em {
 
 /* 2010 overrides */
 .posts {
-  margin: 10px 0 20px;
+  margin: 0;
+}
+
+.archive .posts {
+  margin-top: 24px;
+}
+
+#nav-above {
+  margin: 40px 0;
+}
+
+#nav-below {
+  margin: 0 0 20px;
 }
 
 .navigation {
   font: 20px/24px 'typey', courier;
-  margin: 5px 0 10px;
 }
 
-#nav-below {
-  margin-top: 40px;
+.navigation a:link,
+.navigation a:visited {
+  color: #ff4b33;
+  text-decoration: none;
 }
 
 .wrapper .page-title {
@@ -389,25 +388,15 @@ em {
 }
 
 .hentry, .post {
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 18px;
-  -webkit-border-radius: 10px 10px;
-  border-radius: 10px 10px;
   position: relative;
-  border: 1px solid #eee;
   overflow: hidden;
-}
-
-.single-post #nav-above {
-  margin-bottom: 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eee;
 }
 
 .single-post .post {
   padding: 36px;
   overflow: visible;
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .single-post .hentry {
@@ -453,15 +442,6 @@ em {
   font-weight: bold;
 }
 
-.bio-page .entry-content {
-  padding: 10px 20px 30px;
-  margin: 0;
-  border: 1px dashed #ccc;
-  border-width: 1px 0;
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.7);
-}
-
 #content tr td {
   border: 0 none;
 }
@@ -472,6 +452,8 @@ em {
 
 #content .entry-title {
   margin-bottom: 0;
+  font: 30px/34px 'typey', courier;
+  color: #444;
 }
 
 #content .entry-content {
@@ -501,10 +483,6 @@ em {
   color: #ff4b33;
 }
 
-.post-narrow, .post-wide {
-  min-height: 260px;
-}
-
 .post-narrow {
   float: left;
   width: 145px;
@@ -524,7 +502,6 @@ em {
   float: left;
   width: 630px;
   padding-left: 20px;
-  border-left: 1px solid #eee;
 }
 
 .post-wide .entry-title,
@@ -551,12 +528,28 @@ em {
   margin: 0 15px 20px;
 }
 
-.alignleft, .alignright, .aligncenter, .alignnone {
-  background: #fefefe;
-  border: 1px solid #eee;
-  padding: 10px;
+.alignleft,
+.alignright,
+.aligncenter,
+.alignnone {
   max-width: 100%;
   height: auto;
+}
+
+.alignleft, img.alignleft {
+  float: left;
+  margin: 6px 36px 6px 0;
+}
+
+.alignright, img.alignright {
+  float: right;
+  margin: 6px 0 6px 36px;
+}
+
+.aligncenter, img.aligncenter {
+  clear: both;
+  display: block;
+  margin: 12px auto;
 }
 
 .wp-caption .wp-caption-text p {
@@ -564,11 +557,7 @@ em {
 }
 
 #entry-author-info {
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.5);
   font-size: 16px;
-  -webkit-border-bottom-left-radius: 10px 10px;
-  border-bottom-left-radius: 10px 10px;
 }
 
 #entry-author-info h2 {
@@ -576,25 +565,7 @@ em {
   font-size: 15px;
 }
 
-.alignleft, img.alignleft {
-  float: left;
-  margin: 24px 36px 24px 12px;
-}
-
-.alignright, img.alignright {
-  float: right;
-  margin: 24px 12px 24px 36px;
-}
-
-.aligncenter, img.aligncenter {
-  clear: both;
-  display: block;
-  margin: 24px auto;
-}
-
 .commentlist {
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.7);
   padding: 20px;
 }
 
@@ -658,13 +629,19 @@ em {
 }
 
 .page-template-contact-php .post {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 /* lyrics */
 .lyrics {
+  display: block;
   visibility: hidden;
-  color: #bbb;
+  font: 32px/36px 'Reenie Beanie';
+  color: #ddd;
+}
+
+.lyrics span {
+  text-decoration: line-through;
 }
 
 .page-template-media-php .lyrics {
@@ -675,7 +652,6 @@ em {
   display: block;
   width: 825px;
   height: 72px;
-  color: #bbb;
 }
 
 .page-template-shows-php #content .lyrics,
@@ -689,7 +665,6 @@ em {
   position: absolute;
   top: 10px;
   right: 120px;
-  color: #bbb;
 }
 
 .page-template-bio-php #content .lyrics,
@@ -701,7 +676,6 @@ em {
 
 .page-template-photos-php #content .lyrics {
   display: block;
-  color: #bbb;
   width: 705px;
   height: 72px;
 }
@@ -709,7 +683,6 @@ em {
 .page-template-media-php #content .lyrics {
   right: 0;
   width: 275px;
-  color: #bbb;
   font: 28px/32px 'Reenie Beanie';
 }
 
@@ -717,17 +690,20 @@ em {
 .page-template-contact-php #content .lyrics {
   right: 20px;
   top: -5px;
-  width: 700px;
+  width: 500px;
   line-height: 32px;
-  color: #ccc;
 }
 
 .page-template-contact-php #content .lyrics {
-  width: 550px;
+  width: 450px;
 }
 
 .page-template-media-php #content {
-  min-height: 400px;
+  min-height: 440px;
+}
+
+.page-template-media-php #content .posts {
+  margin-bottom: 24px;
 }
 
 .single-song #content .entry-content p {
@@ -744,7 +720,8 @@ em {
   height: 300px;
 }
 
-.band-galleries .loading .posts, .type-gallery .loading ul,
+.band-galleries .loading .posts,
+.type-gallery .loading ul,
 .home .loading .posts {
   visibility: hidden;
 }
@@ -804,11 +781,6 @@ em {
 
 .single #content .type-gallery p {
   margin: 10px 15px;
-}
-
-.band-galleries .entry-content {
-  margin-bottom: 20px;
-  border-bottom: 1px dashed #ccc;
 }
 
 /* Gallery Strip for lists of Galleries  */
@@ -873,4 +845,10 @@ audio {
 .entry-content {
   max-width: 100%;
   height: auto;
+}
+
+.entry-content::after {
+  content: " ";
+  display: block;
+  clear: both;
 }

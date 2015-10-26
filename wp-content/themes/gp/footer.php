@@ -11,9 +11,6 @@
 		</ul>
 	</div>
 	<div id="social-wrapper">
-		<span class="tape medium-tape tilt-left"></span>
-		<span class="tape medium-tape tilt-right"></span>
-		<span class="tape medium-tape tilt-bottom_left"></span>
 		<?php gp_lyrics( 'Most who started here have left... It\'s all in the name of progress' ) ?>
 		<div id="facebook_widget">
 			<?php page_like_button() ?>

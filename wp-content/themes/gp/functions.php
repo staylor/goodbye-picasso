@@ -54,6 +54,12 @@ class GoodbyePicassoTheme {
 		wp_enqueue_style( 'gp-global', $theme . '/css/global.min.css' );
 
 		wp_enqueue_script( 'gp-main', $theme . '/js/main.js', array( 'jquery' ) );
+
+		if ( is_single() && 'gallery' === get_post_type() ) {
+			wp_enqueue_style( 'gallery', $theme . '/css/jquery.fancybox.css' );
+			wp_enqueue_script( 'fancybox', $theme . '/js/jquery.fancybox.pack.js', array( 'jquery' ) );
+			wp_enqueue_script( 'bpr-gallery', $theme . '/js/gallery.js', array( 'fancybox' ) );
+		}
 	}
 }
 GoodbyePicassoTheme::get_instance();

@@ -28,7 +28,8 @@ em {
 .wrapper {
   margin: 0 auto;
   padding-bottom: 40px;
-  width: 948px;
+  width: 1200px;
+  max-width: 100%;
   position: relative;
 }
 
@@ -57,17 +58,18 @@ em {
 
 .wrapper .wp-caption-text {
   margin: 5px 0 0 !important;
-  font: 14px/18px 'typey', courier !important;
+  font: 14px/18px sans-serif;
   text-transform: uppercase;
   color: #000 !important;
 }
 
 .content-wrapper {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0;
   z-index: 6;
   padding: 10px;
-  width: 928px;
-  min-height: 320px;
   display: block;
   position: relative;
 }
@@ -82,36 +84,40 @@ em {
 }
 
 #content p {
-  margin-bottom: 10px;
+  margin-bottom: 24px;
+}
+
+#content .entry-title {
+  font-size: 36px;
+  line-height: 40px;
+}
+
+.page #content {
+  max-width: 900px;
+  margin: 24px auto;
 }
 
 .main-nav {
-  margin: 0 auto;
+  margin: 20px auto 0;
   overflow: hidden;
   display: block;
+  max-width: 900px;
 }
 
 .main-nav li {
-  float: left;
-  width: 131px;
-  height: 40px;
+  display: inline-block;
+  font: 32px/36px 'typey', courier;
+  margin: 0 1% 0 0;
   text-align: center;
   color: #666;
-  background: #fff url(/wp-content/themes/gp/images/tape_131x40.png) no-repeat;
-  font: 22px/40px 'typey', courier;
-  margin: 0 10px;
 }
 
-.main-nav li ::before {
+.main-nav li::before {
   content: '[';
 }
 
-.main-nav li ::after {
+.main-nav li::after {
   content: ']';
-}
-
-.main-nav a {
-  padding: 0 3px;
 }
 
 .main-nav a:hover {
@@ -151,7 +157,7 @@ em {
 .footer {
   overflow: hidden;
   display: block;
-  z-index: 7;
+  overflow: hidden;
 }
 
 .footer a:hover {
@@ -171,7 +177,7 @@ em {
 }
 
 #nav-above {
-  margin: 0 0 40px;
+  margin: 20px 0 40px;
 }
 
 #nav-below {
@@ -180,6 +186,10 @@ em {
 
 .navigation {
   font: 20px/24px 'typey', courier;
+}
+
+.single .navigation {
+  margin: 0 0 20px;
 }
 
 .navigation a:link,
@@ -191,7 +201,6 @@ em {
 /* lyrics */
 .lyrics {
   display: block;
-  visibility: hidden;
   font: 32px/36px 'Reenie Beanie';
   color: #ddd;
 }
@@ -200,82 +209,71 @@ em {
   text-decoration: line-through;
 }
 
-.page-template-media-php .lyrics {
-  visibility: visible;
-}
-
-.page-template-shows-php #content .lyrics,
-.page-template-media-php #content .lyrics,
-.page-template-bio-php #content .lyrics,
-.page-template-news-php #content .lyrics,
-.page-template-blog-php #content .lyrics,
-.page-template-contact-php #content .lyrics {
-  display: block;
-  width: 380px;
-  position: absolute;
-  top: 10px;
-  right: 120px;
-}
-
-.page-template-bio-php #content .lyrics,
-.page-template-news-php #content .lyrics {
-  top: 10px;
-  width: 600px;
-  right: 40px;
-}
-
 .page-template-photos-php #content .lyrics {
   display: block;
   width: 705px;
   height: 72px;
 }
 
+.page-template-shows-php #content .lyrics {
+  position: absolute;
+  top: 10px;
+  left: 200px;
+}
+
 .page-template-media-php #content .lyrics {
-  right: 0;
+  position: absolute;
+  width: 380px;
   width: 275px;
+  top: 10px;
+  right: 0;
   font: 28px/32px 'Reenie Beanie';
 }
 
-.page-template-blog-php #content .lyrics,
+.page-template-bio-php #content .lyrics {
+  position: absolute;
+  width: 600px;
+  top: 10px;
+  right: 40px;
+}
+
 .page-template-contact-php #content .lyrics {
-  right: 20px;
+  position: absolute;
+  width: 450px;
   top: -5px;
-  width: 500px;
+  right: 20px;
   line-height: 32px;
 }
 
-.page-template-contact-php #content .lyrics {
-  width: 450px;
-}
-
 .banner {
-  margin: 20px auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 auto;
   display: block;
-  width: 920px;
+  width: 100%;
   max-width: 100%;
-  height: 420px;
+  height: 500px;
   position: relative;
+  overflow: hidden;
 }
 
-.banner .tilt-left {
-  position: absolute;
-  left: -30px;
-  z-index: 5;
-}
-
-.banner .tilt-right {
-  position: absolute;
-  right: -30px;
-  z-index: 5;
+.home .banner {
+  height: auto;
 }
 
 .banner img {
   display: block;
   position: relative;
   z-index: 3;
-  width: 920px;
+  width: auto;
+  height: auto;
   max-width: 100%;
-  height: 420px;
+  margin-top: -150px;
+}
+
+.home .banner img {
+  margin-top: 0;
 }
 
 .banner a {
@@ -286,54 +284,48 @@ em {
   right: 0;
   z-index: 4;
   display: block;
-  background: url(/wp-content/themes/gp/images/headers/header-mask.png) no-repeat;
-  -webkit-transition: 600ms;
-  transition: 600ms;
-}
-
-.banner a.banner-loaded {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.banner a:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background: url(/wp-content/themes/gp/images/headers/header-mask.png) no-repeat 95% 95%;
 }
 
 .post-narrow {
   float: left;
-  width: 145px;
+  width: 300px;
   text-align: center;
+}
+
+.post-narrow .post-date {
+  font: 18px/24px typey;
+  margin: 10px 0;
 }
 
 .post-narrow .tape {
   margin: 0 auto;
 }
 
-.post-narrow .author-link {
-  display: block;
-  margin-bottom: 10px;
-}
-
 .post-wide {
   float: left;
-  width: 630px;
-  padding-left: 20px;
+  width: 850px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.post-wide .entry-title,
-.post-wide .entry-title a {
-  font: 30px/34px 'typey', courier;
+#content .post-wide .entry-title {
+  font: 28px/32px 'typey', courier;
+  margin-bottom: 24px;
+}
+
+#content .post-wide .entry-title a {
   color: #444;
 }
 
-.post-wide .entry-title a:hover {
+#content .post-wide .entry-title a:hover {
   color: #000;
 }
 
-.post-wide p,
-.post-wide strong {
-  font: 13px/22px helvetica, arial;
-  color: #666;
+.post-wide p {
+  font: 16px/24px sans-serif;
+  color: #444;
 }
 
 .post-wide strong {
@@ -346,106 +338,42 @@ em {
 
 /* Gallery Strip for lists of Galleries  */
 .gallery-strip-wrapper {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
   margin: 15px 15px 30px 15px;
-  width: 795px;
   cursor: pointer;
 }
 
-.home .gallery-strip-wrapper {
-  width: 645px;
-}
-
-.gallery-strip-wrapper .tape {
-  position: absolute;
-  top: 0;
-}
-
-.gallery-strip-wrapper .tilt-left {
-  left: -30px;
-}
-
-.gallery-strip-wrapper .tilt-right {
-  right: -30px;
-}
-
 .gallery-strip {
-  background: #fefefe;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   border: 1px solid #eee;
-  padding: 10px;
   overflow: hidden;
-  width: 775px;
-}
-
-.home .gallery-strip {
-  width: 620px;
 }
 
 .gallery-strip li {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 25%;
+  max-width: 170px;
   float: left;
-  margin: 0 5px 0 0;
+  padding: 10px;
+  position: relative;
 }
 
 .gallery-strip li img {
   display: block;
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: auto;
 }
 
-.gallery {
-  overflow: hidden;
-}
-
-.gallery li {
-  float: left;
-  background: #fefefe;
-  border: 1px solid #eee;
-  padding: 5px;
-  margin: 10px;
-  position: relative;
-}
-
-.gallery li img {
-  display: block;
-}
-
-.gallery .tape {
-  position: absolute;
-  top: -18px;
-  left: 18px;
-  font-size: 14px;
-}
-
-.gallery p {
-  margin-bottom: 0px !important;
-}
-
-#content .galleries .entry-title,
-#content .galleries .entry-title a {
-  font: 30px/34px 'typey', courier;
-  color: #444;
-}
-
-#content .galleries .entry-title a:hover {
-  color: #000;
-}
-
-#content .galleries .posts .entry-content {
-  margin-top: 10px;
-}
-
-#content .galleries p {
-  margin: 0 80px 20px 20px;
-  font: 13px/18px helvetica, arial;
-  color: #666;
-}
-
-#content .type-gallery p {
-  margin: 10px 0;
-}
-
-.single #content .type-gallery p {
-  margin: 10px 15px;
+#content .galleries {
+  max-width: 882px;
+  margin: 0 auto;
 }
 
 .single-post .post {
@@ -535,26 +463,16 @@ em {
   border-bottom: 1px solid #eee;
 }
 
+.hentry iframe, .post iframe {
+  max-width: 100%;
+}
+
 #content tr td {
   border: 0 none;
 }
 
 #content .vevent {
   border-bottom: 1px solid #e7e7e7;
-}
-
-#content .entry-title {
-  margin-bottom: 0;
-  font: 30px/34px 'typey', courier;
-  color: #444;
-}
-
-#content .entry-content {
-  margin: 20px 0 0;
-}
-
-#content .posts .entry-content {
-  margin: 20px 0 0;
 }
 
 .post .meta {
@@ -565,15 +483,6 @@ em {
 .post-date {
   display: block;
   color: #000;
-}
-
-.post-categories {
-  margin: 10px 0 0 0;
-  font: 16px/20px typey;
-}
-
-.post-categories a {
-  color: #ff4b33;
 }
 
 .alignleft,
@@ -601,7 +510,7 @@ em {
 }
 
 .wp-caption .wp-caption-text p {
-  font: 14px 'typey', courier !important;
+  font: 14px sans-serif;
 }
 
 #entry-author-info {
@@ -618,7 +527,7 @@ em {
   height: 31px;
   background-image: url(/wp-content/themes/gp/images/tape_100x31.png);
   text-transform: uppercase;
-  font: normal 14px/30px typey, courier;
+  font: normal 14px/30px sans-serif;
   display: inline-block;
   padding: 0;
   text-align: center;
@@ -674,4 +583,112 @@ audio {
   content: " ";
   display: block;
   clear: both;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+
+  #content {
+    margin: 12px 0;
+  }
+
+  #content .entry-title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .page #content {
+    padding: 0 20px;
+  }
+
+  .main-nav {
+    margin: 10px auto;
+  }
+
+  .main-nav li {
+    width: auto;
+    margin: 0 5%;
+  }
+
+  .footer {
+    padding: 0 20px;
+  }
+
+  .footer p {
+    font: 11px arial;
+  }
+
+  #nav-above {
+    margin: 0;
+  }
+
+  #nav-below {
+    margin: 0;
+  }
+
+  .navigation .meta-offset {
+    display: none;
+  }
+
+  .lyrics {
+    font: 28px/32px 'Reenie Beanie';
+    padding: 0 20px;
+  }
+
+  .banner {
+    height: auto;
+  }
+
+  .banner img {
+    margin-top: 0;
+  }
+
+  .banner a {
+    -webkit-background-size: contain;
+    background-size: contain;
+  }
+
+  .post-narrow {
+    float: none;
+    width: auto;
+    text-align: left;
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  .post-narrow .post-date {
+    float: left;
+    margin: 0;
+  }
+
+  .post-narrow .comments-link {
+    float: right;
+  }
+
+  .post-wide {
+    float: none;
+    width: auto;
+    padding: 0 20px;
+  }
+
+  .gallery-strip-wrapper {
+    margin: 10px auto;
+  }
+
+  .hentry, .post {
+    margin: 0 0 24px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+  .banner img {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+  .banner img {
+    margin-top: 0;
+  }
 }

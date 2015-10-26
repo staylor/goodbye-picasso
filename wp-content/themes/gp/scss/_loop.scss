@@ -1,35 +1,62 @@
 .post-narrow {
 	float: left;
-	width: 145px;
+	width: 300px;
 	text-align: center;
+
+	.post-date {
+		font: 18px/24px typey;
+		margin: 10px 0;
+	}
 
 	.tape {
 		margin: 0 auto;
 	}
 
-	.author-link {
-		display: block;
-		margin-bottom: 10px;
+	@include respond-to(phone) {
+		float: none;
+		width: auto;
+		text-align: left;
+		overflow: hidden;
+		padding: 20px;
+
+		.post-date {
+			float: left;
+			margin: 0;
+		}
+
+		.comments-link {
+			float: right;
+		}
 	}
 }
 
 .post-wide {
 	float: left;
-	width: 630px;
-	padding-left: 20px;
+	width: 850px;
+	box-sizing: border-box;
 
-	.entry-title,
-	.entry-title a {
-		font: 30px/34px 'typey', courier; color: #444;
+	@include respond-to(phone) {
+		float: none;
+		width: auto;
+		padding: 0 20px;
 	}
 
-	.entry-title a:hover {
-		color: #000;
+	#content & .entry-title {
+		font: 28px/32px 'typey', courier;
+		margin-bottom: 24px;
+
+		a {
+			color: #444;
+
+			&:hover {
+				color: #000;
+			}
+		}
 	}
 
-	p,
-	strong {
-		font: 13px/22px helvetica, arial; color: #666;
+	p {
+		font: 16px/24px sans-serif;
+		color: #444;
 	}
 
 	strong {

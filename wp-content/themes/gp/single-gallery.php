@@ -11,10 +11,12 @@ the_post();
 
 $temp = $wp_query;
 
-get_header();
+get_header(); ?>
+<div class="galleries">
+<?php
 band_go_back( get_post_type_archive_link( 'gallery' ), 'Back to all Photos' );
 ?>
-<div id="post-<?php	 the_ID(); ?>" <?php post_class(); ?>>
+<div <?php post_class(); ?>>
 	<h1 class="entry-title"><?php the_title(); ?></h1>
 	<div class="entry-content">
 	<?php the_content(); ?>
@@ -27,6 +29,7 @@ band_go_back( get_post_type_archive_link( 'gallery' ), 'Back to all Photos' );
 	rewind_posts();
 	full_like_button();
 ?>
+</div>
 </div>
 <?php
 comments_template( '', true );

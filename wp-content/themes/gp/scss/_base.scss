@@ -28,7 +28,8 @@ em {
 .wrapper {
 	margin: 0 auto;
 	padding-bottom: 40px;
-	width: 948px;
+	width: 1200px;
+	max-width: 100%;
 	position: relative;
 
 	strong {
@@ -56,18 +57,17 @@ em {
 
 	.wp-caption-text {
 		margin: 5px 0 0 !important;
-		font: 14px/18px 'typey', courier !important;
+		font: 14px/18px sans-serif;
 		text-transform: uppercase;
 		color: #000 !important;
 	}
 }
 
 .content-wrapper {
+	box-sizing: border-box;
 	padding: 0;
 	z-index: 6;
 	padding: 10px;
-	width: 928px;
-	min-height: 320px;
 	display: block;
 	position: relative;
 }
@@ -76,11 +76,34 @@ em {
 	position: relative;
 	margin: 24px 0;
 
+	@include respond-to(phone) {
+		margin: 12px 0;
+	}
+
 	h1 {
 		line-height: 42px;
 	}
 
 	p {
-		margin-bottom: 10px;
+		margin-bottom: 24px;
+	}
+
+	.entry-title {
+		font-size: 36px;
+		line-height: 40px;
+
+		@include respond-to(phone) {
+			font-size: 24px;
+			line-height: 28px;
+		}
+	}
+
+	.page & {
+		max-width: 900px;
+		margin: 24px auto;
+
+		@include respond-to(phone) {
+			padding: 0 20px;
+		}
 	}
 }

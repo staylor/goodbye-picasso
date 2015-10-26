@@ -1,29 +1,35 @@
 .main-nav {
-	margin: 0 auto;
+	margin: 20px auto 0;
 	overflow: hidden;
 	display: block;
+	max-width: 900px;
+
+	@include respond-to(phone) {
+		margin: 10px auto;
+	}
 
 	li {
-		::before {
+		&::before {
 			content: '[';
 		}
 
-		::after {
+		&::after {
 			content: ']';
 		}
 
-		float: left;
-		width: 131px;
-		height: 40px;
+		display: inline-block;
+		font: 32px/36px 'typey', courier;
+		margin: 0 1% 0 0;
 		text-align: center;
 		color: #666;
-		background: #fff url(/wp-content/themes/gp/images/tape_131x40.png) no-repeat;
-		font: 22px/40px 'typey', courier;
-		margin: 0 10px;
+
+		@include respond-to(phone) {
+			width: auto;
+			margin: 0 5%;
+		}
 	}
 
 	a {
-		padding: 0 3px;
 
 		&:hover {
 			text-decoration: underline

@@ -1,5 +1,5 @@
-$bannerWidth: 920px;
-$bannerHeight: 420px;
+@import "variables";
+@import "mixins";
 
 @import "base";
 @import "main-nav";
@@ -45,17 +45,18 @@ $bannerHeight: 420px;
 	overflow: hidden;
 	padding-bottom: 24px;
 	border-bottom: 1px solid #eee;
+
+	@include respond-to(phone) {
+		margin: 0 0 24px;
+	}
+
+	iframe {
+		max-width: 100%;
+	}
 }
 
 #content tr td {border: 0 none}
 #content .vevent {border-bottom: 1px solid #e7e7e7}
-#content .entry-title {
-	margin-bottom: 0;
-	font: 30px/34px 'typey', courier;
-	color: #444;
-}
-#content .entry-content {margin: 20px 0 0}
-#content .posts .entry-content {margin: 20px 0 0}
 
 .post .meta {
 	display: block;
@@ -65,15 +66,6 @@ $bannerHeight: 420px;
 .post-date {
 	display: block;
 	color: #000;
-}
-
-.post-categories {
-	margin: 10px 0 0 0;
-	font: 16px/20px typey;
-
-	a {
-		color: #ff4b33;
-	}
 }
 
 .alignleft,
@@ -99,7 +91,9 @@ $bannerHeight: 420px;
 	margin: 12px auto;
 }
 
-.wp-caption .wp-caption-text p {font: 14px 'typey', courier !important;}
+.wp-caption .wp-caption-text p {
+	font: 14px sans-serif;
+}
 
 #entry-author-info {
 	font-size: 16px;
@@ -110,12 +104,29 @@ $bannerHeight: 420px;
 	}
 }
 
-#reply-title a {width: 100px; height: 31px; background-image: url(/wp-content/themes/gp/images/tape_100x31.png);
-	text-transform: uppercase; font: normal 14px/30px typey, courier; display: inline-block; padding: 0; text-align: center}
+#reply-title a {
+	width: 100px;
+	height: 31px;
+	background-image: url(/wp-content/themes/gp/images/tape_100x31.png);
+	text-transform: uppercase;
+	font: normal 14px/30px sans-serif;
+	display: inline-block;
+	padding: 0;
+	text-align: center;
+}
 
-#respond form {width: 420px}
-#respond label {display: inline}
-.page-template-contact-php #commentform {min-height: 100px}
+#respond form {
+	width: 420px;
+}
+
+#respond label {
+	display: inline;
+}
+
+.page-template-contact-php #commentform {
+	min-height: 100px;
+}
+
 .page-template-contact-php .post {
 	margin: 20px 0;
 }

@@ -84,7 +84,7 @@ function band_nav_by_type( $args = array() ) {
 		<div class="nav-previous">
 			<?php
 			$prev = $page - 1;
-			$plabel = sprintf( '<span class="meta-nav">&larr;</span> Newer %s (%d of %d)', $params['type'], $prev, $max );
+			$plabel = sprintf( '<span class="meta-nav">&laquo;</span> Newer %s<span class="meta-offset"> (%d of %d</span>', $params['type'], $prev, $max );
 
 			if ( $params['use_qs'] && $prev >= 1 ): ?>
 			<a href="?<?php echo PAGE_PARAM, '=', $prev ?>"><?php echo $plabel ?></a>
@@ -96,7 +96,7 @@ function band_nav_by_type( $args = array() ) {
 		<div class="nav-next">
 			<?php
 			$next = $page + 1;
-			$nlabel = sprintf( 'Older %s (%d of %d) <span class="meta-nav">&rarr;</span>', $params['type'], $next, $max );
+			$nlabel = sprintf( 'Older %s<span class="meta-offset"> (%d of %d)</span> <span class="meta-nav">&raquo;</span>', $params['type'], $next, $max );
 
 			if ( $params['use_qs'] && ( $max >= $next ) ): ?>
 			<a href="?<?php echo PAGE_PARAM, '=', $next ?>"><?php echo $nlabel ?></a>
@@ -157,8 +157,6 @@ function band_gallery_preview_strip($number = 5) {
 	$gallery = '<div class="gallery-strip-wrapper">';
 
 	if ($attachments) {
-		$gallery .= '<span class="tape tilt-left"></span>';
-		$gallery .= '<span class="tape tilt-right"></span>';
 		$gallery .= '<ul class="gallery-strip">';
 		foreach ($attachments as $att) {
 			$src = wp_get_attachment_image_src($att->ID, 'thumbnail', true);
@@ -200,7 +198,8 @@ function band_gallery_images($p = -1) {
 
 	if ( $q->have_posts() ):
 		band_nav_by_type( array( 'type' => 'photos', 'use_qs' => true, 'q' => $q ) );?>
-		<ul class="gallery">
+	<div class="gallery-strip-wrapper">
+		<ul class="gallery-strip">
 		<?php while ( $q->have_posts() ): $q->the_post(); ?>
 		<li>
 			<?php
@@ -211,10 +210,11 @@ function band_gallery_images($p = -1) {
 			<a href="<?php echo reset( $big ) ?>" title="<?php echo $title ?>" class="fancybox" rel="<?php echo $gallery_name ?>">
 				<img class="attachment-thumbnail" src="<?php echo reset( $link ) ?>"/>
 			</a>
-			<span class="tape"><?php echo apply_filters( 'the_title', $title ) ?></span>
 		</li>
 		<?php endwhile ?>
-		</ul><?php
+		</ul>
+	</div>
+	<?php
 	endif;
 
 	wp_reset_postdata();

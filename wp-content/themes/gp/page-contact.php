@@ -2,8 +2,7 @@
 the_post();
 get_header();
 
-gp_header( 'Contact' );
-gp_lyrics( 'My time machine is broke, so let\'s pretend That we\'re both clean, and this is how we met' );
+//gp_lyrics( 'My time machine is broke, so let\'s pretend That we\'re both clean, and this is how we met' );
 
 ?>
 <div class="post">

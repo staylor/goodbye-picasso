@@ -15,7 +15,7 @@ band_nav_by_type();
 while ( have_posts() ) : the_post(); ?>
 	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<div class="post-narrow">
-			<span class="post-date"><?php the_date( "M j, 'y") ?></span>
+			<span class="post-date"><?php the_date( "F j, Y") ?></span>
 			<span class="tape medium-tape comments-link">
 				<?php comments_popup_link( 'Comments?', '1 Comment', '% Comments' ); ?>
 			</span>

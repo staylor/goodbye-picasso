@@ -1,7 +1,11 @@
 .footer {
 	overflow: hidden;
 	display: block;
-	z-index: 7;
+	overflow: hidden;
+
+	@include respond-to(phone) {
+		padding: 0 20px;
+	}
 
 	a:hover {
 		color: #000;
@@ -11,5 +15,9 @@
 		float: left;
 		font: 12px arial;
 		color: #333;
+
+		@include respond-to(phone) {
+			font: 11px arial;
+		}
 	}
 }

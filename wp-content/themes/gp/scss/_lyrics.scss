@@ -2,36 +2,16 @@
 
 .lyrics {
 	display: block;
-	visibility: hidden;
 	font: 32px/36px 'Reenie Beanie';
 	color: #ddd;
 
+	@include respond-to(phone) {
+		font: 28px/32px 'Reenie Beanie';
+		padding: 0 20px;
+	}
+
 	span {
 		text-decoration: line-through;
-	}
-
-	.page-template-media-php & {
-		visibility: visible;
-	}
-
-	.page-template-shows-php #content &,
-	.page-template-media-php #content &,
-	.page-template-bio-php #content &,
-	.page-template-news-php #content &,
-	.page-template-blog-php #content &,
-	.page-template-contact-php #content & {
-		display: block;
-		width: 380px;
-		position: absolute;
-		top: 10px;
-		right: 120px;
-	}
-
-	.page-template-bio-php #content &,
-	.page-template-news-php #content & {
-		top: 10px;
-		width: 600px;
-		right: 40px
 	}
 
 	.page-template-photos-php #content & {
@@ -40,21 +20,33 @@
 		height: 72px;
 	}
 
+	.page-template-shows-php #content & {
+		position: absolute;
+		top: 10px;
+		left: 200px;
+	}
+
 	.page-template-media-php #content & {
-		right: 0;
+		position: absolute;
+		width: 380px;
 		width: 275px;
+		top: 10px;
+		right: 0;
 		font: 28px/32px 'Reenie Beanie';
 	}
 
-	.page-template-blog-php #content &,
-	.page-template-contact-php #content & {
-		right: 20px;
-		top: -5px;
-		width: 500px;
-		line-height: 32px;
+	.page-template-bio-php #content & {
+		position: absolute;
+		width: 600px;
+		top: 10px;
+		right: 40px;
 	}
 
 	.page-template-contact-php #content & {
+		position: absolute;
 		width: 450px;
+		top: -5px;
+		right: 20px;
+		line-height: 32px;
 	}
 }

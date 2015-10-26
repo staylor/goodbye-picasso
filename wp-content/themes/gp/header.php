@@ -24,20 +24,18 @@ wp_head();
 </head>
 <body <?php	body_class(); ?>>
 <div id="fb-root"></div>
+<div class="banner">
+	<a href="<?php echo home_url() ?>"></a>
+	<img src="<?php echo get_stylesheet_directory_uri() ?>/images/spacer.gif"/>
+</div>
+<ul class="main-nav">
+	<li><a <?php echo _on( is_page( 'shows' ) ) ?>href="<?php echo home_url( '/shows/' ) ?>">SHOWS</a></li>
+	<li><a <?php echo _on( is_page( 'media' ) || ( is_archive() && in_array( get_query_var( 'post_type' ), array( 'song', 'album', 'video' ) ) ) ) ?>href="<?php echo home_url( '/media/' ) ?>">MEDIA</a></li>
+	<li><a <?php echo _on( is_page( 'bio' ) ) ?>href="<?php echo home_url( '/bio/' ) ?>">BIO</a></li>
+	<li><a <?php echo _on( is_home() ) ?>href="<?php echo home_url( '/' ) ?>">NEWS</a></li>
+	<li><a <?php echo _on( is_post_type_archive( 'gallery' ) ) ?>href="<?php echo home_url( '/gallery/' ) ?>">PHOTOS</a></li>
+	<li><a <?php echo _on( is_page( 'contact' ) ) ?>href="<?php echo home_url( '/contact/' ) ?>">CONTACT</a></li>
+</ul>
 <div class="wrapper">
-	<div class="banner">
-		<span class="tape tilt-left"></span>
-		<span class="tape tilt-right"></span>
-		<a href="<?php echo home_url() ?>"></a>
-		<img src="<?php echo get_stylesheet_directory_uri() ?>/images/spacer.gif"/>
-	</div>
 	<div class="content-wrapper">
-		<ul class="main-nav">
-			<li><a <?php echo _on( is_page( 'shows' ) ) ?>href="<?php echo home_url( '/shows/' ) ?>">SHOWS</a></li>
-			<li><a <?php echo _on( is_page( 'media' ) || in_array( get_post_type(), array('song', 'album', 'video') ) ) ?>href="<?php echo home_url( '/media/' ) ?>">MEDIA</a></li>
-			<li><a <?php echo _on( is_page( 'bio' ) ) ?>href="<?php echo home_url( '/bio/' ) ?>">BIO</a></li>
-			<li><a <?php echo _on( is_home() ) ?>href="<?php echo home_url( '/' ) ?>">NEWS</a></li>
-			<li><a <?php echo _on( is_post_type_archive( 'gallery' ) ) ?>href="<?php echo home_url( '/gallery/' ) ?>">PHOTOS</a></li>
-			<li><a <?php echo _on( is_page( 'contact' ) ) ?>href="<?php echo home_url( '/contact/' ) ?>">CONTACT</a></li>
-		</ul>
 		<div id="content">

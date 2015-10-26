@@ -4,8 +4,19 @@
 	"use strict";
 
 	var wrapper,
-		lyrics,
-		bannerItems = [2, 4, 6, 7, 9, 10];
+		bannerItems = [
+			'header-1.jpg',
+			'header-2.jpg',
+			'header-3.jpg',
+			'header-4.jpg',
+			'header-5.jpg',
+			'header-6.jpg',
+			'header-7.jpg',
+			'header-8.jpg',
+			'header-9.jpg',
+			'header-10.jpg',
+			'header-11.jpg'
+		];
 
 	function getBannerIndex() {
 		return bannerItems[Math.floor(Math.random() * bannerItems.length)];
@@ -16,43 +27,14 @@
 		return false;
 	}
 
-	function doWriting(j) {
-		var i = 0, elem = $(this), words, letters, total, go;
-
-		if (j === 0) {
-			words = elem.text();
-			letters = words.split('');
-			total = letters.length;
-
-			elem.css( 'height', elem.height() );
-			elem.text('').css('visibility', 'visible');
-
-			go = window.setInterval(function () {
-				if (i === total) {
-					window.clearInterval(go);
-				} else {
-					elem.append(letters[i]);
-					i += 1;
-				}
-			}, 25);
-		} else {
-			elem.css('visibility', 'visible');
-		}
-	}
-
     $(document).ready(function () {
 		$('.banner').find('img').attr({
-			src: ['/wp-content/uploads/2010/08/header-', getBannerIndex(), '.jpg'].join('')
+			src: ['/wp-content/themes/gp/images/headers/latest/', getBannerIndex()].join('')
 		}).parent().find( 'a' ).addClass( 'banner-loaded' );
 
 		wrapper = $('#loop-content');
 
 		$( document.body ).on( 'click', '.gallery-strip-wrapper', goToGallery );
-
-		if ( ! $('body').hasClass( 'page-template-media-php' ) ) {
-			lyrics = $('span.lyrics');
-			lyrics.each( doWriting );
-		}
 
 		window.fbAsyncInit = function() {
 			FB.init({

@@ -1,13 +1,32 @@
 #nav-above {
-	margin: 0 0 40px;
+	margin: 20px 0 40px;
+
+	@include respond-to(phone) {
+		margin: 0;
+	}
 }
 
 #nav-below {
 	margin: 0 0 20px;
+
+	@include respond-to(phone) {
+		margin: 0;
+	}
 }
 
 .navigation {
 	font: 20px/24px 'typey', courier;
+
+	.single & {
+		margin: 0 0 20px;
+	}
+
+	@include respond-to(phone) {
+
+		.meta-offset {
+			display: none;
+		}
+	}
 
 	a:link,
 	a:visited {

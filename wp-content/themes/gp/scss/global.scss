@@ -25,8 +25,12 @@
 }
 
 .wrapper .page-title {
-	font: bold 44px/52px helvetica;
+	font: bold 40px/48px helvetica;
 	margin-bottom: 20px;
+
+	.tax-album & {
+		margin-top: 20px;
+	}
 }
 
 .page-title span {

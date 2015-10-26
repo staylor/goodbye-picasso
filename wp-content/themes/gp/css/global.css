@@ -531,6 +531,23 @@ em {
   margin: 48px 0;
 }
 
+.single-song #content .entry-content p {
+  font: 32px/36px 'Reenie Beanie';
+  margin-bottom: 30px;
+}
+
+.wp-audio-shortcode {
+  width: 700px !important;
+  max-width: 100%;
+  margin: 24px 0;
+}
+
+audio {
+  width: 700px !important;
+  max-width: 100%;
+  display: inline-block;
+}
+
 .tilt-right,
 .tilt-bottom_left {
   -webkit-transform: rotate(20deg);
@@ -612,23 +629,6 @@ em {
 
 .page-template-media-php #content .discography-list {
   margin-bottom: 24px;
-}
-
-.single-song #content .entry-content p {
-  font: 32px/36px 'Reenie Beanie';
-  margin-bottom: 30px;
-  color: #555;
-}
-
-.wp-audio-shortcode {
-  width: 400px;
-  max-width: 100%;
-}
-
-audio {
-  width: 400px;
-  max-width: 100%;
-  display: inline-block;
 }
 
 .entry-content {

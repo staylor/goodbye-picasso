@@ -2,7 +2,7 @@
 .gallery-strip-wrapper {
 	box-sizing: border-box;
 	position: relative;
-	margin: 15px 15px 30px 15px;
+	margin: 15px;
 	cursor: pointer;
 
 	@include respond-to(phone) {
@@ -14,10 +14,10 @@
 	box-sizing: border-box;
 	border: 1px solid #eee;
 	overflow: hidden;
+	display: inline-block;
 
 	li {
 		box-sizing: border-box;
-		width: 25%;
 		max-width: 170px;
 		float: left;
 		padding: 10px;

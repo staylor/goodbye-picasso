@@ -343,7 +343,7 @@ em {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
-  margin: 15px 15px 30px 15px;
+  margin: 15px;
   cursor: pointer;
 }
 
@@ -353,13 +353,13 @@ em {
   box-sizing: border-box;
   border: 1px solid #eee;
   overflow: hidden;
+  display: inline-block;
 }
 
 .gallery-strip li {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 25%;
   max-width: 170px;
   float: left;
   padding: 10px;

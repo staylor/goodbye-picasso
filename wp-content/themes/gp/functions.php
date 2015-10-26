@@ -56,7 +56,7 @@ class GoodbyePicassoTheme {
 		wp_enqueue_style( 'gp-main', get_stylesheet_uri() );
 		wp_enqueue_style( 'gp-global', $theme . '/css/global.min.css' );
 
-		wp_enqueue_script( 'gp-main', $theme . '/js/main.js', array( 'jquery' ) );
+		wp_enqueue_script( 'gp-main', $theme . '/js/main.js', array( 'jquery' ), '5.0', true );
 
 		if ( is_single() && 'gallery' === get_post_type() ) {
 			wp_enqueue_style( 'gallery', $theme . '/css/jquery.fancybox.css' );

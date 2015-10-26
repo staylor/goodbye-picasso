@@ -3,7 +3,9 @@
 (function ($) {
 	"use strict";
 
-	var bannerItems = [
+	var $body = $( document.body ),
+		banner,
+		bannerItems = [
 		'header-1.jpg',
 		'header-2.jpg',
 		'header-3.jpg',
@@ -26,12 +28,28 @@
 		return false;
 	}
 
-    $(document).ready(function () {
-		$('.banner').find('img').attr({
-			src: ['/wp-content/themes/gp/images/headers/latest/', getBannerIndex()].join('')
-		}).parent().find( 'a' ).addClass( 'banner-loaded' );
+	function setBannerSize() {
+		banner.css( 'max-height', $( window ).height() );
+	}
 
-		$( document.body ).on( 'click', '.gallery-strip-wrapper', goToGallery );
+	function setBanner() {
+		banner.find('img').attr({
+			src: ['/wp-content/themes/gp/images/headers/latest/', getBannerIndex()].join('')
+		});
+
+		banner.addClass( 'banner-loaded' );
+	}
+
+    $(document).ready(function () {
+		banner = $('.banner');
+		setBanner();
+
+		if ( $body.hasClass( 'home' ) ) {
+			setBannerSize();
+			$( window ).on( 'resize', setBannerSize );
+		}
+
+		$body.on( 'click', '.gallery-strip-wrapper', goToGallery );
 
 		window.fbAsyncInit = function() {
 			FB.init({

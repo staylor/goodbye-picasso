@@ -326,6 +326,7 @@ em {
 .post-wide p {
   font: 16px/24px sans-serif;
   color: #444;
+  max-width: 700px;
 }
 
 .post-wide strong {

@@ -84,7 +84,7 @@ function band_nav_by_type( $args = array() ) {
 		<div class="nav-previous">
 			<?php
 			$prev = $page - 1;
-			$plabel = sprintf( '<span class="meta-nav">&laquo;</span> Newer %s<span class="meta-offset"> (%d of %d</span>', $params['type'], $prev, $max );
+			$plabel = sprintf( '<span class="meta-nav">&laquo;</span> Newer %s<span class="meta-offset"> (%d of %d)</span>', $params['type'], $prev, $max );
 
 			if ( $params['use_qs'] && $prev >= 1 ): ?>
 			<a href="?<?php echo PAGE_PARAM, '=', $prev ?>"><?php echo $plabel ?></a>

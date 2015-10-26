@@ -23,6 +23,7 @@ wp_head();
 </script>
 </head>
 <body <?php	body_class(); ?>>
+<div id="fb-root"></div>
 <div class="wrapper">
 	<div class="banner">
 		<span class="tape tilt-left"></span>
@@ -30,7 +31,6 @@ wp_head();
 		<a href="<?php echo home_url() ?>"></a>
 		<img src="<?php echo get_stylesheet_directory_uri() ?>/images/spacer.gif"/>
 	</div>
-	<div id="fb-root"></div>
 	<div class="content-wrapper">
 		<ul class="main-nav">
 			<li><a <?php echo _on( is_page( 'shows' ) ) ?>href="<?php echo home_url( '/shows/' ) ?>">SHOWS</a></li>

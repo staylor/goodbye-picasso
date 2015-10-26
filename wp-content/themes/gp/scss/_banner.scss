@@ -1,11 +1,10 @@
 .banner {
-	position: absolute;
-	z-index: 2;
-	left: 14px;
-	top: -$bannerHeight;
+	margin: 20px auto;
 	display: block;
 	width: $bannerWidth;
+	max-width: 100%;
 	height: $bannerHeight;
+	position: relative;
 
 	.tilt-left {
 		position: absolute;
@@ -21,18 +20,30 @@
 
 	img {
 		display: block;
-		position: absolute;
+		position: relative;
 		z-index: 3;
 		width: $bannerWidth;
+		max-width: 100%;
 		height: $bannerHeight;
 	}
 
 	a {
 		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
 		z-index: 4;
 		display: block;
-		width: $bannerWidth;
-		height: $bannerHeight;
 		background: url(/wp-content/themes/gp/images/headers/header-mask.png) no-repeat;
+		transition: 600ms;
+
+		&.banner-loaded {
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.1);
+		}
 	}
 }

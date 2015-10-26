@@ -43,7 +43,7 @@
     $(document).ready(function () {
 		$('.banner').find('img').attr({
 			src: ['/wp-content/uploads/2010/08/header-', getBannerIndex(), '.jpg'].join('')
-		});
+		}).parent().find( 'a' ).addClass( 'banner-loaded' );
 
 		wrapper = $('#loop-content');
 

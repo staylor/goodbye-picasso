@@ -202,8 +202,8 @@ function gp_author() {
 	</div><?php
 }
 
-function page_like_button($height = 80, $width = 780) {
-	echo '<fb:like href="http://www.facebook.com/goodbyepicasso" action="like" layout="standard" colorscheme="light" show_faces="true" height="', $height, '" width="', $width, '"></fb:like>';
+function page_like_button() {
+	echo '<div class="fb-like" href="http://www.facebook.com/goodbyepicasso" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>';
 }
 
 function the_like_button() {

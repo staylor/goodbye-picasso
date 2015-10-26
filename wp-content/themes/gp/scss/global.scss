@@ -12,6 +12,7 @@
 @import "loop";
 @import "galleries";
 @import "single";
+@import "comments";
 
 .tilt-right,
 .tilt-bottom_left {
@@ -102,29 +103,6 @@
 		font-family: helvetica, arial;
 		font-size: 15px;
 	}
-}
-
-#reply-title a {
-	width: 100px;
-	height: 31px;
-	background-image: url(/wp-content/themes/gp/images/tape_100x31.png);
-	text-transform: uppercase;
-	font: normal 14px/30px sans-serif;
-	display: inline-block;
-	padding: 0;
-	text-align: center;
-}
-
-#respond form {
-	width: 420px;
-}
-
-#respond label {
-	display: inline;
-}
-
-.page-template-contact-php #commentform {
-	min-height: 100px;
 }
 
 .page-template-contact-php .post {

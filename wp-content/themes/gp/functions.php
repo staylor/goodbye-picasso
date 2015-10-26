@@ -8,6 +8,9 @@
 define( 'FACEBOOK_APP_ID', '142875799055891');
 define( 'FACEBOOK_SECRET', 'd313c2950363ec70949d14cbdf55c8f5' );
 
+global $content_width;
+$content_width = 700;
+
 class GoodbyePicassoTheme {
 	private static $instance;
 

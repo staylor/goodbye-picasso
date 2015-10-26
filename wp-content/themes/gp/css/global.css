@@ -258,7 +258,7 @@ em {
   overflow: hidden;
 }
 
-.home .banner {
+.home:not(.paged) .banner {
   height: auto;
 }
 

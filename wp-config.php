@@ -14,6 +14,11 @@
  * @package WordPress
  */
 
+if ( 0 === strpos( $_SERVER['REQUEST_URI'], '/kickstarter' ) ) {
+    header( 'Location: https://www.kickstarter.com/projects/1679810777/goodbye-picasso-new-album-at-long-last' );
+    exit();	
+}
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'goodbyepicasso');

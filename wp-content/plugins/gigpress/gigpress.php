@@ -3,7 +3,7 @@
 Plugin Name: GigPress
 Plugin URI: http://gigpress.com
 Description: GigPress is a live performance listing and management plugin built for musicians and performers.
-Version: 2.3.12
+Version: 2.3.15
 Author: Derek Hogue
 Author URI: http://amphibian.info
 Text Domain: gigpress
@@ -28,17 +28,23 @@ define('GIGPRESS_SHOWS', $wpdb->prefix . 'gigpress_shows');
 define('GIGPRESS_TOURS', $wpdb->prefix . 'gigpress_tours');
 define('GIGPRESS_ARTISTS', $wpdb->prefix . 'gigpress_artists');
 define('GIGPRESS_VENUES', $wpdb->prefix . 'gigpress_venues');
-define('GIGPRESS_VERSION', '2.3.12');
+define('GIGPRESS_VERSION', '2.3.15');
 define('GIGPRESS_DB_VERSION', '1.6');
 define('GIGPRESS_RSS', get_bloginfo('url') . '/?feed=gigpress');
 define('GIGPRESS_ICAL', get_bloginfo('url') . '/?feed=gigpress-ical');
 define('GIGPRESS_WEBCAL', str_replace('http://', 'webcal://', GIGPRESS_ICAL));
-define('GIGPRESS_NOW', gmdate( 'Y-m-d', ( time() + ( -11 * HOUR_IN_SECONDS ) ) ) );
-define('GIGPRESS_DEBUG', '');
+define('GIGPRESS_DEBUG', true);
 
 require('admin/db.php');
 
 define('GIGPRESS_URL', ($gpo['shows_page']) ? esc_url($gpo['shows_page']) : get_bloginfo('url'));
+
+define('GIGPRESS_NOW', gmdate( 'Y-m-d', ( time() + gigpress_timezone_offset() )));
+if(empty($gpo['default_date']))
+{
+	$gpo['default_date'] = GIGPRESS_NOW;
+	update_option('gigpress_settings', $gpo);
+}
 
 // Pull in all of our required files
 require('admin/new.php');
@@ -73,24 +79,35 @@ function gigpress_admin_menu() {
 	
 	$icon = ($wp_version >= 3.8) ? 'dashicons-calendar' : plugins_url('images/gigpress-icon-16.png', __FILE__);
 	
-	add_menu_page("GigPress &rsaquo; $add", "GigPress", $gpo['user_level'], __FILE__, "gigpress_add", $icon);
+	add_menu_page("GigPress &rsaquo; $add", "GigPress", $gpo['user_level'], 'gigpress', "gigpress_add", $icon);
 	// By setting the unique identifier of the submenu page to be __FILE__,
 	// we let it be the first page to load when the top-level menu item is clicked
-	add_submenu_page(__FILE__, "GigPress &rsaquo; $add", $add, $gpo['user_level'], __FILE__, "gigpress_add");
-	add_submenu_page(__FILE__, "GigPress &rsaquo; $shows", $shows, $gpo['user_level'], "gigpress-shows", "gigpress_admin_shows");
-	add_submenu_page(__FILE__, "GigPress &rsaquo; $artists", $artists, $gpo['user_level'], "gigpress-artists", "gigpress_artists");
-	add_submenu_page(__FILE__, "GigPress &rsaquo; $venues", $venues, $gpo['user_level'], "gigpress-venues", "gigpress_venues");
-	add_submenu_page(__FILE__, "GigPress &rsaquo; $tours", $tours, $gpo['user_level'], "gigpress-tours", "gigpress_tours");
-	add_submenu_page(__FILE__, "GigPress &rsaquo; $settings", $settings, 'manage_options', "gigpress-settings", "gigpress_settings");
-	add_submenu_page(__FILE__, "GigPress &rsaquo; $export", $export, $gpo['user_level'], "gigpress-import-export", "gigpress_import_export");
+	add_submenu_page('gigpress', "GigPress &rsaquo; $add", $add, $gpo['user_level'], 'gigpress', "gigpress_add");
+	add_submenu_page('gigpress', "GigPress &rsaquo; $shows", $shows, $gpo['user_level'], "gigpress-shows", "gigpress_admin_shows");
+	add_submenu_page('gigpress', "GigPress &rsaquo; $artists", $artists, $gpo['user_level'], "gigpress-artists", "gigpress_artists");
+	add_submenu_page('gigpress', "GigPress &rsaquo; $venues", $venues, $gpo['user_level'], "gigpress-venues", "gigpress_venues");
+	add_submenu_page('gigpress', "GigPress &rsaquo; $tours", $tours, $gpo['user_level'], "gigpress-tours", "gigpress_tours");
+	add_submenu_page('gigpress', "GigPress &rsaquo; $settings", $settings, 'manage_options', "gigpress-settings", "gigpress_settings");
+	add_submenu_page('gigpress', "GigPress &rsaquo; $export", $export, $gpo['user_level'], "gigpress-import-export", "gigpress_import_export");
 	
 	if(GIGPRESS_DEBUG) {
 		require('admin/debug.php');
-		add_submenu_page(__FILE__, "GigPress &rsaquo; Debug", 'Debug', 'manage_options', "gigpress-debug", "gigpress_debug");
+		add_submenu_page('gigpress', "GigPress &rsaquo; Debug", 'Debug', 'manage_options', "gigpress-debug", "gigpress_debug");
 	}	
 
 }
 
+function gigpress_toolbar($wp_admin_bar) {
+	// Not sure if this should be default, hold off for now
+	return;
+	$args = array(
+		'id'    => 'gigpress',
+		'title' => 'GigPress '.__("Show", "gigpress"),
+		'href'  => admin_url('admin.php?page=gigpress'),
+		'parent' => 'new-content'
+	);
+	$wp_admin_bar->add_node( $args );
+}
 
 function gigpress_admin_head()	{
 	wp_enqueue_script('jquery');
@@ -164,24 +181,46 @@ function gigpress_template($path) {
 }
 
 
-function gigpress_get_O_offset($offset) {
-	
-	$first = substr($offset, 0, 1);
-	$length = strlen($offset);
-	
-	switch($first) {
-		// Deal with GMT first
-		case '0':
-			return '+0000';
+function gigpress_timezone_offset($type = 'seconds') {
+	global $gpo;
+	$timezone_object = timezone_open($gpo['timezone']);
+	$datetime_object = date_create();
+	switch($type)
+	{
+		case 'seconds':
+			return timezone_offset_get($timezone_object, $datetime_object);
 			break;
-		// Negative offset ($length is either 2 or 3)
-		case '-':
-			return ($length == 3) ? $offset.'00' : '-0'.substr($offset, 1, 2).'00';
+		case 'minutes' :
+			return round(timezone_offset_get($timezone_object, $datetime_object) / HOUR_IN_SECONDS, 2);
 			break;
-		// Positive offset ($length is either 1 or 2)
-		default:
-			return ($length == 2) ? '+'.$offset.'00' : '+0'.$offset.'00';
+		case 'zero':
+			$minutes = round(timezone_offset_get($timezone_object, $datetime_object) / HOUR_IN_SECONDS, 0);
+			$first = substr($minutes, 0, 1);
+			$length = strlen($minutes);
+			switch($first) {
+				// Deal with GMT first
+				case '0':
+					return '+0000';
+					break;
+				// Negative offset ($length is either 2 or 3)
+				case '-':
+					return ($length == 3) ? $minutes.'00' : '-0'.substr($minutes, 1, 2).'00';
+					break;
+				// Positive offset ($length is either 1 or 2)
+				default:
+					return ($length == 2) ? '+'.$minutes.'00' : '+0'.$minutes.'00';
+			}
+			break;
 	}
+}
+
+function gigpress_gmt($string, $format = 'Y-m-d H:i:s') {
+	global $gpo;
+	$datetime = date_create( $string, new DateTimeZone( $gpo['timezone'] ) );
+	if ( ! $datetime )
+		return gmdate( $format, 0 );
+	$datetime->setTimezone( new DateTimeZone( 'UTC' ) );
+	return $datetime->format( $format );
 }
 
 
@@ -254,11 +293,11 @@ function gigpress_prepare($show, $scope = 'public') {
 			$showdata['calendar_location'] .= $show->venue_city . ", " . $show->venue_country;
 		$show->venue_city . ", " . $show->venue_country;
 		$showdata['calendar_location_ical'] = str_replace(",", "\,", $showdata['calendar_location']);
-		$showdata['calendar_start'] = ($timeparts[2] == '01') ? str_replace('-', '', $show->show_date) : str_replace(array('-',':',' '), array('','','T'), get_gmt_from_date($show->show_date . ' ' . $show->show_time)) . 'Z';
+		$showdata['calendar_start'] = ($timeparts[2] == '01') ? str_replace('-', '', $show->show_date) : str_replace(array('-',':',' '), array('','','T'), gigpress_gmt($show->show_date . ' ' . $show->show_time)) . 'Z';
 		if($timeparts[2] == '01') {
 			$showdata['calendar_end'] = ($show->show_expire == $show->show_date) ? $showdata['calendar_start'] : date('Ymd', strtotime($show->show_expire . '+1 day'));	
 		} else {
-			$showdata['calendar_end'] = ($show->show_expire == $show->show_date) ? $showdata['calendar_start'] : str_replace(array('-',':',' '), array('','','T'), get_gmt_from_date($show->show_expire . ' ' . $show->show_time)) . 'Z';		
+			$showdata['calendar_end'] = ($show->show_expire == $show->show_date) ? $showdata['calendar_start'] : str_replace(array('-',':',' '), array('','','T'), gigpress_gmt($show->show_expire . ' ' . $show->show_time)) . 'Z';		
 		}
 		$showdata['date'] = ($show->show_related && !empty($gpo['relatedlink_date']) && $scope == 'public') ? '<a href="' . gigpress_related_link($show->show_related, "url") . '">' . mysql2date($gpo['date_format'], $show->show_date) . '</a>' : mysql2date($gpo['date_format'], $show->show_date);
 		$showdata['date_long'] = mysql2date($gpo['date_format_long'], $show->show_date);		
@@ -278,7 +317,7 @@ function gigpress_prepare($show, $scope = 'public') {
 		$showdata['related_url'] = (!empty($show->show_related)) ? gigpress_related_link($show->show_related, 'url') : '';
 		$showdata['related_edit'] = (!empty($show->show_related)) ? gigpress_related_link($show->show_related, 'edit') : '';
 		$showdata['related_link'] = (!empty($show->show_related)) ? gigpress_related_link($show->show_related, 'view') : '';
-		$showdata['rss_date'] = mysql2date('D, d M Y', $show->show_date, false). " ". $show->show_time." " . gigpress_get_O_offset(get_option('gmt_offset'));
+		$showdata['rss_date'] = mysql2date('D, d M Y', $show->show_date, false). " ". $show->show_time." " . gigpress_timezone_offset('zero');
 		$showdata['status'] = $show->show_status;
 		switch($showdata['status']) {
 			case 'active': $showdata['ticket_link'] = ($show->show_tix_url && $show->show_expire >= GIGPRESS_NOW) ? '<a href="' . esc_url($show->show_tix_url)  . '"' . gigpress_target($show->show_tix_url) . ' class="gigpress-tickets-link">' . wptexturize($gpo['buy_tickets_label']) . '</a>' : '';
@@ -438,14 +477,14 @@ function register_gigpress_settings() {
 function gigpress_favorites($actions) {
 	global $gpo;
 	$level = "level_" . $gpo['user_level']; 
-	$actions['admin.php?page=gigpress/gigpress.php'] = array('Add a show', $level);
+	$actions['admin.php?page=gigpress'] = array('Add a show', $level);
     return $actions;
 }
 
 
 function custom_menu_order($menu_order) {
 	
-	if($current_position = array_search('gigpress/gigpress.php', $menu_order))
+	if($current_position = array_search('gigpress', $menu_order))
 	{
 		// Add a new separator to the menu array
 		global $menu;
@@ -464,7 +503,7 @@ function custom_menu_order($menu_order) {
 			if($menu_item == 'edit-comments.php')
 			{
 				$new_menu_order[] =  'separator-gp';
-				$new_menu_order[] = 'gigpress/gigpress.php';		
+				$new_menu_order[] = 'gigpress';		
 			}
 		}
 	}
@@ -603,6 +642,7 @@ add_action('init','add_gigpress_feeds');
 add_action('init','gigpress_intl');
 add_action('admin_init', 'register_gigpress_settings'); 
 add_action('admin_menu', 'gigpress_admin_menu');
+add_action('admin_bar_menu', 'gigpress_toolbar', 999);
 add_action('delete_post', 'gigpress_remove_related');
 if(!empty($_SERVER['QUERY_STRING']) && strpos($_SERVER['QUERY_STRING'], 'gigpress') !== FALSE) {
 	add_action('admin_init','gigpress_admin_head');

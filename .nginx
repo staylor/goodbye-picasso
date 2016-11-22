@@ -1,32 +1,38 @@
 server {
-    listen       80;
-    server_name  goodbyepicasso.com *.goodbyepicasso.com;
-    root         /var/www/goodbyepicasso.com/public_html;
-
-    access_log   /var/www/goodbyepicasso.com/logs/access.log;
-    error_log    /var/www/goodbyepicasso.com/logs/error.log;
-
-    location / {
-        index index.php;
-        try_files $uri $uri/ /index.php?$args;
-    }
-
-    # Add trailing slash to */wp-admin requests.
-    rewrite /wp-admin$ $scheme://$host$uri/ permanent;
-
-    # Directives to send expires headers and turn off 404 error logging.
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
-        expires 24h;
-        log_not_found off;
-    }
-
-    # this prevents hidden files (beginning with a period) from being served
-	      location ~ /\.          { access_log off; log_not_found off; deny all; }
-
-	location = /xmlrpc.php {
-		deny all;
-		access_log off; #to prevent from filling up the access log file
+	listen       80;
+	server_name  goodbyepicasso.com *.goodbyepicasso.com;
+	root         /var/www/goodbyepicasso.com/public_html;
+	access_log   /var/www/goodbyepicasso.com/logs/access.log;
+	error_log    /var/www/goodbyepicasso.com/logs/error.log;
+	location / {
+		rewrite ^ https://goodbyepicasso.com$request_uri permanent;
 	}
+}
+
+server {
+	listen 443;
+	ssl on;
+	server_name  goodbyepicasso.com *.goodbyepicasso.com;
+	root         /var/www/goodbyepicasso.com/public_html;
+	access_log   /var/www/goodbyepicasso.com/logs/ssl.access.log;
+	error_log    /var/www/goodbyepicasso.com/logs/ssl.error.log;
+
+	location / {
+    index index.php;
+    try_files $uri $uri/ /index.php?$args;
+	}
+
+	# Add trailing slash to */wp-admin requests.
+	rewrite /wp-admin$ $scheme://$host$uri/ permanent;
+
+	# Directives to send expires headers and turn off 404 error logging.
+	location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+    expires 24h;
+    log_not_found off;
+	}
+
+	# this prevents hidden files (beginning with a period) from being served
+  location ~ /\.  { access_log off; log_not_found off; deny all; }
 
 	# Rewrite multisite '.../wp-.*' and '.../*.php'.
 	if (!-e $request_filename) {
@@ -35,10 +41,10 @@ server {
 		rewrite ^(/[_0-9a-zA-Z-]+)?(/.*\.php)$ /wordpress$2 last;
 	}
 
-    location ~ \.php$ {
-    	fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        client_max_body_size 25M;
-        try_files      $uri =404;
+	location ~ \.php$ {
+		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    client_max_body_size 25M;
+    try_files      $uri =404;
 
 		fastcgi_cache  microcache;
 		fastcgi_cache_key $scheme$host$request_method$request_uri;
@@ -71,8 +77,8 @@ server {
 		# fastcgi_cache_bypass means "Do not look in the cache for this request"
 		fastcgi_cache_bypass $no_cache_get;
 
-        fastcgi_pass   unix:/var/run/php5-fpm.sock;
-        fastcgi_index  index.php;
-        include        /etc/nginx/fastcgi_params;
-    }
+    fastcgi_pass   unix:/var/run/php5-fpm.sock;
+    fastcgi_index  index.php;
+    include        /etc/nginx/fastcgi_params;
+	}
 }

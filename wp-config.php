@@ -16,7 +16,7 @@
 
 if ( 0 === strpos( $_SERVER['REQUEST_URI'], '/kickstarter' ) ) {
     header( 'Location: https://www.kickstarter.com/projects/1679810777/goodbye-picasso-new-album-at-long-last' );
-    exit();	
+    exit();
 }
 
 // ** MySQL settings - You can get this info from your web host ** //
@@ -39,7 +39,7 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 define( 'WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . '/wp-content' );
-define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp-content' );
+define( 'WP_CONTENT_URL', 'https://' . $_SERVER['HTTP_HOST'] . '/wp-content' );
 
 /**#@+
  * Authentication Unique Keys and Salts.

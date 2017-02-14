@@ -13,11 +13,11 @@
 
 	p {
 		float: left;
-		font: 12px arial;
+		font: 12px sans-serif;
 		color: #333;
 
 		@include respond-to(phone) {
-			font: 11px arial;
+			font: 11px sans-serif;
 		}
 	}
 }

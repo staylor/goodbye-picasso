@@ -18,7 +18,7 @@
 <body>
 <style>
 main {
-  background: #4a4a4a;
+  background: #282828;
   display: block;
   position: absolute;
   top: 0;
@@ -28,13 +28,24 @@ main {
 }
 
 main img {
-  height: auto;
-  position: absolute;
-  z-index: 10;
+  display: block;
   width: 100%;
+  height: auto;
+  margin: auto;
   -webkit-image-rendering: crisp-edges;
   -moz-image-rendering: crisp-edges;
   image-rendering: crisp-edges;
+}
+
+main figure {
+  display: block;
+  margin: 2.5% auto 0;
+  overflow: hidden;
+  padding: 0;
+  width: 95%;
+  height: 93.5%;
+  position: relative;
+  z-index: 10;
 }
 
 main iframe {
@@ -46,7 +57,9 @@ main iframe {
 }
 </style>
 <main>
-  <img src="/wp-content/themes/gp/images/single.jpg"/>
+  <figure>
+    <img src="/wp-content/themes/gp/images/single.jpg"/>
+  </figure>
   <iframe src="https://embed.spotify.com/?uri=spotify%3Atrack%3A4wU443mzUgSfiLcF0dKV6f" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
 </main>
 </body>

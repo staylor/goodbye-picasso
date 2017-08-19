@@ -56,7 +56,7 @@ iframe {
 #content {
   background: rgba(6, 6, 6, .6);
   color: #fff;
-  padding: 25px;
+  padding: 25px 25px calc(2.5% + 100px) 25px;
   position: absolute;
   z-index: 2;
   top: 0;

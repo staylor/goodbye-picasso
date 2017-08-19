@@ -109,7 +109,7 @@ p {
 <main></main>
 <section id="content">
   <h1>Goodbye Picasso</h1>
-  <p>Offical Album Release Show:</p>
+  <p>Official Album Release Show:</p>
   <p>August 26, 2017<br/>10pm</p>
   <p>Rockwood Music Hall<br/>Stage 2<br/>
   Lower East Side, NY, NY</p>

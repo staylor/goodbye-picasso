@@ -67,7 +67,7 @@ iframe {
 
 h1 {
   font-size: 60px;
-  line-height: 72px;
+  line-height: 68px;
 }
 
 p {

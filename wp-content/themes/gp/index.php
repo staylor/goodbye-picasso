@@ -16,47 +16,104 @@
     ga('send', 'pageview');
 
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
 </head>
 <body>
 <style>
 body {
+  background: #060606 url("/wp-content/themes/gp/images/AlbumCover.jpg") no-repeat 50% 100%;
+  background-size: cover;
   font-family: cubano, sans-serif;
   font-weight: 400;
   color: #fff;
-}
-
-main {
-  background: #060606 url("/wp-content/themes/gp/images/AlbumCover.jpg") no-repeat 50% 100%;
-  background-size: contain;
-  display: block;
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
 }
 
-main iframe {
-  top: 2.5%;
+main {
+  display: block;
+  background: url("/wp-content/themes/gp/images/AlbumCover.jpg") no-repeat 50% 100%;
+  background-size: cover;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+iframe {
+  bottom: 2.5%;
   left: 2.5%;
   right: 2.5%;
-  position: fixed;
-  z-index: 20;
+  position: absolute;
+  z-index: 3;
 }
 
 #content {
-  margin-top: calc(2.5% + 120px);
+  background: rgba(6, 6, 6, .6);
+  color: #fff;
+  padding: 25px;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 h1 {
-  color: #fff;
+  font-size: 60px;
+  line-height: 72px;
+}
+
+p {
+  margin: 25px 0;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 320px) {
+  #content {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+
+  h1 {
+    font-size: 48px;
+    line-height: 60px;
+  }
+
+  p {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@media (min-width: 768px) {
+  main {
+    background-size: 100%;
+  }
+  p {
+    font-size: 32px;
+    line-height: 40px;
+  }
 }
 </style>
-<main>
-  <iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
-</main>
+<main></main>
 <section id="content">
   <h1>Goodbye Picasso</h1>
+  <p>Offical Album Release Show:</p>
+  <p>August 26, 2017<br/>10pm</p>
+  <p>Rockwood Music Hall<br/>Stage 2<br/>
+  Lower East Side, NY, NY</p>
 </section>
+<iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
 </body>
 </html>

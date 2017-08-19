@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Goodbye Picasso - New York, NY</title>
+  <script src="https://use.typekit.net/sib0qji.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -17,35 +19,21 @@
 </head>
 <body>
 <style>
+body {
+  font-family: cubano, sans-serif;
+  font-weight: 400;
+  color: #fff;
+}
+
 main {
-  background: #282828;
+  background: #060606 url("/wp-content/themes/gp/images/AlbumCover.jpg") no-repeat 50% 100%;
+  background-size: contain;
   display: block;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-}
-
-main img {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: auto;
-  -webkit-image-rendering: crisp-edges;
-  -moz-image-rendering: crisp-edges;
-  image-rendering: crisp-edges;
-}
-
-main figure {
-  display: block;
-  margin: 2.5% auto 0;
-  overflow: hidden;
-  padding: 0;
-  width: 95%;
-  height: 93.5%;
-  position: relative;
-  z-index: 10;
 }
 
 main iframe {
@@ -55,12 +43,20 @@ main iframe {
   position: fixed;
   z-index: 20;
 }
+
+#content {
+  margin-top: calc(2.5% + 120px);
+}
+
+h1 {
+  color: #fff;
+}
 </style>
 <main>
-  <figure>
-    <img src="/wp-content/themes/gp/images/single.jpg"/>
-  </figure>
-  <iframe src="https://embed.spotify.com/?uri=spotify%3Atrack%3A4wU443mzUgSfiLcF0dKV6f" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
+  <iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
 </main>
+<section id="content">
+  <h1>Goodbye Picasso</h1>
+</section>
 </body>
 </html>

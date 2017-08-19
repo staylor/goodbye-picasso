@@ -1,9 +1,8 @@
 === GigPress ===
-Contributors: ModernTribe, mrherbivore, borkweb, zbtirrell, barry.hughes, bordoni, brianjessee, brook-tribe, geoffgraham, ggwicz, leahkoerper, neillmcshea, nicosantos, peterchester, reid.peifer, shelbelliott, shane.pearlman, aguseo, tribecari, trishasalas
+Contributors: ModernTribe, aguseo, borkweb, barry.hughes, bordoni, brianjessee, brook-tribe, cliffpaulick, courane01, GeoffBel, geoffgraham, ggwicz, leahkoerper, neillmcshea, nicosantos, peterchester, reid.peifer, shane.pearlman, shelbelliott, tribecari, vicskf, zbtirrell
 Tags: concerts, bands, tours, shows, record labels, music, musicians, performers, artists
 Requires at least: 4.0
 Tested up to: 4.6.1
-Stable tag: 4.2.7
 
 GigPress is a live performance listing and management plugin that's been serving musicians and performers since 2007.
 
@@ -35,6 +34,13 @@ If you want to go beyond GigPress, we also have other plugins that could work gr
 * Check out the full <a href="https://theeventscalendar.com/products/">list of premium plugins</a> we offer.
 
 == Changelog ==
+
+= 2.3.18 [2017-06-28] =
+
+* Tweak - The Show Notes field can now render shortcodes (props to @cowboyofbottrop)
+* Tweak - Improvements to source code (props to @leecollings)
+* Fix - Prevent PHP notices from appearing in log files when editing an event. [68766]
+* Fix - Prevent PHP Notice when no shows are added, but multiple artists are present. [68765]
 
 = 2.3.17 [2016-09-15] =
 

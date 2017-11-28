@@ -110,9 +110,9 @@ p {
 <main></main>
 <section id="content">
   <h1>Goodbye Picasso</h1>
-  <p>Official Album Release Show:</p>
-  <p>August 26, 2017<br/>10pm</p>
-  <p>Rockwood Music Hall<br/>Stage 2<br/>
+  <p>Next Show:</p>
+  <p>December 8, 2017<br/>10pm</p>
+  <p>Rockwood Music Hall<br/>
   Lower East Side, NY, NY</p>
 </section>
 <iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>

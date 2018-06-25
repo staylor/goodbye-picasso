@@ -111,7 +111,7 @@ p {
 <section id="content">
   <h1>Goodbye Picasso</h1>
   <p>Next Show:</p>
-  <p>January 26, 2018<br/>10pm</p>
+  <p>June 7, 2018<br/>10pm</p>
   <p>Rockwood Music Hall<br/>
   Lower East Side, NY, NY</p>
 </section>

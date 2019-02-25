@@ -111,9 +111,9 @@ p {
 <section id="content">
   <h1>Goodbye Picasso</h1>
   <p>Next Show:</p>
-  <p>July 7, 2018<br/>10pm</p>
-  <p>Rockwood Music Hall<br/>
-  Lower East Side, NY, NY</p>
+  <p>March 3, 2019<br/>10pm</p>
+  <p>Coney Island Baby<br/>
+  East Village, NY, NY</p>
 </section>
 <iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
 </body>

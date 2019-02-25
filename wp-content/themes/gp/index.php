@@ -111,7 +111,7 @@ p {
 <section id="content">
   <h1>Goodbye Picasso</h1>
   <p>Next Show:</p>
-  <p>March 3, 2019<br/>10pm</p>
+  <p>March 3, 2019<br/>7:30pm</p>
   <p>Coney Island Baby<br/>
   East Village, NY, NY</p>
 </section>

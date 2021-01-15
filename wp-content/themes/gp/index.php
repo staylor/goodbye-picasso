@@ -114,7 +114,7 @@ a {
 <main></main>
 <section id="content">
   <h1>Goodbye Picasso</h1>
-  <p>Livestream - Chris Dreyer w/ Scott Taylor</p>
+  <p>Livestream:<br/>Chris Dreyer w/ Scott Taylor</p>
   <p>Saturday<br/>January 16, 2021<br/>8pm</p>
   <p>Rockwood Music Hall<br/>
   Facebook Live</p>

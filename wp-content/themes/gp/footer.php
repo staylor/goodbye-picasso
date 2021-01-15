@@ -7,6 +7,7 @@
 		<div id="facebook_widget">
 			<?php page_like_button() ?>
 		</div>
+test1
 	</div>
 </div><!-- .wrapper -->
 <?php wp_footer(); ?>

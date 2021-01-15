@@ -78,6 +78,10 @@ p {
   letter-spacing: 1px;
 }
 
+a {
+  color: #aaa;
+}
+
 @media (max-width: 320px) {
   #content {
     padding: 10px;
@@ -114,6 +118,7 @@ p {
   <p>January 14, 2021<br/>8pm</p>
   <p>Rockwood Music Hall<br/>
   Facebook Live</p>
+  <p><a href="https://www.eventbrite.com/e/chris-dreyer-facebook-live-thank-you-for-your-generous-donation-tickets-134812693395" target="_blank">More Info</a></p>
 </section>
 <iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
 </body>

@@ -115,7 +115,7 @@ a {
 <section id="content">
   <h1>Goodbye Picasso</h1>
   <p>Livestream - Chris Dreyer w/ Scott Taylor</p>
-  <p>January 14, 2021<br/>8pm</p>
+  <p>Saturday<br/>January 16, 2021<br/>8pm</p>
   <p>Rockwood Music Hall<br/>
   Facebook Live</p>
   <p><a href="https://www.eventbrite.com/e/chris-dreyer-facebook-live-thank-you-for-your-generous-donation-tickets-134812693395" target="_blank">More Info</a></p>

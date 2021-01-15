@@ -110,10 +110,10 @@ p {
 <main></main>
 <section id="content">
   <h1>Goodbye Picasso</h1>
-  <p>Next Show:</p>
-  <p>February 8, 2020<br/>9:00pm</p>
+  <p>Livestream - Chris Dreyer w/ Scott Taylor</p>
+  <p>January 14, 2021<br/>8pm</p>
   <p>Rockwood Music Hall<br/>
-  Lower East Side, NY, NY</p>
+  Facebook Live</p>
 </section>
 <iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
 </body>

@@ -45,7 +45,7 @@ main {
   right: 0;
 }
 
-iframe {
+.spotify {
   bottom: 2.5%;
   left: 2.5%;
   right: 2.5%;
@@ -117,6 +117,6 @@ a {
   <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Frockwoodmusichall%2Fvideos%2F1714269152077513%2F&width=1280" width="1280" height="720" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
   <p><a href="https://www.eventbrite.com/e/chris-dreyer-facebook-live-thank-you-for-your-generous-donation-tickets-134812693395" target="_blank">More Info</a></p>
 </section>
-<iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
+<iframe class="spotify" src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
 </body>
 </html>

@@ -32,7 +32,6 @@ body {
   left: 0;
   right: 0;
 }
-
 main {
   display: block;
   background: url("/wp-content/themes/gp/images/AlbumCover.jpg") no-repeat 50% 100%;
@@ -44,15 +43,13 @@ main {
   left: 0;
   right: 0;
 }
-
-.spotify {
+iframe {
   bottom: 2.5%;
   left: 2.5%;
   right: 2.5%;
   position: absolute;
   z-index: 3;
 }
-
 #content {
   background: rgba(6, 6, 6, .6);
   color: #fff;
@@ -65,42 +62,34 @@ main {
   right: 0;
   overflow: auto;
 }
-
 h1 {
   font-size: 60px;
   line-height: 68px;
 }
-
 p {
   margin: 25px 0;
   font-size: 28px;
   line-height: 36px;
   letter-spacing: 1px;
 }
-
 a {
   color: #aaa;
 }
-
 @media (max-width: 320px) {
   #content {
     padding: 10px;
   }
 }
-
 @media (max-width: 400px) {
-
   h1 {
     font-size: 48px;
     line-height: 60px;
   }
-
   p {
     font-size: 24px;
     line-height: 32px;
   }
 }
-
 @media (min-width: 768px) {
   main {
     background-size: 100%;
@@ -114,9 +103,12 @@ a {
 <main></main>
 <section id="content">
   <h1>Goodbye Picasso</h1>
-  <p><iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Frockwoodmusichall%2Fvideos%2F312406606878349%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe></p>
-  <p><a href="https://www.eventbrite.com/e/chris-dreyer-facebook-live-thank-you-for-your-generous-donation-tickets-134812693395" target="_blank">More Info</a></p>
+  <p>Nex Show:</p>
+  <p>July 17, 2021<br/>10:30pm</p>
+  <p>Rockwood Music Hall, Stage 2<br/>
+  Lower East Side, NY, NY</p>
+  <p><a href="https://www.seetickets.us/event/Goodbye-Picasso/434956" target="_blank">Tickets / RSVP</a></p>
 </section>
-<iframe class="spotify" src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
+<iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
 </body>
 </html>

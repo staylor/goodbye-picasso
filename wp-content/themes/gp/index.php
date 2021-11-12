@@ -104,7 +104,7 @@ a {
 <section id="content">
   <h1>Goodbye Picasso</h1>
   <p>Nex Show:</p>
-  <p>July 17, 2021<br/>10:30pm</p>
+  <p>November 13, 2021<br/>11:15pm</p>
   <p>Rockwood Music Hall, Stage 2<br/>
   Lower East Side, NY, NY</p>
   <p><a href="https://www.seetickets.us/event/Goodbye-Picasso/434956" target="_blank">Tickets / RSVP</a></p>

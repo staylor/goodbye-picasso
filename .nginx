@@ -60,7 +60,16 @@ fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 fastcgi_index  index.php;
     include        /etc/nginx/fastcgi_params;
 	}
-
     ssl_certificate /etc/letsencrypt/live/goodbyepicasso.com-0005/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/goodbyepicasso.com-0005/privkey.pem; # managed by Certbot
+
+
+
+
+
+
+
+
+
+
 }

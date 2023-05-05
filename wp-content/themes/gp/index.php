@@ -104,10 +104,9 @@ a {
 <section id="content">
   <h1>Goodbye Picasso</h1>
   <p>Nex Show:</p>
-  <p>June 18, 2022<br/>10:00pm</p>
+  <p>June 16, 2023<br/>9:00pm</p>
   <p>Rockwood Music Hall, Stage 1<br/>
   Lower East Side, NY, NY</p>
-  <p><a href="https://www.seetickets.us/event/Goodbye-Picasso/434956" target="_blank">Tickets / RSVP</a></p>
 </section>
 <iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
 </body>

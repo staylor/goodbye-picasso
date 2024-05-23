@@ -104,8 +104,8 @@ a {
 <section id="content">
   <h1>Goodbye Picasso</h1>
   <p>Nex Show:</p>
-  <p>June 16, 2023<br/>9:00pm</p>
-  <p>Rockwood Music Hall, Stage 1<br/>
+  <p>May 24, 2024<br/>9:00pm</p>
+  <p>Rockwood Music Hall<br/>
   Lower East Side, NY, NY</p>
 </section>
 <iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>

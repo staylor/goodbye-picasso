@@ -1,113 +1,17 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Goodbye Picasso - New York, NY</title>
-  <script src="https://use.typekit.net/sib0qji.js"></script>
-  <script>try{Typekit.load({ async: true });}catch(e){}</script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<?php
+/**
+ * Front to the WordPress application. This file doesn't do anything, but loads
+ * wp-blog-header.php which does and tells WordPress to load the theme.
+ *
+ * @package WordPress
+ */
 
-    ga('create', 'UA-1544578-3', 'goodbyepicasso.com');
-    ga('send', 'pageview');
+/**
+ * Tells WordPress to load the WordPress theme and output it.
+ *
+ * @var bool
+ */
+define('WP_USE_THEMES', true);
 
-  </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
-</head>
-<body>
-<style>
-body {
-  background: #060606 url("/wp-content/themes/gp/images/AlbumCover.jpg") no-repeat 50% 100%;
-  background-size: cover;
-  font-family: cubano, sans-serif;
-  font-weight: 400;
-  color: #fff;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-main {
-  display: block;
-  background: url("/wp-content/themes/gp/images/AlbumCover.jpg") no-repeat 50% 100%;
-  background-size: cover;
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-iframe {
-  bottom: 2.5%;
-  left: 2.5%;
-  right: 2.5%;
-  position: absolute;
-  z-index: 3;
-}
-#content {
-  background: rgba(6, 6, 6, .6);
-  color: #fff;
-  padding: 25px 25px calc(2.5% + 100px) 25px;
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: auto;
-}
-h1 {
-  font-size: 60px;
-  line-height: 68px;
-}
-p {
-  margin: 25px 0;
-  font-size: 28px;
-  line-height: 36px;
-  letter-spacing: 1px;
-}
-a {
-  color: #aaa;
-}
-@media (max-width: 320px) {
-  #content {
-    padding: 10px;
-  }
-}
-@media (max-width: 400px) {
-  h1 {
-    font-size: 48px;
-    line-height: 60px;
-  }
-  p {
-    font-size: 24px;
-    line-height: 32px;
-  }
-}
-@media (min-width: 768px) {
-  main {
-    background-size: 100%;
-  }
-  p {
-    font-size: 32px;
-    line-height: 40px;
-  }
-}
-</style>
-<main></main>
-<section id="content">
-  <h1>Goodbye Picasso</h1>
-  <p>Nex Show:</p>
-  <p>May 24, 2024<br/>9:00pm</p>
-  <p>Rockwood Music Hall<br/>
-  Lower East Side, NY, NY</p>
-</section>
-<iframe src="https://open.spotify.com/embed/album/6IdrHMGS2Fj8KPzR7fbMON" width="95%" height="80" frameborder="0" allowtransparency="true"></iframe>
-</body>
-</html>
+/** Loads the WordPress Environment and Template */
+require('./wordpress/wp-blog-header.php');

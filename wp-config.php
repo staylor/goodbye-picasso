@@ -14,9 +14,9 @@
  * @package WordPress
  */
 
-if ( 0 === strpos( $_SERVER['REQUEST_URI'], '/kickstarter' ) ) {
-    header( 'Location: https://www.kickstarter.com/projects/1679810777/goodbye-picasso-new-album-at-long-last' );
-    exit();
+if ($_SERVER['HTTP_HOST'] === 'goodbyepicasso:8080') {                                                                                                                                                          
+	define('WP_HOME', 'http://goodbyepicasso:8080');                                                                                                                                                            
+	define('WP_SITEURL', 'http://goodbyepicasso:8080');                                                                                                                                               
 }
 
 // ** MySQL settings - You can get this info from your web host ** //
@@ -88,7 +88,7 @@ define('WPLANG', '');
  * in their development environments.
  */
 //define( 'WP_CACHE', true );
-define( 'WP_DEBUG_DISPLAY', false );
+define( 'WP_DEBUG_DISPLAY', true );
 error_reporting( -1 );
 define( 'WP_DEBUG', true );
 

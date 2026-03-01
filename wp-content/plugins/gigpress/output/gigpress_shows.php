@@ -44,6 +44,8 @@ function gigpress_shows( $filter = null, $content = null ) {
 		), $filter )
 	);
 
+	$sort = gigpress_sanitize_sort($sort);
+	
 	$total_artists = $wpdb->get_var( "SELECT count(*) from " . GIGPRESS_ARTISTS );
 
 	// Date conditionals and sorting based on scope
@@ -244,12 +246,12 @@ function gigpress_shows( $filter = null, $content = null ) {
 		}
 
 		if ( $some_results ) {
-			// After all artist groups		
+			// After all artist groups
 			include gigpress_template( 'shows-list-footer' );
 			if ( ! empty( $shows_markup ) ) {
 				echo '<script type="application/ld+json">';
 				if ( ! defined( "JSON_UNESCAPED_SLASHES" ) ) {
-					require_once( WP_PLUGIN_DIR . '/gigpress/lib/upgrade.php' );
+					require_once( GIGPRESS_PLUGIN_DIR . 'lib/upgrade.php' );
 					echo up_json_encode( $shows_markup, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
 				} else {
 					echo json_encode( $shows_markup, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
@@ -308,7 +310,7 @@ function gigpress_shows( $filter = null, $content = null ) {
 			if ( ! empty( $shows_markup ) ) {
 				echo '<script type="application/ld+json">';
 				if ( ! defined( "JSON_UNESCAPED_SLASHES" ) ) {
-					require_once( WP_PLUGIN_DIR . '/gigpress/lib/upgrade.php' );
+					require_once( GIGPRESS_PLUGIN_DIR . 'lib/upgrade.php' );
 					echo up_json_encode( $shows_markup, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
 				} else {
 					echo json_encode( $shows_markup, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
@@ -346,6 +348,8 @@ function gigpress_menu( $options = null ) {
 		'venue'      => false,
 		'sort'       => 'desc',
 	), $options ) );
+
+	$sort = gigpress_sanitize_sort($sort, $default='desc');
 
 	$base .= ( strpos( $base, '?' ) === false ) ? '?' : '&amp;';
 
@@ -401,19 +405,28 @@ function gigpress_menu( $options = null ) {
 
 	if ( $dates ) : ?>
 
-		<select name="gigpress_menu" class="gigpress_menu" id="<?php echo $id; ?>">
-			<option value="<?php echo $base; ?>"><?php echo $title; ?></option>
-			<?php foreach ( $dates as $date ) : ?>
-				<?php $this_date = ( $type == 'monthly' ) ? $date->year . $date->month : $date->year; ?>
-				<option value="<?php echo $base . 'gpy=' . $date->year;
+		<select name="gigpress_menu" class="gigpress_menu" id="<?php echo esc_attr( $id ); ?>">
+			<option value="<?php echo esc_attr( $base ); ?>"><?php echo esc_html( $title ); ?></option>
+			<?php foreach ( $dates as $date ) :
+				$value = $base . 'gpy=' . $date->year;
 				if ( $type == 'monthly' ) {
-					echo '&amp;gpm=' . $date->month;
-				} ?>"<?php if ( $this_date == $current ) : ?> selected="selected"<?php endif; ?>>
-					<?php if ( $type == 'monthly' ) {
-						echo $wp_locale->get_month( $date->month ) . ' ';
+					$value .= '&amp;gpm=' . $date->month;
+				}
+				$this_date = ( $type == 'monthly' ) ? $date->year . $date->month : $date->year;
+				?>
+				<option
+					value="<?php echo esc_attr( $value ); ?>"
+					<?php selected( $this_date, $current ) ?>
+				>
+					<?php
+					if ( $type == 'monthly' ) {
+						echo esc_html( $wp_locale->get_month( $date->month ) . ' ' );
 					}
-					echo $date->year; ?>
-					<?php if ( $show_count && $show_count == 'yes' ) : ?>(<?php echo $date->shows; ?>)<?php endif; ?>
+					echo esc_html( $date->year );
+					if ( $show_count && $show_count == 'yes' ) {
+						echo esc_html( "({$date->shows})" );
+					}
+					?>
 				</option>
 			<?php endforeach; ?>
 		</select>
@@ -515,7 +528,7 @@ function gigpress_json_ld( $showdata ) {
 	if ( ! empty( $showdata['address_plain'] ) ) {
 		$address_markup['streetAddress'] = $showdata['address_plain'];
 	}
-	$address_markup['addressLocality'] = $showdata['city'];
+	$address_markup['addressLocality'] = $showdata['city_plain'];
 	if ( ! empty( $showdata['state'] ) ) {
 		$address_markup['addressRegion'] = $showdata['state'];
 	}
@@ -537,7 +550,8 @@ function gigpress_json_ld( $showdata ) {
 
 	// Add offer attributes
 	if ( ! empty( $showdata['price'] ) ) {
-		$offer_markup['price'] = $showdata['price'];
+		// Filter out symbols like '$' per http://schema.org/PriceSpecification
+		$offer_markup['price'] = preg_replace( '/[^0-9\.,]/', '', $showdata['price'] );
 	}
 	if ( ! empty( $showdata['ticket_url'] ) ) {
 		$offer_markup['url'] = $showdata['ticket_url'];
@@ -554,5 +568,14 @@ function gigpress_json_ld( $showdata ) {
 		$show_markup['offers'] = $offer_markup;
 	}
 
-	return $show_markup;
+	/**
+	 * Provides an opportunity to customize and alter the JSON LD output for
+	 * a specific show.
+	 *
+	 * @since 2.3.20
+	 *
+	 * @param array $show_markup
+	 * @param array $showdata
+	 */
+	return apply_filters( 'gigpress_show_json_ld_markup', $show_markup, $showdata );
 }

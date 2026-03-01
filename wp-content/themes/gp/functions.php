@@ -25,7 +25,11 @@ class GoodbyePicassoTheme {
 		add_action( 'init', [ $this, 'init' ] );
 		add_action( 'pre_get_posts', [ $this, 'pre_get_posts' ] );
 		add_action( 'template_redirect', [ $this, 'template_redirect' ] );
-	}
+		add_filter('query_vars', function($vars) {                                                                                                                                                                      
+			$vars[] = 'gpy';                                                                                                                                                                                            
+			return $vars;                                                                                                                                                                                               
+		});
+	}                                                                                                                                                                                                
 
 	function pre_get_posts( &$query ) {
 		if ( ! $query->is_main_query() ) {
@@ -46,6 +50,8 @@ class GoodbyePicassoTheme {
 	}
 
 	function init() {
+		add_rewrite_rule('^shows/(\d{4})/?$', 'index.php?pagename=shows&gpy=$matches[1]', 'top');  
+
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'automatic-feed-links' );

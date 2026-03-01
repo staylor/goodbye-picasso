@@ -351,8 +351,6 @@ function gigpress_menu( $options = null ) {
 
 	$sort = gigpress_sanitize_sort($sort, $default='desc');
 
-	$base .= ( strpos( $base, '?' ) === false ) ? '?' : '&amp;';
-
 	// Date conditionals based on scope
 	switch ( $scope ) {
 		case 'upcoming':
@@ -408,10 +406,7 @@ function gigpress_menu( $options = null ) {
 		<select name="gigpress_menu" class="gigpress_menu" id="<?php echo esc_attr( $id ); ?>">
 			<option value="<?php echo esc_attr( $base ); ?>"><?php echo esc_html( $title ); ?></option>
 			<?php foreach ( $dates as $date ) :
-				$value = $base . 'gpy=' . $date->year;
-				if ( $type == 'monthly' ) {
-					$value .= '&amp;gpm=' . $date->month;
-				}
+				$value = $base . $date->year . '/';
 				$this_date = ( $type == 'monthly' ) ? $date->year . $date->month : $date->year;
 				?>
 				<option

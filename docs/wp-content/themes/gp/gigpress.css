@@ -1,0 +1,29 @@
+.gigpress-row .location, .gigpress-row .summary, .location a {
+	font-size: 16px; text-transform: uppercase; color: #000
+} 
+
+/* For the labels for address, admission, etc in the "info" cell */
+span.gigpress-info-item {
+	color: #777; font: 12px arial;
+}
+
+span.gigpress-info-label {text-transform: uppercase; font: bold 10px/14px arial}
+
+
+/* In case you want to style the "Buy Tickets" link */
+a.gigpress-tickets-link {font-weight: normal}
+
+.gigpress-header th {text-transform: uppercase; font: bold 14px helvetica, arial;}
+
+th.gigpress-admission, td.gigpress-tickets {text-align: center}
+.gigpress-tickets span.tape {margin: 0 auto;}
+
+div.gigpress-calendar-links {width: 160px; top: 1.5em; left: -20px}
+.gigpress-calendar-add {float: left; top: 15px; left: 5px}
+.gigpress-date .tape {width: 117px; padding-right: 5px; font-size: 18px; overflow: visible}
+.gigpress-date .mdate {font-size: 16px; line-height: 20px}
+
+.gigpress-table {background: rgba(255,255,255,0.5)}
+
+span.gigpress-info-notes {font: 13px/16px arial;}
+ 
